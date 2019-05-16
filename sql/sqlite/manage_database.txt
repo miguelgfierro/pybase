@@ -1,4 +1,0 @@
-# To create a sqlite database, type in a terminal:
-sqlite3 db.sqlite3
-
-
