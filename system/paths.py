@@ -1,6 +1,7 @@
 import os
 import glob
 import errno
+import shutil
 
 
 def get_current_folder_path():
