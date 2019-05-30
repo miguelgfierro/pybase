@@ -33,8 +33,8 @@ def plot_image_matplotlib(img, figsize=None, title=None):
         title (str): Title of the image.
     
     Examples:
-        >>> img = cv2.imread('share/Lenna.png')
-        >>> plot_image_matplotlib(img)
+    $ img = cv2.imread('share/Lenna.png')
+    $ plot_image_matplotlib(img)
     """
     shape_len = len(img.shape)
     if shape_len == 3:  # color image
@@ -67,9 +67,9 @@ def draw_rectangle(img, rect, color=(0, 0, 255), thickness=2):
         np.array: An image with a rectangle
     
     Examples:
-        >>> img = cv2.imread('share/Lenna.png')
-        >>> img_box = draw_rectangle(img, (40, 20, 400, 491))
-        >>> plot_image_matplotlib(img_box)
+    $ img = cv2.imread('share/Lenna.png')
+    $ img_box = draw_rectangle(img, (40, 20, 400, 491))
+    $ plot_image_matplotlib(img_box)
 
     """
     x, y, w, h = _ensure_rec_inside_image(img, rect)
@@ -105,10 +105,10 @@ def draw_contours(img, contour, color=(255, 0, 0), thickness=3):
         np.array: Image with the contour drew.
     
     Examples:
-        >>> cnts = np.load('share/Lenna_contours.npy')
-        >>> img = cv2.imread('share/Lenna.png')
-        >>> img_result = draw_contours(img, cnts)
-        >>> plot_image_matplotlib(img_result)
+    $ cnts = np.load('share/Lenna_contours.npy')
+    $ img = cv2.imread('share/Lenna.png')
+    $ img_result = draw_contours(img, cnts)
+    $ plot_image_matplotlib(img_result)
     """
     img_result = np.copy(img)
     cv2.drawContours(img_result, contour, -1, color, thickness)
@@ -128,11 +128,11 @@ def animate_images_matplotlib(image_list, title=None, interval=50):
         object: Animation.
     
     Examples:
-        >>> img = cv2.imread('share/Lenna.png')
-        >>> img_gray = cv2.imread('share/Lenna_gray.png')
-        >>> im_list = [img, img_gray]*5
-        >>> ani = animate_images_matplotlib(im_list, title='Lenna')
-        >>> ani.save('test.mp4')
+    $ img = cv2.imread('share/Lenna.png')
+    $ img_gray = cv2.imread('share/Lenna_gray.png')
+    $ im_list = [img, img_gray]*5
+    $ ani = animate_images_matplotlib(im_list, title='Lenna')
+    $ ani.save('test.mp4')
     """
     fig = plt.figure()
     sequence = []

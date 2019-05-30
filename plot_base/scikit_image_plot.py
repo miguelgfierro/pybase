@@ -8,8 +8,8 @@ def plot_image(img):
         img (np.array): An image.
     
     Examples:
-        >>> img = io.imread('share/Lenna.png')
-        >>> plot_image(img)
+    $ img = io.imread('share/Lenna.png')
+    $ plot_image(img)
     """
     io.imshow(img)
     io.show()
