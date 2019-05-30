@@ -13,7 +13,6 @@ from collections import OrderedDict
 
 try:
     from pyspark.sql import SparkSession
-    import pyspark.sql.types as sptypes
 except ImportError: 
       pass # so the environment without spark doesn't break
 
@@ -42,6 +41,4 @@ def add_libraries(doctest_namespace):
         )
     except NameError:
         spark = None
-        sptypes = None
     doctest_namespace["spark"] = spark
-    doctest_namespace["sptypes"] = sptypes

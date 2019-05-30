@@ -75,6 +75,7 @@ def read_csv_file(spark, filename, **kwargs):
         spark.DataFrame: An dataframe.
     
     Examples:
+        >>> import pyspark.sql.types as sptypes
         >>> filename = os.path.join("share", "traj_header.csv")
         >>> df = read_csv_file(spark, filename, header=True, inferSchema=True)
         >>> df.orderBy("t").head(2)
