@@ -14,11 +14,9 @@ def apply_mask_to_image(img, mask):
         np.array: A masked image.
     
     Examples:
-        >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
         >>> img = cv2.imread('share/Lenna.png')
         >>> mask = cv2.imread('share/Lenna_mask.png', 0)
         >>> masked = apply_mask_to_image(img, mask)
-        >>> pp(masked)
     """
     return cv2.bitwise_and(img, img, mask=mask)
 
@@ -74,11 +72,9 @@ def grabcut_rect(img, rect, iterations=3):
         np.array: Binary image.
     
     Examples:
-        >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
         >>> img = cv2.imread('share/Lenna.png')
         >>> rect = (60, 32, 380, 480)
         >>> img_result, mask = grabcut_rect(img, rect, iterations=1)
-        >>> pp(img_result)
     """
     img_result, mask = _grabcut(img, rect=rect, iterations=iterations)
     return img_result, mask
@@ -98,11 +94,9 @@ def grabcut_mask(img, mask, iterations=3):
         np.array: Binary image.
     
     Examples:
-        >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
         >>> img = cv2.imread('share/Lenna.png')
         >>> mask = cv2.imread('share/Lenna_mask.png', 0)
         >>> img_result, mask = grabcut_mask(img, mask, iterations=1)
-        >>> pp(img_result)
     """
     img_result, mask = _grabcut(img, mask=mask, iterations=iterations)
     return img_result, mask
@@ -136,13 +130,9 @@ def color_clustering_kmeans(image, n_clusters=4, **kwargs):
         list: A list of segmented masks.
     
     Examples:
-        >>> from python.plot_base.opencv_plot import plot_image_matplotlib as pp
         >>> img = cv2.imread('share/home.jpg')
         >>> mask_list = color_clustering_kmeans(img, n_clusters=4, n_jobs=-1, n_init=10, max_iter=100)
-        >>> pp(mask_list[0])
-        >>> pp(mask_list[1])
-        >>> pp(mask_list[2])
-        >>> pp(mask_list[3])
+
     """
     # initialization
     h, w, c = image.shape

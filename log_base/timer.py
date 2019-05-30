@@ -11,11 +11,11 @@ class Timer(object):
         >>> t.start()
         >>> time.sleep(1)
         >>> t.stop()
-        >>> t.interval < 1
+        >>> t.interval > 0.9 and t.interval < 1.1
         True
         >>> with Timer() as t:
         ...   time.sleep(1)
-        >>> t.interval < 1
+        >>> t.interval > 0.9 and t.interval < 1.1
         True
         >>> "Time elapsed {}".format(t) #doctest: +ELLIPSIS
         'Time elapsed 1...'
@@ -58,5 +58,4 @@ class Timer(object):
             raise ValueError("Timer has not been stopped, please use stop().")
         else:
             return self._interval
-
 
