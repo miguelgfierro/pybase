@@ -155,30 +155,6 @@ def convert_cols_numeric_to_categorical(df, col_list=None):
     return ret
 
 
-def convert_to_numpy_array(df, columns=None):
-    """Convert a dataframe to a numpy array. Every column of the dataframe is a column in the array.
-    
-    Args:
-        df (pd.DataFrame): Dataframe.
-        columns [list of string]: If None, return all columns, otherwise, returns specified columns.
-    
-    Returns:
-        np.array: An array with the dataframe values.
-    
-    Examples:
-        >>> df = pd.DataFrame({'numbers1':[1,2,3], 'numbers2':[10,20,30]})
-        >>> arr = convert_to_numpy_array(df)
-        >>> arr
-        array([[ 1, 10],
-               [ 2, 20],
-               [ 3, 30]])
-        >>> arr.shape
-        (3, 2)
-
-    """
-    return df.as_matrix(columns)
-
-
 def replace_column_values(df, val_dict, col_name, new_col_name=None):
     """Replace all appearances of a value to another in a dictionary.
     
