@@ -63,7 +63,7 @@ def get_total_gpu_memory(units="Mb"):
         list: List of strings with the GPU memory in Mb
     
     Examples:
-        >>> get_total_gpu_memory()
+        >>> get_total_gpu_memory() +SKIP
         []
     """
     try:
@@ -84,7 +84,7 @@ def get_free_gpu_memory(units="Mb"):
         list: List of strings with the GPU memory in Mb
     
     Examples:
-        >>> get_free_gpu_memory()
+        >>> get_free_gpu_memory() +SKIP
         []
     """
     try:
@@ -102,8 +102,9 @@ def clear_memory_all_gpus():
     """Clear memory of all GPUs.
     
     Examples:
-        >>> clear_memory_all_gpus()
+        >>> clear_memory_all_gpus() +SKIP
         No CUDA available
+
     """
     try:
         for gpu in cuda.gpus:
@@ -120,7 +121,7 @@ def clear_memory_gpu_id(id):
         id (int): GPU id.
     
     Examples:
-        >>> clear_memory_gpu_id(0)
+        >>> clear_memory_gpu_id(0) +SKIP
         No CUDA available
     """
     try:
