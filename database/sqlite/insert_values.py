@@ -32,8 +32,11 @@ def insert_csv(connector, table_name, table_instruction, filename, header=False)
     """Insert the content of a csv file in a table.
     NOTE: the only way is to load the csv into memory and then
     insert it in the database.
-    Source: https://stackoverflow.com/questions/2887878/importing-a-csv-file-into-a-sqlite3-database-table-using-python
-    +info: http://adamantine.me/2017/05/22/how-to-write-data-to-a-sqlite-database-in-python/
+    
+    `Source here <https://stackoverflow.com/questions/2887878/importing-a-csv-file-into-a-sqlite3-database-table-using-python>`
+    
+    `More info <http://adamantine.me/2017/05/22/how-to-write-data-to-a-sqlite-database-in-python/>`
+    
     Args:
         cursor (object): sqlite cursor.
         connector (object): sqlite connector.

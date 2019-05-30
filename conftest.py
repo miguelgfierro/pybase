@@ -13,14 +13,14 @@ from collections import OrderedDict
 
 try:
     from pyspark.sql import SparkSession
-except ImportError: 
-      pass # so the environment without spark doesn't break
+except ImportError:
+    pass  # so the environment without spark doesn't break
 
 
 @pytest.fixture(autouse=True)
 def add_libraries(doctest_namespace):
     """Definition of doctest namespace
-    More info: https://docs.pytest.org/en/latest/doctest.html#the-doctest-namespace-fixture
+    See `more information <https://docs.pytest.org/en/latest/doctest.html#the-doctest-namespace-fixture>`
     """
     doctest_namespace["os"] = os
     doctest_namespace["sys"] = sys

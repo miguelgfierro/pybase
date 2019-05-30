@@ -49,7 +49,7 @@ def read_image_url(url):
     Returns:
         img (numpy array): An image.
     Examples:
-        >>> img = read_image_url('https://raw.githubusercontent.com/miguelgfierro/codebase/master/share/Lenna.png')
+        >>> img = read_image_url('https://raw.githubusercontent.com/miguelgfierro/pybase/master/share/Lenna.png')
         >>> shape = np.array(img.shape)
         >>> print(shape)
         [512 512   3]
