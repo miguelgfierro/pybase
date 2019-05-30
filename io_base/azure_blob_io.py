@@ -1,7 +1,11 @@
 import os
 import pandas as pd
 from io import StringIO
-from pyspark.sql import SparkSession
+try:
+    from pyspark.sql import SparkSession
+except ImportError: 
+      pass # so the environment without spark doesn't break
+
 from azure.storage.blob import BlockBlobService
 
 

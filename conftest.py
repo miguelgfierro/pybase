@@ -9,8 +9,13 @@ import json
 import shutil
 from collections import Counter
 from collections import OrderedDict
-from pyspark.sql import SparkSession
-import pyspark.sql.types as sptypes
+
+
+try:
+    from pyspark.sql import SparkSession
+    import pyspark.sql.types as sptypes
+except ImportError: 
+      pass # so the environment without spark doesn't break
 
 
 @pytest.fixture(autouse=True)
@@ -28,11 +33,15 @@ def add_libraries(doctest_namespace):
     doctest_namespace["shutil"] = shutil
     doctest_namespace["Counter"] = Counter
     doctest_namespace["OrderedDict"] = OrderedDict
-    spark = (
-        SparkSession.builder.appName("test codebase")
-        .master("local[*]")
-        .config("spark.driver.memory", "4g")
-        .getOrCreate()
-    )
+    try:
+        spark = (
+            SparkSession.builder.appName("test codebase")
+            .master("local[*]")
+            .config("spark.driver.memory", "4g")
+            .getOrCreate()
+        )
+    except NameError:
+        spark = None
+        sptypes = None
     doctest_namespace["spark"] = spark
     doctest_namespace["sptypes"] = sptypes
