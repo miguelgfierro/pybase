@@ -85,7 +85,7 @@ def get_filenames_in_folder(folderpath, pattern="*"):
         >>> Counter(l) == Counter(["CODEOWNERS", "PULL_REQUEST_TEMPLATE.md"])
         True
         >>> get_filenames_in_folder(".github", "*.md")
-        ['PULL_REQUEST_TEMPLATE.md'] 
+        ['PULL_REQUEST_TEMPLATE.md']
 
     """
     names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, pattern))]

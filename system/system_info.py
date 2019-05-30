@@ -107,7 +107,7 @@ def get_java_version():
     """Get java version, vendor, installation files and more information
     
     Examples:
-        >>> get_java_version() # doctest: +SKIP
+        >>> get_java_version() # doctest: #doctest: +SKIP
         java version "1.8.0_151"
         Java(TM) SE Runtime Environment (build 1.8.0_151-b12)
         Java HotSpot(TM) 64-Bit Server VM (build 25.151-b12, mixed mode)
@@ -123,7 +123,7 @@ def get_gpu_name():
         list: List of strings with the GPU name.
     
     Examples:
-        >>> get_gpu_name()
+        >>> get_gpu_name() #doctest: +SKIP
         []
     
     """
@@ -140,33 +140,33 @@ def get_blas_version():
         str: BLAS info.
     
     Examples:
-        $ get_blas_version() 
-        openblas_info:
-            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
-            language = c
-            define_macros = [('HAVE_CBLAS', None)]
-            libraries = ['openblas', 'openblas']
-        openblas_lapack_info:
-            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
-            language = c
-            define_macros = [('HAVE_CBLAS', None)]
-            libraries = ['openblas', 'openblas']
-        blis_info:
-        NOT AVAILABLE
-        lapack_mkl_info:
-        NOT AVAILABLE
-        lapack_opt_info:
-            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
-            language = c
-            define_macros = [('HAVE_CBLAS', None)]
-            libraries = ['openblas', 'openblas']
-        blas_opt_info:
-            library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
-            language = c
-            define_macros = [('HAVE_CBLAS', None)]
-            libraries = ['openblas', 'openblas']
-        blas_mkl_info:
-        NOT AVAILABLE
+    $ get_blas_version() 
+    openblas_info:
+    library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+    language = c
+    define_macros = [('HAVE_CBLAS', None)]
+    libraries = ['openblas', 'openblas']
+    openblas_lapack_info:
+    library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+    language = c
+    define_macros = [('HAVE_CBLAS', None)]
+    libraries = ['openblas', 'openblas']
+    blis_info:
+    NOT AVAILABLE
+    lapack_mkl_info:
+    NOT AVAILABLE
+    lapack_opt_info:
+    library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+    language = c
+    define_macros = [('HAVE_CBLAS', None)]
+    libraries = ['openblas', 'openblas']
+    blas_opt_info:
+    library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+    language = c
+    define_macros = [('HAVE_CBLAS', None)]
+    libraries = ['openblas', 'openblas']
+    blas_mkl_info:
+    NOT AVAILABLE
     
     """
     return np.__config__.show()
@@ -179,7 +179,7 @@ def get_number_gpus():
         int: Number of GPUs.
     
     Examples:
-        >>> get_number_gpus()
+        >>> get_number_gpus() #doctest: +SKIP
         0
    
     """
@@ -196,7 +196,7 @@ def get_gpu_compute_capability():
         list: List of tuples (major, minor) indicating the supported compute capability.
     
     Examples:
-        >>> get_gpu_compute_capability()
+        >>> get_gpu_compute_capability() #doctest: +SKIP
         []
     
     """
@@ -279,7 +279,7 @@ def is_cuda_available():
         bool: True if cuda is installed, False otherwise.
     
     Examples:
-        >>> is_cuda_available()
+        >>> is_cuda_available() #doctest: +SKIP
         False
     
     """
