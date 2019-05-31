@@ -20,7 +20,7 @@ class Shape(object):
         >>> s.draw()
         Circle.draw
         >>> Shape.__subclasses__()
-        [<class 'python.data_structures.factory_dependency_injection.Circle'>, <class 'python.data_structures.factory_dependency_injection.Square'>]
+        [<class 'pybase.data_structures.factory_dependency_injection.Circle'>, <class 'pybase.data_structures.factory_dependency_injection.Square'>]
     """
 
     def factory(description):
@@ -51,7 +51,7 @@ class ShapeDict(object):
         >>> s.draw()
         Square.draw
         >>> Shape.__subclasses__()
-        [<class 'python.data_structures.factory_dependency_injection.Circle'>, <class 'python.data_structures.factory_dependency_injection.Square'>]
+        [<class 'pybase.data_structures.factory_dependency_injection.Circle'>, <class 'pybase.data_structures.factory_dependency_injection.Square'>]
     """
 
     def factory(description):

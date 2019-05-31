@@ -7,7 +7,7 @@ class Pizza:
     Examples:
         >>> pizza = Pizza.margherita()
         >>> type(pizza)
-        <class 'python.data_structures.factory_classmethod.Pizza'>
+        <class 'pybase.data_structures.factory_classmethod.Pizza'>
         >>> print(pizza)
         Pizza(['mozzarella', 'tomatoes'])
         >>> pizza2 = Pizza.prosciutto()

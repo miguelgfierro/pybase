@@ -13,6 +13,12 @@ def save_file(data, filename):
     Examples:
         >>> a = np.ones(5)
         >>> save_file(a, 'file')
+        >>> os.path.isfile('file.npy')
+        True
+        >>> os.remove('file.npy')
+        >>> os.path.isfile('file.npy')
+        False
+
     """
     np.save(filename, data)
 

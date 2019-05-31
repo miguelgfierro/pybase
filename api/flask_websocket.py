@@ -40,9 +40,9 @@ def test_disconnect():
 def test_message(message):
     """Receives a message from the client and sends a response.
     If the system is using a namespace, the decorator would be:
-    @socketio.on('my_event', namespace='/test').
+    ``@socketio.on('my_event', namespace='/test')``.
     In the client, the message is sent through a form that in JS is handeled
-    with the tag 'my_event'. When broadcast=True, the message is sent to all
+    with the tag ``my_event``. When ``broadcast=True``, the message is sent to all
     connected clients, if False, only to the first one connected.
     """
     received_message = message["data"]
@@ -57,7 +57,7 @@ def test_message(message):
 
 @socketio.on("my_ping")
 def ping_pong():
-    """Receives my_pong from the client and sends my_pong from the server"""
+    """Receives ``my_ping`` from the client and sends ``my_pong`` from the server"""
     emit("my_pong")
 
 
@@ -69,11 +69,12 @@ def health_check():
     a terminal type: curl http://localhost:5000/health. If you go back to
     the browser, you will see that there is a new message that has been sent
     from the server, as a response to the client query in /health end point.
-    Note: when using a standard flask end point, we can't use emit directly,
-    we need to use socketio.emit.
-    More info: https://github.com/miguelgrinberg/Flask-SocketIO/issues/40
-    Note 2: if the system is using a namespace, we have to add an extra
-    argument to socketio.emit(..., namespace='/test').
+    
+    **Note:** when using a standard flask end point, we can't use emit directly,
+    we need to use ``socketio.emit``. `More info <https://github.com/miguelgrinberg/Flask-SocketIO/issues/40>`.
+
+    **Note 2:** if the system is using a namespace, we have to add an extra
+    argument to ``socketio.emit(..., namespace="/test")``.
     """
     socketio.emit("my_response", {"data": "HEALTH CHECK", "note": "OK"}, broadcast=True)
     return make_response(jsonify({"health": "OK"}), STATUS_OK)

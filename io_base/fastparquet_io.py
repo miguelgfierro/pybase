@@ -12,6 +12,11 @@ def save_file(data, filename):
     Examples:
         >>> df = pd.DataFrame({'col1':[1,2,3], 'col2':[0.1,0.2,0.3]})
         >>> save_file(df, 'file.parq')
+        >>> os.path.isfile('file.parq')
+        True
+        >>> os.remove('file.parq')
+        >>> os.path.isfile('file.parq')
+        False
     """
     write(filename, data)
 

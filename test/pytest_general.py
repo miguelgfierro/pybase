@@ -1,8 +1,11 @@
 import os
 import sys
 import pytest
-from python.utilities.git_stats import Github
-
+try:
+    from utilities.git_stats import Github
+except ModuleNotFoundError:
+    pass
+    
 
 @pytest.mark.system
 @pytest.mark.skipif("sys.version_info >= (3,7)")

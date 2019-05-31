@@ -10,15 +10,15 @@ def plot_image(img):
         img (np.array): An image.
     
     Examples:
-        >>> import matplotlib.image as mpimg
-        >>> img = mpimg.imread('share/Lenna.png')
-        >>> img.shape
+    $ import matplotlib.image as mpimg
+    $ img = mpimg.imread('share/Lenna.png')
+    $ img.shape
         (512, 512, 3)
-        >>> plot_image(img)
-        >>> img_gray = mpimg.imread('share/Lenna_gray.png')
-        >>> img_gray.shape
+    $ plot_image(img)
+    $ img_gray = mpimg.imread('share/Lenna_gray.png')
+    $ img_gray.shape
         (512, 512)
-        >>> plot_image(img_gray)
+    $ plot_image(img_gray)
     """
     cmap = None
     if img.ndim == 2:
@@ -36,9 +36,9 @@ def plot_histogram(hist, bins):
         bins (np.array): Array of the histogram bins.
     
     Examples:
-        >>> x = 10 + 5*np.random.randn(1000)
-        >>> hist, bins = np.histogram(x, bins=50)
-        >>> plot_histogram(hist, bins)
+    $ x = 10 + 5*np.random.randn(1000)
+    $ hist, bins = np.histogram(x, bins=50)
+    $ plot_histogram(hist, bins)
     """
     width = np.diff(bins)
     center = (bins[:-1] + bins[1:]) / 2
@@ -59,9 +59,9 @@ def plot_traj(y, x=None, title=None, xlabel=None, ylabel=None, color="b"):
         color (str): Matplotlib color https://matplotlib.org/api/colors_api.html?highlight=color#module-matplotlib.colors.
     
     Examples:
-        >>> input = [0.5, 0.7, 1.3, 1.7]
-        >>> plot_traj(input)
-        >>> plot_traj(input, np.array([1,2,3,4]), title='Traj', xlabel='x', ylabel='y',color='r')
+    $ input = [0.5, 0.7, 1.3, 1.7]
+    $ plot_traj(input)
+    $ plot_traj(input, np.array([1,2,3,4]), title='Traj', xlabel='x', ylabel='y',color='r')
     """
     plt.figure()
     if x is None:
@@ -89,9 +89,9 @@ def plot_traj_interpolate(y, x=None, title=None, xlabel=None, ylabel=None, color
         color (str): Matplotlib color https://matplotlib.org/api/colors_api.html?highlight=color#module-matplotlib.colors.
     
     Examples:
-        >>> input = [0.5, 0.7, 1.3, 1.7]
-        >>> plot_traj(input)
-        >>> plot_traj(input, np.array([1,2,3,4]), title='Traj', xlabel='x', ylabel='y',color='r')
+    $ input = [0.5, 0.7, 1.3, 1.7]
+    $ plot_traj(input)
+    $ plot_traj(input, np.array([1,2,3,4]), title='Traj', xlabel='x', ylabel='y',color='r')
     """
     plt.figure()
     if x is None:

@@ -1,4 +1,3 @@
-# source: http://interactivepython.org/runestone/static/pythonds/Trees/SearchTreeImplementation.html
 
 
 class BinarySearchTree(object):
@@ -10,6 +9,9 @@ class BinarySearchTree(object):
     is not balanced (the height of one side is much higher than the other). To
     solve this issue there are the Balanced Binary Search Trees or AVL trees.
     Space complexity: O(n)
+
+    See `original code <http://interactivepython.org/runestone/static/pythonds/Trees/SearchTreeImplementation.html>`
+
     
     Examples:
         >>> mytree = BinarySearchTree()

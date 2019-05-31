@@ -14,12 +14,12 @@ def image_pil2scipy_array(img):
         np.array: A numpy image of uint8 between 0 and 255.
     
     Examples:
-        >>> from scipy import misc
+        >>> import imageio
         >>> img = Image.open('share/Lenna.png')
         >>> img_conv = image_pil2scipy_array(img)
         >>> img_conv.shape
         (512, 512, 3)
-        >>> img_base = misc.imread('share/Lenna.png')
+        >>> img_base = imageio.imread('share/Lenna.png')
         >>> np.all(img_base==img_conv)
         True
     """
@@ -36,9 +36,9 @@ def image_scipy_numpy2pil(img):
         PIL image: A PIL image of uint8 between 0 and 255 using RGB channels.
     
     Examples:
-        >>> from scipy import misc
+        >>> import imageio
         >>> from PIL import ImageChops
-        >>> img = misc.imread('share/Lenna.png')
+        >>> img = imageio.imread('share/Lenna.png')
         >>> img_conv = image_scipy_numpy2pil(img)
         >>> img_conv.size
         (512, 512)

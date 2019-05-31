@@ -20,7 +20,7 @@ class LoggingDict(dict):
         True
         >>> ld['red'] = 10 # logs: INFO:root:Setting 'red' to 10
         >>> LoggingDict.__mro__
-        (<class 'python.data_structures.method_resolution_order.LoggingDict'>, <class 'dict'>, <class 'object'>)
+        (<class 'pybase.data_structures.method_resolution_order.LoggingDict'>, <class 'dict'>, <class 'object'>)
     """
 
     def __setitem__(self, key, value):
@@ -42,7 +42,7 @@ class LoggingOD(LoggingDict, OrderedDict):
         LoggingOD([('red', 1), ('green', 2), ('blue', 3)])
         >>> ld['red'] = 10 # logs: INFO:root:Setting 'red' to 10
         >>> LoggingOD.__mro__
-        (<class 'python.data_structures.method_resolution_order.LoggingOD'>, <class 'python.data_structures.method_resolution_order.LoggingDict'>, <class 'collections.OrderedDict'>, <class 'dict'>, <class 'object'>)
+        (<class 'pybase.data_structures.method_resolution_order.LoggingOD'>, <class 'pybase.data_structures.method_resolution_order.LoggingDict'>, <class 'collections.OrderedDict'>, <class 'dict'>, <class 'object'>)
     """
 
     pass

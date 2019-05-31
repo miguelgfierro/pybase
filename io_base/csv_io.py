@@ -11,6 +11,11 @@ def save_file(data, filename):
     Examples:
         >>> data = [['0.0416667', '443', '205'], ['0.0833333', '444', '206']]
         >>> save_file(data, 'file.csv')
+        >>> os.path.isfile('file.csv')
+        True
+        >>> os.remove('file.csv')
+        >>> os.path.isfile('file.csv')
+        False
     """
     with open(filename, "w") as f:
         writer = csv.writer(f)

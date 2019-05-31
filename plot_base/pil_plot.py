@@ -8,10 +8,10 @@ def plot_image_matplot(img):
         img (PIL image): A PIL image.
     
     Examples:
-        >>> img = Image.open('share/Lenna.png')
-        >>> plot_image_matplot(img)
-        >>> img_gray = Image.open('share/Lenna_gray.png')
-        >>> plot_image_matplot(img_gray)
+    $ img = Image.open('share/Lenna.png')
+    $ plot_image_matplot(img)
+    $ img_gray = Image.open('share/Lenna_gray.png')
+    $ plot_image_matplot(img_gray)
     """
     cmap = None
     if img.mode == "L":
@@ -28,9 +28,9 @@ def plot_image(img):
         img (PIL image): A PIL image.
     
     Examples:
-        >>> img = Image.open('share/Lenna.png')
-        >>> plot_image(img)
-        >>> img_gray = Image.open('share/Lenna_gray.png')
-        >>> plot_image(img_gray)
+    $ img = Image.open('share/Lenna.png')
+    $ plot_image(img)
+    $ img_gray = Image.open('share/Lenna_gray.png')
+    $ plot_image(img_gray)
     """
     img.show()

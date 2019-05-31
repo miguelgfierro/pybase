@@ -11,6 +11,11 @@ def save_file(data, filename, dataset_name="data"):
     Examples:
         >>> a = np.array([[1,2,3],[4,5,6]])
         >>> save_file(a, 'file.hdf5')
+        >>> os.path.isfile('file.hdf5')
+        True
+        >>> os.remove('file.hdf5')
+        >>> os.path.isfile('file.hdf5')
+        False
 
     """
     with h5py.File(filename, "w") as f:

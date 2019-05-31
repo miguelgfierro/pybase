@@ -12,7 +12,7 @@ def get_current_folder_path():
     
     Examples:
         >>> get_current_folder_path() #doctest: +ELLIPSIS
-        '.../python/system'
+        '.../pybase/system'
     """
     return os.path.abspath(os.path.dirname(__file__))
 
@@ -25,7 +25,7 @@ def get_parent_folder_path():
     
     Examples:
         >>> get_parent_folder_path() #doctest: +ELLIPSIS
-        '.../python'
+        '.../pybase'
     """
     return os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 
@@ -41,10 +41,10 @@ def count_files_in_folder(folderpath, pattern="*"):
         int: number of files in a folder
     
     Examples:
-        >>> count_files_in_folder("cpp")
-        5
-        >>> count_files_in_folder("cpp", pattern="*.txt")
-        1
+        >>> count_files_in_folder(".github")
+        2
+        >>> count_files_in_folder("share", pattern="*.npy")
+        2
     """
     return len(glob.glob(os.path.join(folderpath, pattern)))
 
@@ -59,8 +59,8 @@ def count_files_in_folder_recursively(folderpath):
         int: number of files in a folder
     
     Examples:
-        >>> count_files_in_folder_recursively("cpp")
-        7
+        >>> count_files_in_folder_recursively("share")
+        26
         
     """
     if folderpath[-1] != os.path.sep:  # Add final '/' if it doesn't exist
@@ -81,12 +81,11 @@ def get_filenames_in_folder(folderpath, pattern="*"):
         list: list of files
     
     Examples:
-        >>> l = get_filenames_in_folder("cpp")   
-        >>> Counter(l) == Counter(['io', 'log', 'numeric', 'CMakeLists.txt', 'playground.cpp'])
+        >>> l = get_filenames_in_folder(".github")   
+        >>> Counter(l) == Counter(["CODEOWNERS", "PULL_REQUEST_TEMPLATE.md"])
         True
-        >>> get_filenames_in_folder("cpp", "*.cpp")
-        ['playground.cpp']
-        
+        >>> get_filenames_in_folder(".github", "*.md")
+        ['PULL_REQUEST_TEMPLATE.md']
 
     """
     names = [os.path.basename(x) for x in glob.glob(os.path.join(folderpath, pattern))]
@@ -104,11 +103,8 @@ def get_files_in_folder_recursively(folderpath, pattern=None):
         list: list of files
     
     Examples:
-        >>> l = get_files_in_folder_recursively("cpp")
-        >>> Counter(l) == Counter(['CMakeLists.txt', 'playground.cpp', 'io/read_file.cpp', 'io/read_file.hpp', 'log/timer.hpp', 'numeric/math_constants.hpp', 'numeric/math_utils.hpp'])
-        True
-        >>> l = get_files_in_folder_recursively("cpp", "*.cpp")
-        >>> Counter(l) == Counter(['playground.cpp', 'io/read_file.cpp'])
+        >>> l = get_files_in_folder_recursively(".", "*.npy")
+        >>> Counter(l) == Counter(["share" + os.sep + "data.npy", "share" + os.sep + "Lenna_contours.npy"])
         True
 
     """
@@ -146,5 +142,19 @@ def remove_file(filename):
 
 
 def remove_dir(filepath):
-    """Remove directory"""
+    """Remove directory
+    
+    Args:
+        filepath (str): Filepath
+
+    Examples:
+        >>> from tempfile import TemporaryDirectory
+        >>> tmp_dir = TemporaryDirectory()
+        >>> os.path.isdir(tmp_dir.name)
+        True
+        >>> remove_dir(tmp_dir.name)
+        >>> os.path.isdir(tmp_dir.name)
+        False
+
+    """
     shutil.rmtree(filepath, ignore_errors=True)

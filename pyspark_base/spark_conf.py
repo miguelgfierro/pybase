@@ -1,4 +1,7 @@
-from pyspark.sql import SparkSession
+try:
+    from pyspark.sql import SparkSession
+except ImportError: 
+      pass # so the environment without spark doesn't break
 
 
 def spark(app_name="App", url="local[*]", memory="10G", cores="16"):

@@ -1,7 +1,7 @@
 import papermill as pm
 import pytest
 
-INPUT_NOTEBOOK = "python/test/papermill_notebook.ipynb"
+INPUT_NOTEBOOK = "test/papermill_notebook.ipynb"
 OUTPUT_NOTEBOOK = "output.ipynb"
 
 

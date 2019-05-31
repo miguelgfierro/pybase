@@ -12,6 +12,11 @@ def save_file(data, filename):
     Examples:
         >>> data = {'name': 'Luke','surname': 'Skywalker', 1:2,'3':'4'}
         >>> save_file(data, 'file.json')
+        >>> os.path.isfile('file.json')
+        True
+        >>> os.remove('file.json')
+        >>> os.path.isfile('file.json')
+        False
 
     """
     with open(filename, "w") as outfile:
