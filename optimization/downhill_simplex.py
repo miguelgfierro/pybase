@@ -11,7 +11,7 @@ def optimize_function(func, initial_guess, **kargs):
     Info: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin.html#scipy-optimize-fmin
     
     Args:
-        func (callable): The objective function to be minimized. In the form f(x, *args), where x is the argument in
+        func (callable): The objective function to be minimized. In the form ``f(x, *args)``, where x is the argument in
                          the form of a 1-D array and args is a tuple of any additional parameters.
         initial_guess (np.array): Initial guess.
     
