@@ -16,6 +16,7 @@ def save_file(data, filename):
         >>> os.path.isfile('file.npy')
         True
         >>> os.remove('file.npy')
+        
     """
     np.save(filename, data)
 
