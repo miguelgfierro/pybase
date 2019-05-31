@@ -13,6 +13,11 @@ def save_file(data, filename, block_style=True):
     Examples:
         >>> data = {'name': 'Miguel','surname': 'Gonzalez-Fierro', 1:2,'3':'4'}
         >>> save_file(data, 'file.yaml')
+        >>> os.path.isfile('file.yaml')
+        True
+        >>> os.remove('file.yaml')
+        >>> os.path.isfile('file.yaml')
+        False
     """
     with open(filename, "w") as f:
         yaml.dump(data, f, default_flow_style=not block_style)

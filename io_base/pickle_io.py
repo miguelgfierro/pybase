@@ -16,6 +16,11 @@ def save_file(data, filename):
     Examples:
         >>> data = np.ones(5)
         >>> save_file(data, 'file.pk')
+        >>> os.path.isfile('file.pk')
+        True
+        >>> os.remove('file.pk')
+        >>> os.path.isfile('file.pk')
+        False
     """
     pickle.dump(data, open(filename, "wb"))
 

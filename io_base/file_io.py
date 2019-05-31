@@ -7,6 +7,11 @@ def save_line(line, filename):
     
     Examples:
         >>> save_line("hello world!", "file.txt")
+        >>> os.path.isfile('file.txt')
+        True
+        >>> os.remove('file.txt')
+        >>> os.path.isfile('file.txt')
+        False
     """
     with open(filename, "w") as f:
         f.write(line)

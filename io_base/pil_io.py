@@ -13,6 +13,11 @@ def save_image(img, filename):
     Examples:
         >>> img = Image.open('share/Lenna.png')
         >>> save_image(img, 'file.jpg')
+        >>> os.path.isfile('file.jpg')
+        True
+        >>> os.remove('file.jpg')
+        >>> os.path.isfile('file.jpg')
+        False
     """
     img.save(filename)
 
