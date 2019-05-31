@@ -9,12 +9,9 @@ def create_table(table_name, cursor):
         cursor (object): pyobdc cursor.
     
     Examples:
-
-        {
-            $ conn = pyodbc.connect(connection_string)
-            $ cur = conn.cursor()
-            $ create_table(tab_name, cur)
-        }
+        >> conn = pyodbc.connect(connection_string) 
+        >> cur = conn.cursor()
+        >> create_table(tab_name, cur) 
 
     """
     query = (
