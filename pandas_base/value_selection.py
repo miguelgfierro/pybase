@@ -22,7 +22,6 @@ def get_unique_values_in_column(df, col_name):
 
 def get_random_fraction_of_rows(df, row_fraction=0.5, reindex=True):
     """Get a random fraction of the dataframe rows.
-    Note: #doctest: +ELLIPSIS together with ... handles unpredictable test outputs
     
     Args:
         df (pd.DataFrame): Dataframe.
@@ -47,7 +46,6 @@ def get_random_fraction_of_rows(df, row_fraction=0.5, reindex=True):
 
 def get_random_number_of_rows(df, num_rows, reindex=True):
     """Get a random number of the dataframe rows.
-    Note: #doctest: +ELLIPSIS together with ... handles unpredictable test outputs
     
     Args:
         df (pd.DataFrame): Dataframe.
@@ -59,7 +57,7 @@ def get_random_number_of_rows(df, num_rows, reindex=True):
     
     Examples:
         >>> df = pd.DataFrame({'letters':['a','a','c'], 'numbers':[1,2,3]})
-        >>> df_return = get_random_number_of_rows(df, 1)
+        >>> df_return = get_random_number_of_rows(df, 1, False)
         >>> df_return.isin(df) #doctest: +ELLIPSIS
            letters  numbers
         ...   True     True
