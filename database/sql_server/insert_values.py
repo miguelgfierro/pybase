@@ -12,10 +12,10 @@ def insert_row(cursor, connector, table_name, value1, value2):
         value1 (str or int): Value to insert.
         value2 (datetime.py): Value to insert.
     
-    Example (non executable):
-        $ conn = pyodbc.connect(connection_string)
-        $ cur = conn.cursor()
-        $ insert_row(cur, conn, tab_name, "item1", datetime.datetime.now())
+    Examples:
+        >>> conn = pyodbc.connect(connection_string) #doctest: +SKIP
+        >>> cur = conn.cursor() #doctest: +SKIP
+        >>> insert_row(cur, conn, tab_name, "item1", datetime.datetime.now()) #doctest: +SKIP
     """
     query = "INSERT INTO " + table_name + "( name, date ) VALUES (?,?)"
     cursor.execute(query, value1, value2)

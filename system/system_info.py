@@ -124,7 +124,7 @@ def get_gpu_name():
     
     Examples:
         >>> get_gpu_name() #doctest: +SKIP
-        []
+        ['Tesla P100-PCIE-16GB']
     
     """
     try:
@@ -140,33 +140,33 @@ def get_blas_version():
         str: BLAS info.
     
     Examples:
-    $ get_blas_version() 
+    >>> get_blas_version() #doctest: +SKIP
     openblas_info:
-    library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
-    language = c
-    define_macros = [('HAVE_CBLAS', None)]
-    libraries = ['openblas', 'openblas']
+        library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+        language = c
+        define_macros = [('HAVE_CBLAS', None)]
+        libraries = ['openblas', 'openblas']
     openblas_lapack_info:
-    library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
-    language = c
-    define_macros = [('HAVE_CBLAS', None)]
-    libraries = ['openblas', 'openblas']
+        library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+        language = c
+        define_macros = [('HAVE_CBLAS', None)]
+        libraries = ['openblas', 'openblas']
     blis_info:
-    NOT AVAILABLE
+        NOT AVAILABLE
     lapack_mkl_info:
-    NOT AVAILABLE
+        NOT AVAILABLE
     lapack_opt_info:
-    library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
-    language = c
-    define_macros = [('HAVE_CBLAS', None)]
-    libraries = ['openblas', 'openblas']
+        library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+        language = c
+        define_macros = [('HAVE_CBLAS', None)]
+        libraries = ['openblas', 'openblas']
     blas_opt_info:
-    library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
-    language = c
-    define_macros = [('HAVE_CBLAS', None)]
-    libraries = ['openblas', 'openblas']
+        library_dirs = ['/home/travis/miniconda/envs/codebase/lib']
+        language = c
+        define_macros = [('HAVE_CBLAS', None)]
+        libraries = ['openblas', 'openblas']
     blas_mkl_info:
-    NOT AVAILABLE
+        NOT AVAILABLE
     
     """
     return np.__config__.show()
@@ -197,7 +197,7 @@ def get_gpu_compute_capability():
     
     Examples:
         >>> get_gpu_compute_capability() #doctest: +SKIP
-        []
+        [(6, 0)]
     
     """
     try:

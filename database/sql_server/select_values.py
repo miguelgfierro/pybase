@@ -13,9 +13,9 @@ def select_all_entries_from_column(table_name, cursor, column_name):
         list: List with the selected entries.
     
     Example (non executable):
-        $ conn = pyodbc.connect(connection_string)
-        $ cur = conn.cursor()
-        4 data = select_all_entries_from_column(tab_name, cur, col_name)
+        >>> conn = pyodbc.connect(connection_string) #doctest: +SKIP
+        >>> cur = conn.cursor() #doctest: +SKIP
+        >>> data = select_all_entries_from_column(tab_name, cur, col_name) #doctest: +SKIP
     """
     query = "SELECT " + column_name + " FROM " + table_name
     cursor.execute(query)
@@ -36,10 +36,10 @@ def select_entry_where_column_equals_value(table_name, cursor, column_name, valu
     Returns:
         list: List of entries for the queried conditions.
     
-    Examples (non executable):
-        $ conn = pyodbc.connect(connection_string)
-        $ cur = conn.cursor()
-        $ data = select_entry_where_column_equals_value(tab_name, cur, col_name, 1)
+    Examples:
+        >>> conn = pyodbc.connect(connection_string) #doctest: +SKIP
+        >>> cur = conn.cursor() #doctest: +SKIP
+        >>> data = select_entry_where_column_equals_value(tab_name, cur, col_name, 1) #doctest: +SKIP
     """
     query = "SELECT * FROM " + table_name + " WHERE " + column_name + " = ?"
     cursor.execute(query, value)

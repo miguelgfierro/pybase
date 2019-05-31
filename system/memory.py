@@ -64,7 +64,7 @@ def get_total_gpu_memory(units="Mb"):
     
     Examples:
         >>> get_total_gpu_memory() #doctest: +SKIP
-        []
+        [16280.875]
     """
     try:
         memory_list = []
@@ -85,7 +85,8 @@ def get_free_gpu_memory(units="Mb"):
     
     Examples:
         >>> get_free_gpu_memory() #doctest: +SKIP
-        []
+        [15987.8125]
+
     """
     try:
         memory_list = []

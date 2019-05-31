@@ -193,8 +193,8 @@ def replace_column_values(df, val_dict, col_name, new_col_name=None):
 
 def add_row(df, row):
     """Add a row to a dataframe.
-    NOTE: according to https://stackoverflow.com/questions/41888080/python-efficient-way-to-add-rows-to-dataframe/41888241#41888241
-    using loc is 14x faster
+    NOTE: according to `this source <https://stackoverflow.com/questions/41888080/python-efficient-way-to-add-rows-to-dataframe/41888241#41888241>`
+    using ``loc`` is 14x faster
 
     Args:
         df (pd.DataFrame): Dataframe.

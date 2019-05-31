@@ -4,7 +4,7 @@ from sqlite3 import Error
 
 def connect_to_database(database=None):
     """Connect to a sqlite database. Don't forget to close the connection at the
-    end of the routine with `conn.close()`.
+    end of the routine with ``conn.close()``.
     
     Args:
         database (str): Database filename.
