@@ -81,8 +81,7 @@ def grabcut_rect(img, rect, iterations=3):
 
 
 def grabcut_mask(img, mask, iterations=3):
-    """Grabcut segmentation using a mask as initial region of
-    confidence.
+    """Grabcut segmentation using a mask as initial region of confidence.
     
     Args:
         img (np.array): An image.
@@ -120,7 +119,8 @@ def _grabcut(img, mask=None, rect=None, iterations=3):
 
 def color_clustering_kmeans(image, n_clusters=4, **kwargs):
     """Segmentation using KMeans color clustering
-    Based on: https://nrsyed.com/2018/03/29/image-segmentation-via-k-means-clustering-with-opencv-
+    
+    See the `source here <https://nrsyed.com/2018/03/29/image-segmentation-via-k-means-clustering-with-opencv-python>`
     
     Args:
         img (np.array): An image.
