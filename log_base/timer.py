@@ -2,7 +2,7 @@ from timeit import default_timer
 from datetime import timedelta
 
 
-class Timer(object):
+class Timer:
     """Timer class.
     
     Examples:

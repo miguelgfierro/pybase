@@ -35,7 +35,8 @@ def format_float_as_string():
 
 def format_date():
     """Example of formatting a datetime.
-    More info: https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior
+    
+    `See more info <https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior>`_
     
     Examples:
         >>> format_date()
