@@ -31,7 +31,7 @@ def get_parent_folder_path():
 
 
 def count_files_in_folder(folderpath, pattern="*"):
-    """ Return the number of files in a folder.
+    """Return the number of files in a folder.
     
     Args:
         folderpath (str): folder path.
@@ -50,7 +50,7 @@ def count_files_in_folder(folderpath, pattern="*"):
 
 
 def count_files_in_folder_recursively(folderpath):
-    """ Return the number of files in a folder recursively.
+    """Return the number of files in a folder recursively.
     
     Args:
         folderpath (str): folder path
@@ -71,7 +71,7 @@ def count_files_in_folder_recursively(folderpath):
 
 
 def get_filenames_in_folder(folderpath, pattern="*"):
-    """ Return the files or folder names inside a folder.
+    """Return the files or folder names inside a folder.
     
     Args:
         folderpath (str): Folder path.
@@ -93,7 +93,7 @@ def get_filenames_in_folder(folderpath, pattern="*"):
 
 
 def get_files_in_folder_recursively(folderpath, pattern=None):
-    """ Return the files inside a folder recursively.
+    """Return the files inside a folder recursively.
     
     Args:
         folderpath (str): Folder path.
@@ -123,7 +123,8 @@ def get_files_in_folder_recursively(folderpath, pattern=None):
 
 def remove_file(filename):
     """Remove file if it exists.
-    Original code: https://stackoverflow.com/a/10840586/5620182
+
+    `Link to original code <https://stackoverflow.com/a/10840586/5620182>`_
     
     Examples:
         >>> s = shutil.copyfile(os.path.join("share", "traj.csv"), "copy.csv")

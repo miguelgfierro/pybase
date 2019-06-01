@@ -1,14 +1,7 @@
 import sys
 import os
 import wget
-
-if sys.version_info.major == 2:
-    # Backward compatibility with python 2.
-    from six.moves import urllib
-
-    urlretrieve = urllib.request.urlretrieve
-else:
-    from urllib.request import urlretrieve
+from urllib.request import urlretrieve
 
 
 def maybe_download(filename, url, expected_bytes=None, verbose=False):

@@ -26,7 +26,7 @@ def get_object_size(obj, units="Mb"):
         units (str): Units [bytes, Kb, Mb, Gb]
     
     Returns:
-        float Size of the object.
+        float: Size of the object.
     
     Examples:
         >>> get_object_size(7, "bytes")
