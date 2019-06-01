@@ -11,7 +11,8 @@ from azure.storage.blob import BlockBlobService
 
 class BlobIO(object):
     """Azure Blob Storage IO manager.
-    More info: http://azure-storage.readthedocs.io/ref/azure.storage.blob.blockblobservice.html
+    
+    `More info here <http://azure-storage.readthedocs.io/ref/azure.storage.blob.blockblobservice.html>`_
     
     Attributes:
         service (object): Blob service object
@@ -40,11 +41,12 @@ class BlobIO(object):
             blob_path (str): Blob path
             local_path (str): Local path to the file
         
-        Examples (not executable):
-            $ from python.io_base.json_io import read_file
-            $ cred = read_file('share/blob_config.json')
-            $ blob = BlobIO(cred['account_name'], cred['account_key'])
-            $ blob.upload_file('codebase', 'upload/traj.csv', 'share/traj.csv')
+        **Examples**::
+
+            from python.io_base.json_io import read_file
+            cred = read_file('share/blob_config.json')
+            blob = BlobIO(cred['account_name'], cred['account_key'])
+            blob.upload_file('codebase', 'upload/traj.csv', 'share/traj.csv')
         """
         # FIXME: add a condition to make sure I am modifying the blob
         if not self.service.exists(container_name=container):
@@ -65,11 +67,12 @@ class BlobIO(object):
         Returns:
             str: Value to check if the blob has been modified
         
-        Examples (not executable):
-            $ from python.io_base.json_io import read_file
-            $ cred = read_file('share/blob_config.json')
-            $ blob = BlobIO(cred['account_name'], cred['account_key'])
-            $ blob.download_file('codebase', 'upload/traj.csv', 'share/traj_blob.csv')
+        **Examples**::
+
+            >> from python.io_base.json_io import read_file
+            >> cred = read_file('share/blob_config.json')
+            >> blob = BlobIO(cred['account_name'], cred['account_key'])
+            >> blob.download_file('codebase', 'upload/traj.csv', 'share/traj_blob.csv')
             True
         """
         self.service.get_blob_to_path(container, blob_path, local_path)
@@ -91,11 +94,12 @@ class BlobIO(object):
         Returns:
             list: List of blobs
         
-        Examples (not executable):
-            $ from python.io_base.json_io import read_file
-            $ cred = read_file('share/blob_config.json')
-            $ blob = BlobIO(cred['account_name'], cred['account_key'])
-            $ blob.list_blobs('codebase', 'upload')
+        **Examples**::
+
+            >> from python.io_base.json_io import read_file
+            >> cred = read_file('share/blob_config.json')
+            >> blob = BlobIO(cred['account_name'], cred['account_key'])
+            >> blob.list_blobs('codebase', 'upload')
             ['upload/traj.csv', 'upload/traj.txt']
         """
         blobs = [b.name for b in self.service.list_blobs(container, prefix=blob_path)]
@@ -110,11 +114,12 @@ class BlobIO(object):
         Returns:
             list: List of blobs
         
-        Examples (not executable):
-            $ from python.io_base.json_io import read_file
-            $ cred = read_file('share/blob_config.json')
-            $ blob = BlobIO(cred['account_name'], cred['account_key'])
-            $ blob.list_containers()
+        **Examples**::
+
+            >> from python.io_base.json_io import read_file
+            >> cred = read_file('share/blob_config.json')
+            >> blob = BlobIO(cred['account_name'], cred['account_key'])
+            >> blob.list_containers()
             ['codebase', 'datasets', 'deep-learning', 'installer', 'projects', 'vhds']
         """
         containers = [c.name for c in self.service.list_containers()]
@@ -131,19 +136,20 @@ class BlobIO(object):
         Returns:
             pd.DataFrame: Dataframe
         
-        Examples (not executable):
-            $ from python.io_base.json_io import read_file
-            $ cred = read_file('share/blob_config.json')
-            $ blob = BlobIO(cred['account_name'], cred['account_key'])
-            $ df = blob.read_pandas_dataframe('codebase', 'upload/traj.csv',
+        **Examples**::
+
+            >> from python.io_base.json_io import read_file
+            >> cred = read_file('share/blob_config.json')
+            >> blob = BlobIO(cred['account_name'], cred['account_key'])
+            >> df = blob.read_pandas_dataframe('codebase', 'upload/traj.csv',
             ...                                 sep=',', header=None, names=['time','q1','q2'])
-            $ df
+            >> df
                    time   q1   q2
             0  0.041667  443  205
             1  0.083333  444  206
-            $ df = blob.read_pandas_dataframe('codebase', 'upload/traj.txt',
+            >> df = blob.read_pandas_dataframe('codebase', 'upload/traj.txt',
             ...                                 sep=' ', header=None)
-            $ df
+            >> df
                       0   1   2
             0  0.041667 443 205
             1  0.083333 444 206
@@ -165,13 +171,14 @@ class BlobIO(object):
         Returns:
             pyspark.sql.dataframe.DataFrame: Pyspark dataframe
         
-        Examples (not executable):
-            $ from python.io_base.json_io import read_file
-            $ cred = read_file('share/blob_config.json')
-            $ blob = BlobIO(cred['account_name'], cred['account_key'])
-            $ df = blob.read_spark_dataframe('codebase', 'upload/traj_header.csv',
+        **Examples**::
+
+            >> from python.io_base.json_io import read_file
+            >> cred = read_file('share/blob_config.json')
+            >> blob = BlobIO(cred['account_name'], cred['account_key'])
+            >> df = blob.read_spark_dataframe('codebase', 'upload/traj_header.csv',
             ...                                header=True, inferSchema=True)
-            $ df.head(2)
+            >> df.head(2)
             [Row(t=0.0416667, q0=443, q1=205), Row(t=0.0833333, q0=444, q1=206)]
         """
         spark = self._manage_spark_blob_config(spark)

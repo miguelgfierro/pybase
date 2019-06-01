@@ -24,7 +24,7 @@ def normalize_image(img):
 
 
 def resize_image(img, new_width, new_height):
-    """Resize image to a `new_width` and `new_height`.
+    """Resize image to a ``new_width`` and ``new_height``.
     
     Args:
         img (PIL image): An image.
