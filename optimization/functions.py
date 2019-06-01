@@ -6,9 +6,9 @@ import matplotlib.pyplot as plot
 
 
 def rosenbrock(x):
-    """The Rosenbrock funtion is a non-convex function used as a performance test problem for optimization
-    algorithms. The function is defined by: 
-    
+    """The `Rosenbrock function <https://en.wikipedia.org/wiki/Rosenbrock_function>`_ is a non-convex function 
+    used as a performance test problem for optimization algorithms. The function is defined by: 
+
     .. math ::
 
         f(x,y) = (a-x)^2 + b(y-x^2)^2
@@ -16,18 +16,28 @@ def rosenbrock(x):
     The global minimum is inside a long, narrow, parabolic shaped flat valley. To find the valley is trivial. 
     To converge to the global minimum, is difficult.
     
-    `See more info <https://en.wikipedia.org/wiki/Rosenbrock_function>`_
+    `See more info <https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.rosen.html>`_
+
+    Args:
+        x (np.array or list): 1-D array of points at which the Rosenbrock function is to be computed.
+
+    Returns:
+        float: The value of the Rosenbrock function.
+    
     """
     return rosen(x)
 
 
 def ackley(x):
-    """Ackley function.
+    """`Ackley function <https://en.wikipedia.org/wiki/Ackley_function>`_
 
-    The Ackley function is a non-convex function used as a performance test problem for optimization algorithms. The
-    function is defined by:
+    The Ackley function is a non-convex function used as a performance test problem for optimization algorithms. 
 
-    `See more info <https://en.wikipedia.org/wiki/Ackley_function>`_
+    Args:
+        x (np.array or list): array of two components ``(x_0, x_1)``.
+
+    Returns:
+        float: The value of the Ackley function.
     """
     arg1 = -0.2 * np.sqrt(0.5 * (x[0] ** 2 + x[1] ** 2))
     arg2 = 0.5 * (np.cos(2.0 * np.pi * x[0]) + np.cos(2.0 * np.pi * x[1]))
