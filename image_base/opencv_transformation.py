@@ -3,7 +3,7 @@ import numpy as np
 
 
 def resize_image(img, new_width, new_height):
-    """Resize image to a `new_width` and `new_height`.
+    """Resize image to a ``new_width`` and ``new_height``.
     
     Args:
         img (np.array): An image.
@@ -62,8 +62,7 @@ def crop_image(img, box):
     
     Args:
         img (np.array): An image.
-        box (tuple): Left, upper, right, and lower pixel coordinate. The origin of coordinates is
-                    the upper left square.
+        box (tuple): Left, upper, right, and lower pixel coordinate. The origin of coordinates is the upper left square.
     
     Returns:
         np.array: A cropped image.
@@ -95,7 +94,7 @@ def equalize_image(img):
 
 
 def normalize_image(img, min_val=0, max_val=1):
-    """Normalize image between `min_val` and `max_val`.
+    """Normalize image between ``min_val`` and ``max_val``.
     
     Args:
         img (np.array): An image.
@@ -125,8 +124,8 @@ def convert_to_binary(
     img, threshold=127, max_value=255, adaptative=False, return_thresh=False
 ):
     """Converts an image to black and white.
-    It determines the binary threshold automatically from the image using
-    Otsu's method.
+
+    It determines the binary threshold automatically from the image using Otsu's method.
     
     Args:
         img (np.array): An image.
@@ -188,16 +187,16 @@ def convert_to_grayscale(img):
 def convert_to_colorspace(img, color_space="hsv"):
     """Convert an opencv image in BGR to another color space.
 
-    `More info <https://docs.opencv.org/3.3.1/de/d25/imgproc_color_conversions.html>`
+    `More info <https://docs.opencv.org/3.3.1/de/d25/imgproc_color_conversions.html>`_
     
-    HSV range: hue [0,179], saturation [0,255] and value [0,255].
+    .. code-block:: python
 
-    HLS range: hue [0,179], lightness [0,255] and saturation [0,255].
-    
-    YCrCb range: all [0-255].
-    Luv ranges: all [0-255].
-    Lab ranges: all [0-255].
-    XYZ ranges: all [0-255].
+        HSV range: hue [0,179], saturation [0,255] and value [0,255].
+        HLS range: hue [0,179], lightness [0,255] and saturation [0,255].
+        YCrCb range: all [0-255].
+        Luv ranges: all [0-255].
+        Lab ranges: all [0-255].
+        XYZ ranges: all [0-255].
     
     Args:
         img (np.array): An image.

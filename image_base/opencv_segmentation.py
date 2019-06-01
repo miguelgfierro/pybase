@@ -26,8 +26,7 @@ def bounding_box(mask, max_contours=10):
     
     Args:
         mask (np.array): Binary image.
-        max_contours (int): Maximum number of contours to consider
-                            for computing the bounding box.
+        max_contours (int): Maximum number of contours to consider for computing the bounding box.
     
     Returns:
         tuple: A tuple of integers defining x, y, width and height.
@@ -59,8 +58,7 @@ def bounding_box(mask, max_contours=10):
 
 
 def grabcut_rect(img, rect, iterations=3):
-    """Grabcut segmentation using a rectangle as initial region of
-    confidence.
+    """Grabcut segmentation using a rectangle as initial region of confidence.
     
     Args:
         img (np.array): An image.
@@ -120,7 +118,7 @@ def _grabcut(img, mask=None, rect=None, iterations=3):
 def color_clustering_kmeans(image, n_clusters=4, **kwargs):
     """Segmentation using KMeans color clustering
     
-    See the `source here <https://nrsyed.com/2018/03/29/image-segmentation-via-k-means-clustering-with-opencv-python>`
+    See the `source here <https://nrsyed.com/2018/03/29/image-segmentation-via-k-means-clustering-with-opencv-python>`_.
     
     Args:
         img (np.array): An image.
