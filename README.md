@@ -63,3 +63,12 @@ To add a code block that can be rendered with sphinx:
     import sys
     print(sys.executable) 
 ```
+
+This is equivalent, [having the python syntax](https://pythonhosted.org/an_example_pypi_project/sphinx.html#code):
+```
+Code::
+
+    import sys
+    print(sys.executable)
+
+```
