@@ -2,7 +2,7 @@ from skimage import io
 
 
 def save_image(img, filename):
-    """Save an image.
+    """Save an image using skimage.
     
     Args:
         img (np.array): An image.
@@ -21,14 +21,14 @@ def save_image(img, filename):
 
 
 def read_image(filename, is_color=True):
-    """Read an image.
+    """Read an image using skimage.
     
     Args:
         filename (str): Name of the file.
         is_color (bool): Read the image in color.
     
     Returns:
-        img (np.array): An image.
+        np.array: An image.
     
     Examples:
         >>> img = read_image('share/Lenna.png')
@@ -43,7 +43,7 @@ def read_image(filename, is_color=True):
 
 
 def read_image_url(url):
-    """Read an image from a URL.
+    """Read an image from a URL using skimage.
     
     Args:
         url (str): URL of the file.

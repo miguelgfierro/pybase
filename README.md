@@ -72,3 +72,12 @@ Code::
     print(sys.executable)
 
 ```
+
+
+To add a note:
+
+```
+.. note::
+
+    This is a note
+```

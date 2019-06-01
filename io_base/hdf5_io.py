@@ -2,7 +2,7 @@ import h5py
 
 
 def save_file(data, filename, dataset_name="data"):
-    """Save a np.array.
+    """Save a np.array in hdf5 format.
     
     Args:
         data (np.array): An array.

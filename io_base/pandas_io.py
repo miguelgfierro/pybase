@@ -22,13 +22,13 @@ def save_csv(dataframe, filename, **kwargs):
 
 
 def read_csv(filename, **kwargs):
-    """Read a csv file.
+    """Read a csv file with pandas.
     
     Args:
         filename (str): Name of the file.
     
     Returns:
-        pd.DataFrame: An dataframe.
+        pd.DataFrame: A dataframe.
     
     Examples:
         >>> df = read_csv(filename="share/traj.csv", header=None,
@@ -77,7 +77,7 @@ def read_from_sqlite(database, query, **kargs):
         query (str): Query.
     
     Returns:
-        pd.DataFrame: An dataframe.
+        pd.DataFrame: A dataframe.
     
     Examples:
         >>> df = read_from_sqlite("share/pandas.db", "SELECT col1,col2 FROM table1;")

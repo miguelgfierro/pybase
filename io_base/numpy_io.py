@@ -1,11 +1,13 @@
-# Benchmark on IO performance: http://stackoverflow.com/a/41425878/5620182
+#
 
 import numpy as np
 
 
 def save_file(data, filename):
-    """Save a np.array. The file is saved as `filename.npy`.
+    """Save a np.array. The file is saved as ``filename.npy``.
     
+    See a `benchmark on IO performance <http://stackoverflow.com/a/41425878/5620182>`_
+
     Args:
         data (np.array): An array.
         filename (str): Name of the file.

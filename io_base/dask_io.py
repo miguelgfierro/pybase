@@ -3,8 +3,7 @@ import pandas as pd
 
 
 def save_csv(data, filename="file.*.csv", npartitions=1, **kwargs):
-    """Save a dataframe into one of multiple `csv` files.
-    Dask is designed to be used for big datasets.
+    """Save a dataframe into one of multiple `csv` files. Dask is designed to be used for big datasets.
     
     Args:
         data (pd.DataFrame): A dataframe

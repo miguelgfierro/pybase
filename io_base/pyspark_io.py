@@ -66,7 +66,7 @@ def save_csv_file(dataframe, filename, **kwargs):
 
 
 def read_csv_file(spark, filename, **kwargs):
-    """Read a csv file.
+    """Read a csv file using PySpark.
     
     Args:
         filename (str): Name of the file.

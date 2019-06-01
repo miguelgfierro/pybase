@@ -3,7 +3,10 @@ import json
 
 def save_file(data, filename):
     """Save a dictionary as JSON format.
-    Note: When saving in JSON format, the key has to be a string, it can't be a number
+    
+    .. note::
+
+        When saving in JSON format, the key has to be a string, it can't be a number.
     
     Args:
         data (dict): A dictionary.

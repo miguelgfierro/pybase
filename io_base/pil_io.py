@@ -4,7 +4,7 @@ import requests
 
 
 def save_image(img, filename):
-    """Save an image.
+    """Save an image using PIL.
     
     Args:
         img (numpy array): An image.
@@ -23,7 +23,7 @@ def save_image(img, filename):
 
 
 def read_image(filename):
-    """Read an image.
+    """Read an image using PIL.
     
     Args:
         filename (str): Name of the file.
@@ -48,11 +48,14 @@ def read_image(filename):
 
 
 def read_image_url(url):
-    """Read an image from a URL.
+    """Read an image from a URL using PIL.
+
     Args:
         url (str): URL of the file.
+
     Returns:
-        img (PIL image): An image in PIL format.
+        PIL image: An image in PIL format.
+
     Examples:
         >>> img = read_image_url('https://raw.githubusercontent.com/miguelgfierro/codebase/master/share/Lenna.png')
         >>> print(img.size)

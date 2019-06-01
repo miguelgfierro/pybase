@@ -50,8 +50,7 @@ def save_list(alist, filename):
 
 
 def read_list(filename):
-    """Read a file and returns a list where each element corresponds to a line
-    in the file.
+    """Read a file and returns a list where each element corresponds to a line in the file.
     
     Args:
         filename (str): Name of the file.

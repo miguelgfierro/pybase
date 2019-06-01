@@ -1,14 +1,11 @@
-# Benchmark on IO performance: http://stackoverflow.com/a/41425878/5620182
-
-try:
-    import cPickle as pickle
-except ImportError:
-    import pickle
+import pickle
 
 
 def save_file(data, filename):
-    """Save data as pickle. The standard pickle file name is `*.pk`.
+    """Save data as pickle. The standard pickle file name is ``*.pk``.
     
+    See a `benchmark on IO performance <http://stackoverflow.com/a/41425878/5620182>`_
+
     Args:
         data (np.array or dict): Data to save.
         filename (str): Name of the file.

@@ -4,7 +4,7 @@ import urllib.request as urllib
 
 
 def save_image(img, filename):
-    """Save an image.
+    """Save an image with OpenCV.
     
     Args:
         img (numpy array): An image.
@@ -24,7 +24,7 @@ def save_image(img, filename):
 
 
 def read_image(filename, is_color=True):
-    """Read an image.
+    """Read an image with OpenCV.
     
     Args:
         filename (str): Name of the file.
@@ -49,10 +49,13 @@ def read_image(filename, is_color=True):
 
 def read_image_url(url):
     """Read an image from a URL.
+
     Args:
         url (str): URL of the file.
+
     Returns:
-        img (numpy array): An image.
+        np.array: An image.
+
     Examples:
         >>> img = read_image_url('https://raw.githubusercontent.com/miguelgfierro/pybase/master/share/Lenna.png')
         >>> shape = np.array(img.shape)
