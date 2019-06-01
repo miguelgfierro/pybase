@@ -189,12 +189,12 @@ def convert_to_colorspace(img, color_space="hsv"):
     
     .. note::
 
-        HSV range: hue [0,179], saturation [0,255] and value [0,255].
-        HLS range: hue [0,179], lightness [0,255] and saturation [0,255].
-        YCrCb range: all [0-255].
-        Luv ranges: all [0-255].
-        Lab ranges: all [0-255].
-        XYZ ranges: all [0-255].
+        * HSV range: hue [0,179], saturation [0,255] and value [0,255].
+        * HLS range: hue [0,179], lightness [0,255] and saturation [0,255].
+        * YCrCb range: all [0-255].
+        * Luv ranges: all [0-255].
+        * Lab ranges: all [0-255].
+        * XYZ ranges: all [0-255].
 
     `More info <https://docs.opencv.org/3.3.1/de/d25/imgproc_color_conversions.html>`_
 
