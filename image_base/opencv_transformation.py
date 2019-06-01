@@ -186,10 +186,8 @@ def convert_to_grayscale(img):
 
 def convert_to_colorspace(img, color_space="hsv"):
     """Convert an opencv image in BGR to another color space.
-
-    `More info <https://docs.opencv.org/3.3.1/de/d25/imgproc_color_conversions.html>`_
     
-    .. code-block:: python
+    Ranges::
 
         HSV range: hue [0,179], saturation [0,255] and value [0,255].
         HLS range: hue [0,179], lightness [0,255] and saturation [0,255].
@@ -197,7 +195,9 @@ def convert_to_colorspace(img, color_space="hsv"):
         Luv ranges: all [0-255].
         Lab ranges: all [0-255].
         XYZ ranges: all [0-255].
-    
+
+    `More info <https://docs.opencv.org/3.3.1/de/d25/imgproc_color_conversions.html>`_
+
     Args:
         img (np.array): An image.
         color_space (str): Color space.
