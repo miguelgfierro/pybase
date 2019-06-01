@@ -12,12 +12,13 @@ def plot_image(img, title="image"):
         img (np.array): An image.
         title (str): Title of the image.
     
-    Examples (not executable):
-        $ img = cv2.imread('share/Lenna.png')
-        $ import numpy as np
-        $ print(np.array(img.shape, dtype='int'))
+    **Examples**::
+
+        >> img = cv2.imread('share/Lenna.png')
+        >> import numpy as np
+        >> print(np.array(img.shape, dtype='int'))
         [512 512   3]
-        $ plot_image(img)
+        >> plot_image(img)
     """
     cv2.imshow(title, img)
     cv2.waitKey(0)
@@ -32,9 +33,10 @@ def plot_image_matplotlib(img, figsize=None, title=None):
         figsize (tuple): Size of the figure in inches (w,h).
         title (str): Title of the image.
     
-    Examples:
-    $ img = cv2.imread('share/Lenna.png')
-    $ plot_image_matplotlib(img)
+    **Examples**::
+
+        >> img = cv2.imread('share/Lenna.png')
+        >> plot_image_matplotlib(img)
     """
     shape_len = len(img.shape)
     if shape_len == 3:  # color image
@@ -66,10 +68,11 @@ def draw_rectangle(img, rect, color=(0, 0, 255), thickness=2):
     Returns:
         np.array: An image with a rectangle
     
-    Examples:
-    $ img = cv2.imread('share/Lenna.png')
-    $ img_box = draw_rectangle(img, (40, 20, 400, 491))
-    $ plot_image_matplotlib(img_box)
+    **Examples**::
+
+        >> img = cv2.imread('share/Lenna.png')
+        >> img_box = draw_rectangle(img, (40, 20, 400, 491))
+        >> plot_image_matplotlib(img_box)
 
     """
     x, y, w, h = _ensure_rec_inside_image(img, rect)
@@ -104,11 +107,12 @@ def draw_contours(img, contour, color=(255, 0, 0), thickness=3):
     Returns:
         np.array: Image with the contour drew.
     
-    Examples:
-    $ cnts = np.load('share/Lenna_contours.npy')
-    $ img = cv2.imread('share/Lenna.png')
-    $ img_result = draw_contours(img, cnts)
-    $ plot_image_matplotlib(img_result)
+    **Examples**::
+
+        >> cnts = np.load('share/Lenna_contours.npy')
+        >> img = cv2.imread('share/Lenna.png')
+        >> img_result = draw_contours(img, cnts)
+        >> plot_image_matplotlib(img_result)
     """
     img_result = np.copy(img)
     cv2.drawContours(img_result, contour, -1, color, thickness)
@@ -117,7 +121,8 @@ def draw_contours(img, contour, color=(255, 0, 0), thickness=3):
 
 def animate_images_matplotlib(image_list, title=None, interval=50):
     """Animate a list of images creating a video
-    More info: http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-notebooks/
+
+    `See more info <http://louistiao.me/posts/notebooks/embedding-matplotlib-animations-in-jupyter-notebooks/>`_
     
     Args:
         image_list (list): List of images.
@@ -127,12 +132,13 @@ def animate_images_matplotlib(image_list, title=None, interval=50):
     Returns:
         object: Animation.
     
-    Examples:
-    $ img = cv2.imread('share/Lenna.png')
-    $ img_gray = cv2.imread('share/Lenna_gray.png')
-    $ im_list = [img, img_gray]*5
-    $ ani = animate_images_matplotlib(im_list, title='Lenna')
-    $ ani.save('test.mp4')
+    **Examples**::
+
+        >> img = cv2.imread('share/Lenna.png')
+        >> img_gray = cv2.imread('share/Lenna_gray.png')
+        >> im_list = [img, img_gray]*5
+        >> ani = animate_images_matplotlib(im_list, title='Lenna')
+        >> ani.save('test.mp4')
     """
     fig = plt.figure()
     sequence = []

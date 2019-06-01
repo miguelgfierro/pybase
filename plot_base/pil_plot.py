@@ -3,15 +3,17 @@ from PIL import Image
 
 
 def plot_image_matplot(img):
-    """Plot an image.
+    """Plot an image using matplotlib.
+
     Args:
         img (PIL image): A PIL image.
     
-    Examples:
-    $ img = Image.open('share/Lenna.png')
-    $ plot_image_matplot(img)
-    $ img_gray = Image.open('share/Lenna_gray.png')
-    $ plot_image_matplot(img_gray)
+    **Examples**::
+
+        >> img = Image.open('share/Lenna.png')
+        >> plot_image_matplot(img)
+        >> img_gray = Image.open('share/Lenna_gray.png')
+        >> plot_image_matplot(img_gray)
     """
     cmap = None
     if img.mode == "L":
@@ -22,15 +24,16 @@ def plot_image_matplot(img):
 
 
 def plot_image(img):
-    """Plot an image.
+    """Plot an image using PIL.
     
     Args:
         img (PIL image): A PIL image.
     
-    Examples:
-    $ img = Image.open('share/Lenna.png')
-    $ plot_image(img)
-    $ img_gray = Image.open('share/Lenna_gray.png')
-    $ plot_image(img_gray)
+    **Examples**::
+    
+        >> img = Image.open('share/Lenna.png')
+        >> plot_image(img)
+        >> img_gray = Image.open('share/Lenna_gray.png')
+        >> plot_image(img_gray)
     """
     img.show()

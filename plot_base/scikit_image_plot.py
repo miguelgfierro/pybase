@@ -7,9 +7,10 @@ def plot_image(img):
     Args:
         img (np.array): An image.
     
-    Examples:
-    $ img = io.imread('share/Lenna.png')
-    $ plot_image(img)
+    **Examples**::
+    
+        >> img = io.imread('share/Lenna.png')
+        >> plot_image(img)
     """
     io.imshow(img)
     io.show()
