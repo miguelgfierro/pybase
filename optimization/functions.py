@@ -11,7 +11,7 @@ def rosenbrock(x):
     
     .. math ::
 
-        f(x,y) = (a-x)^2 + b(y-x^2)^2. 
+        f(x,y) = (a-x)^2 + b(y-x^2)^2
     
     The global minimum is inside a long, narrow, parabolic shaped flat valley. To find the valley is trivial. 
     To converge to the global minimum, is difficult.
@@ -26,11 +26,6 @@ def ackley(x):
 
     The Ackley function is a non-convex function used as a performance test problem for optimization algorithms. The
     function is defined by:
-
-    .. math::
-
-        f(x,y) = -20&\exp\left[-0.2\sqrt{0.5\left(x^{2}+y^{2}\right)}\right] \\
-        & {} -\exp\left[0.5\left(\cos 2\pi x + \cos 2\pi y \right)\right] + e + 20
 
     `See more info <https://en.wikipedia.org/wiki/Ackley_function>`_
     """
