@@ -6,9 +6,15 @@ import matplotlib.pyplot as plot
 
 
 def rosenbrock(x):
-    """The Rosenbrock funtion is  is a non-convex function used as a performance test problem for optimization
-    algorithms. The function is defined by: f(x,y) = (a-x)^2 + b(y-x^2)^2. The global minimum is inside a long, narrow,
-    parabolic shaped flat valley. To find the valley is trivial. To converge to the global minimum, is difficult.
+    """The Rosenbrock funtion is a non-convex function used as a performance test problem for optimization
+    algorithms. The function is defined by: 
+    
+    .. math ::
+
+        f(x,y) = (a-x)^2 + b(y-x^2)^2. 
+    
+    The global minimum is inside a long, narrow, parabolic shaped flat valley. To find the valley is trivial. 
+    To converge to the global minimum, is difficult.
     
     `See more info <https://en.wikipedia.org/wiki/Rosenbrock_function>`_
     """
@@ -16,7 +22,18 @@ def rosenbrock(x):
 
 
 def ackley(x):
-    """Custom function."""
+    """Ackley function.
+
+    The Ackley function is a non-convex function used as a performance test problem for optimization algorithms. The
+    function is defined by:
+
+    .. math::
+
+        f(x,y) = -20&\exp\left[-0.2\sqrt{0.5\left(x^{2}+y^{2}\right)}\right] \\
+        & {} -\exp\left[0.5\left(\cos 2\pi x + \cos 2\pi y \right)\right] + e + 20
+
+    `See more info <https://en.wikipedia.org/wiki/Ackley_function>`_
+    """
     arg1 = -0.2 * np.sqrt(0.5 * (x[0] ** 2 + x[1] ** 2))
     arg2 = 0.5 * (np.cos(2.0 * np.pi * x[0]) + np.cos(2.0 * np.pi * x[1]))
     return -20.0 * np.exp(arg1) - np.exp(arg2) + 20.0 + np.e
@@ -30,13 +47,14 @@ def plot_function2D(x, y, z):
         y (np.array): Y value.
         z (np.array): function value.
     
-    Examples (not executable):
-        $ s = 0.05
-        $ X = np.arange(-2, 2.+s, s)
-        $ Y = np.arange(-2, 6.+s, s)
-        $ X, Y = np.meshgrid(X, Y)
-        $ f = rosenbrock([X, Y])
-        $ plot_function2D(X, Y, f)
+    Examples::
+
+        >> s = 0.05
+        >> X = np.arange(-2, 2.+s, s)
+        >> Y = np.arange(-2, 6.+s, s)
+        >> X, Y = np.meshgrid(X, Y)
+        >> f = rosenbrock([X, Y])
+        >> plot_function2D(X, Y, f)
     """
     fig = plot.figure()
     ax = fig.gca(projection="3d")
