@@ -2,13 +2,13 @@ from scipy.optimize import fmin
 
 
 def optimize_function(func, initial_guess, **kargs):
-    """Function optimization using downhill simplex algorithm (Nelder-Mead algorithm).
+    """Function optimization using downhill simplex algorithm (`Nelder-Mead algorithm <https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method>`_).
     This algorithm only uses function values, not derivatives or second derivatives.
     It will usually be slower than an algorithm that uses first or second derivative information.
     In practice it can have poor performance in high-dimensional problems and is not robust to minimizing
     complicated functions. It might not successfully converge to the minimum.
-    https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
-    Info: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin.html#scipy-optimize-fmin
+    
+    `See more info <https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin.html#scipy-optimize-fmin>`_.
     
     Args:
         func (callable): The objective function to be minimized. In the form ``f(x, *args)``, where x is the argument in

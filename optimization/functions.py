@@ -9,7 +9,8 @@ def rosenbrock(x):
     """The Rosenbrock funtion is  is a non-convex function used as a performance test problem for optimization
     algorithms. The function is defined by: f(x,y) = (a-x)^2 + b(y-x^2)^2. The global minimum is inside a long, narrow,
     parabolic shaped flat valley. To find the valley is trivial. To converge to the global minimum, is difficult.
-    More info: https://en.wikipedia.org/wiki/Rosenbrock_function
+    
+    `See more info <https://en.wikipedia.org/wiki/Rosenbrock_function>`_
     """
     return rosen(x)
 

@@ -2,9 +2,9 @@ from scipy.optimize import differential_evolution
 
 
 def optimize_function(func, bounds, **kargs):
-    """Function optimization using Differential Evolution algorithm.
-    https://en.wikipedia.org/wiki/Differential_evolution
-    Info: https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.differential_evolution.html
+    """Function optimization using `Differential Evolution algorithm <https://en.wikipedia.org/wiki/Differential_evolution>`_.
+    
+    `See more info <https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.differential_evolution.html>`_
     
     Args:
         func (callable): The objective function to be minimized. In the form ``f(x, *args)``, where x is the argument in
@@ -12,8 +12,7 @@ def optimize_function(func, bounds, **kargs):
         bounds (np.array): Constraints (min, max) pairs for each element in x.
     
     Returns:
-        obj: Result of the optimization. For parameters see:
-            https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html#scipy.optimize.OptimizeResult
+        obj: Result of the optimization. For parameters `see this link <https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html#scipy.optimize.OptimizeResult>`_
     
     Examples:
         >>> from pybase.optimization.functions import rosenbrock

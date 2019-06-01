@@ -2,7 +2,7 @@ import numpy as np
 
 
 def has_same_sign(data):
-    """ Evaluate if the array has all elements with the same sign.
+    """Evaluate whether the array has all elements with the same sign.
     
     Args:
         data (np.array): An array.
@@ -31,7 +31,7 @@ def has_same_sign(data):
 
 
 def has_same_sign_or_zero(data):
-    """ Evaluate if the array has all elements with the same sign or zero.
+    """Evaluate whether the array has all elements with the same sign or zero.
     
     Args:
         data (np.array): An array.
@@ -59,19 +59,19 @@ def has_same_sign_or_zero(data):
     return np.all(data >= 0) if data[idx] >= 0 else np.all(data <= 0)
 
 
-def count_items(data, item):
-    """Count the appearances of items in data
+def count_items(array, item):
+    """Count the number of items in the array
     
     Args:
-        data (np.array): An array.
+        array (np.array): An array.
         item (int, float or str): The item to count.
     
     Returns:
-        int: Count of appearances of item in data.
+        int: Number of items.
     
     Examples:
         >>> data = np.array([(1,0,0,0,1,1,0)])
         >>> count_items(data, 1)
         3
     """
-    return np.count_nonzero(data == item)
+    return np.count_nonzero(array == item)

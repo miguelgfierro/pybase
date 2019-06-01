@@ -48,7 +48,8 @@ def concatenate_arrays(array_list, axis=0):
 
 def one_hot_encoding_integer(y, num_classes=None):
     """Converts a class vector (integers) to binary class matrix.
-    source: https://github.com/fchollet/keras/blob/d956d19fccf6de6344c282218f1b027453785fa9/keras/utils/np_utils.py
+    
+    `See the original source <https://github.com/fchollet/keras/blob/d956d19fccf6de6344c282218f1b027453785fa9/keras/utils/np_utils.py>`_
     
     Args:
         y (int): An integer class from 0 to num_classes.
@@ -77,7 +78,7 @@ def one_hot_encoding_integer(y, num_classes=None):
 
 
 def binarize_array(data, threshold, lower, upper):
-    """Binarize an array based on a threshold into lower and upper values.
+    """Binarize an array based on a threshold within lower and upper values.
     
     Args:
         data (np.array): An array.
