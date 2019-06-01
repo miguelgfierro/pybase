@@ -9,6 +9,7 @@ def create_table(table_name, cursor):
         cursor (object): pyobdc cursor.
     
     Examples:
+    
     .. code-block:: python
 
         conn = pyodbc.connect(connection_string) #doctest: +SKIP
