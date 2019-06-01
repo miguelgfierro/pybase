@@ -1,6 +1,6 @@
 # Python Codebase
 
-For Python Docstring, I'm using the [Google Style](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
+This is a codebase for basic python utilities.
 
 To install the libraries:
 
@@ -49,3 +49,17 @@ To handle [exceptions](https://docs.python.org/2.4/lib/doctest-exceptions.html),
     Traceback (most recent call last):
         ...
     ValueError: "Something bad happened"
+
+## Documentation
+
+For the documentation, I'm using the [Google Style](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
+
+
+To add a code block that can be rendered with sphinx: 
+
+```
+.. code-block:: python
+
+    import sys
+    print(sys.executable) 
+```
