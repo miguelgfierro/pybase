@@ -49,7 +49,7 @@ def _convert_to_string(srs):
 def convert_cols_categorical_to_numeric(df, col_list=None):
     """Convert categorical columns to numeric and leave numeric columns
     as they are. You can force to convert a numerical column if it is
-    included in col_list
+    included in ``col_list``.
     
     Args:
         df (pd.DataFrame): Dataframe.
@@ -83,8 +83,7 @@ def convert_cols_categorical_to_numeric(df, col_list=None):
 
 def convert_related_cols_categorical_to_numeric(df, col_list):
     """Convert categorical columns, that are related between each other,
-    to numeric and leave numeric columns
-    as they are.
+    to numeric and leave numeric columns as they are.
     
     Args:
         df (pd.DataFrame): Dataframe.
@@ -119,8 +118,7 @@ def convert_related_cols_categorical_to_numeric(df, col_list):
 
 
 def convert_cols_numeric_to_categorical(df, col_list=None):
-    """Convert numerical columns to categorical and leave numeric columns
-    as they are
+    """Convert numerical columns to categorical and leave numeric columns as they are.
     
     Args:
         df (pd.DataFrame): Dataframe.
@@ -193,8 +191,11 @@ def replace_column_values(df, val_dict, col_name, new_col_name=None):
 
 def add_row(df, row):
     """Add a row to a dataframe.
-    NOTE: according to `this source <https://stackoverflow.com/questions/41888080/python-efficient-way-to-add-rows-to-dataframe/41888241#41888241>`
-    using ``loc`` is 14x faster
+
+    .. note::
+
+        according to `this source <https://stackoverflow.com/questions/41888080/python-efficient-way-to-add-rows-to-dataframe/41888241#41888241>`_
+        using ``loc`` is 14x faster
 
     Args:
         df (pd.DataFrame): Dataframe.

@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def remove_nan(df):
-    """Remove NaN and reindex.
+    """Remove ``NaN`` and reindex.
     
     Args:
         df (pd.DataFrame): Dataframe.
@@ -22,7 +22,7 @@ def remove_nan(df):
 
 
 def replace_nan(df, value):
-    """Replace NaN for a value.
+    """Replace ``NaN`` for a value.
     
     Args:
         df (pd.DataFrame): Dataframe.
