@@ -159,7 +159,7 @@ def select_rows_where_list_equal(df, column, items):
 
 
 def select_all_columns_except_some(df, column_names):
-    """Select all columns in the dataframe except those especifies in `column_list`.
+    """Select all columns in the dataframe except those specified in ``column_list``.
     
     Args:
         df (pd.DataFrame): Dataframe.

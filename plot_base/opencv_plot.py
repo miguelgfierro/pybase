@@ -6,7 +6,7 @@ import warnings
 
 
 def plot_image(img, title="image"):
-    """Plot an image.
+    """Plot an image using OpenCV.
     
     Args:
         img (np.array): An image.
