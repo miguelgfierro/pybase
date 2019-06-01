@@ -33,9 +33,9 @@ def insert_csv(connector, table_name, table_instruction, filename, header=False)
     
     **NOTE:** the only way is to load the csv into memory and then insert it in the database.
     
-    `Source here <https://stackoverflow.com/questions/2887878/importing-a-csv-file-into-a-sqlite3-database-table-using-python>`
+    `Source here <https://stackoverflow.com/questions/2887878/importing-a-csv-file-into-a-sqlite3-database-table-using-python>`_
     
-    `More info <http://adamantine.me/2017/05/22/how-to-write-data-to-a-sqlite-database-in-python/>`
+    `More info <http://adamantine.me/2017/05/22/how-to-write-data-to-a-sqlite-database-in-python/>`_
     
     Args:
         cursor (object): sqlite cursor.
