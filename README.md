@@ -1,4 +1,9 @@
-# Python Codebase
+[![Issues](https://img.shields.io/github/issues/miguelgfierro/pybase.svg)](https://github.com/miguelgfierro/pybase/issues)
+[![Commits](https://img.shields.io/github/commit-activity/y/miguelgfierro/pybase.svg)](https://github.com/miguelgfierro/pybase/commits/master)
+[![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/pybase.svg)](https://github.com/miguelgfierro/pybase/commits/master)
+
+
+# Python pybase
 
 This is a codebase for basic python utilities.
 
