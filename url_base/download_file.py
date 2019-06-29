@@ -25,14 +25,10 @@ def maybe_download(url, filename=None, work_directory=".", expected_bytes=None):
     Examples:
         >>> url = "https://raw.githubusercontent.com/miguelgfierro/pybase/master/LICENSE"
         >>> if os.path.exists("license.txt"): os.remove("license.txt")
-        >>> filename = maybe_download("license.txt", url, expected_bytes=1531, verbose=True)
-        File license.txt verified with 1531 bytes
-        >>> filename = maybe_download("license.txt", url, expected_bytes=1531, verbose=True)
-        File license.txt already downloaded
-        File license.txt verified with 1531 bytes
-        >>> filename = maybe_download("license.txt", url)
-        >>> filename
-        "license.txt"
+        >>> filename = maybe_download(url, "license.txt", expected_bytes=1531)
+        >>> os.path.isfile(filename)
+        True
+        
     """
     if filename is None:
         filename = url.split("/")[-1]
@@ -81,7 +77,8 @@ def download_path(path=None):
     Examples:
         >>> url = "https://raw.githubusercontent.com/miguelgfierro/pybase/master/LICENSE"
         >>> with download_path() as path:
-        >>> ... maybe_download(url=url, work_directory=path)
+        ...     maybe_download(url=url, work_directory=path) # doctest: +ELLIPSIS
+        '/tmp/.../LICENSE'
 
     """
     if path is None:
