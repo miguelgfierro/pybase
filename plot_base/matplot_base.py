@@ -29,13 +29,16 @@ def plot_image(img):
     plt.show()
 
 
-def plot_histogram(hist, bins):
+def plot_histogram(hist, bins, color="b", **kwargs):
     """Plot an histogram.
     
+    The complete list of arguments can be found `on this link <https://matplotlib.org/3.1.0/api/_as_gen/matplotlib.pyplot.bar.html>`_.
+
     Args:
         hist (np.array): Array with the histogram values.
         bins (np.array): Array of the histogram bins.
-    
+        color (str): `Matplotlib color <https://matplotlib.org/api/colors_api.html?highlight=color#module-matplotlib.colors>`_.
+
     **Examples**::
 
         >> x = 10 + 5*np.random.randn(1000)
@@ -44,7 +47,7 @@ def plot_histogram(hist, bins):
     """
     width = np.diff(bins)
     center = (bins[:-1] + bins[1:]) / 2
-    plt.bar(center, hist, align="center", width=width)
+    plt.bar(center, hist, align="center", width=width, color=color, **kwargs)
     plt.show()
 
 
