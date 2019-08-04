@@ -43,6 +43,6 @@ install:
   - export PYSPARK_DRIVER_PYTHON=`which python`
 
 script:
-  - pytest python/test/pytest*
-  - python python/test/unittest_fixtures.py
+  - pytest test/pytest*
+  - python test/unittest_fixtures.py
   - pytest python --doctest-modules --continue-on-collection-errors
