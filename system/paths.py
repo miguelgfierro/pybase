@@ -12,7 +12,7 @@ def get_current_folder_path():
     
     Examples:
         >>> get_current_folder_path() #doctest: +ELLIPSIS
-        '.../pybase/system'
+        '...system'
     """
     return os.path.abspath(os.path.dirname(__file__))
 
