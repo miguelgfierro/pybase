@@ -35,7 +35,7 @@ install:
 
   # Create environment
   - conda create -q -n codebase python=$TRAVIS_PYTHON_VERSION
-  - conda env update -q -n codebase -f python/conda.yaml
+  - conda env update -q -n codebase -f conda.yaml
   - source activate codebase
   - pip list
   - python --version
