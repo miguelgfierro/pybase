@@ -19,8 +19,8 @@ class Shape(object):
         >>> s = Shape.factory("Circle")
         >>> s.draw()
         Circle.draw
-        >>> Shape.__subclasses__()
-        [<class 'pybase.data_structures.factory_dependency_injection.Circle'>, <class 'pybase.data_structures.factory_dependency_injection.Square'>]
+        >>> Shape.__subclasses__() # doctest: +ELLIPSIS
+        [<class '...data_structures.factory_dependency_injection.Circle'>, <class '...data_structures.factory_dependency_injection.Square'>]
     """
 
     def factory(description):
@@ -50,8 +50,8 @@ class ShapeDict(object):
         >>> s = ShapeDict.factory("Square")
         >>> s.draw()
         Square.draw
-        >>> Shape.__subclasses__()
-        [<class 'pybase.data_structures.factory_dependency_injection.Circle'>, <class 'pybase.data_structures.factory_dependency_injection.Square'>]
+        >>> Shape.__subclasses__() # doctest: +ELLIPSIS
+        [<class '...data_structures.factory_dependency_injection.Circle'>, <class '...data_structures.factory_dependency_injection.Square'>]
     """
 
     def factory(description):

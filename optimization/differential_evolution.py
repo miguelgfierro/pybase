@@ -15,7 +15,7 @@ def optimize_function(func, bounds, **kargs):
         obj: Result of the optimization. For parameters `see this link <https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.OptimizeResult.html#scipy.optimize.OptimizeResult>`_
     
     Examples:
-        >>> from pybase.optimization.functions import rosenbrock
+        >>> from .functions import rosenbrock
         >>> bounds = [(0,2), (0, 2), (0, 2), (0, 2), (0, 2)]
         >>> result = optimize_function(rosenbrock, bounds)
         >>> result.x # Solution
@@ -24,7 +24,7 @@ def optimize_function(func, bounds, **kargs):
         0.0
         >>> result.success
         True
-        >>> from pybase.optimization.functions import ackley
+        >>> from .functions import ackley
         >>> bounds = [(-5, 5), (-5, 5)]
         >>> result = optimize_function(ackley, bounds, strategy='best2exp')
         >>> result.x # Solution

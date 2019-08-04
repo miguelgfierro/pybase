@@ -78,7 +78,7 @@ def download_path(path=None):
         >>> url = "https://raw.githubusercontent.com/miguelgfierro/pybase/master/LICENSE"
         >>> with download_path() as path:
         ...     maybe_download(url=url, work_directory=path) # doctest: +ELLIPSIS
-        '/tmp/.../LICENSE'
+        '...LICENSE'
 
     """
     if path is None:

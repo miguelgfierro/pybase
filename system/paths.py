@@ -12,7 +12,7 @@ def get_current_folder_path():
     
     Examples:
         >>> get_current_folder_path() #doctest: +ELLIPSIS
-        '.../pybase/system'
+        '...system'
     """
     return os.path.abspath(os.path.dirname(__file__))
 
@@ -25,7 +25,7 @@ def get_parent_folder_path():
     
     Examples:
         >>> get_parent_folder_path() #doctest: +ELLIPSIS
-        '.../pybase'
+        '...pybase'
     """
     return os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 

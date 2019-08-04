@@ -57,7 +57,7 @@ def read_image_url(url):
         PIL image: An image in PIL format.
 
     Examples:
-        >>> img = read_image_url('https://raw.githubusercontent.com/miguelgfierro/codebase/master/share/Lenna.png')
+        >>> img = read_image_url('https://raw.githubusercontent.com/miguelgfierro/pybase/master/share/Lenna.png')
         >>> print(img.size)
         (512, 512)
         >>> print(img.mode)

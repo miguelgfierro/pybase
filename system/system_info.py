@@ -297,8 +297,8 @@ def get_conda_environment():
         str: Environment name
     
     Examples:
-        >>> get_conda_environment()
-        'codebase'
+        >>> get_conda_environment() # doctest: +ELLIPSIS
+        '...'
     
     """
     return os.environ["CONDA_DEFAULT_ENV"]
