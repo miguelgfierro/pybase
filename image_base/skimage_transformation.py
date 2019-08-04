@@ -14,7 +14,7 @@ def resize_image(img, new_width, new_height):
         np.array: A resized image.
     
     Examples:
-        >>> img = Image.open('share/Lenna.png')
+        >>> img = io.imread('share/Lenna.png')
         >>> img_resized = resize_image(img, 256, 256)
         >>> img_resized.shape
         (256, 256, 3)

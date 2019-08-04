@@ -9,6 +9,7 @@ import json
 import shutil
 from collections import Counter
 from collections import OrderedDict
+from skimage import io
 
 
 try:
@@ -32,6 +33,7 @@ def add_libraries(doctest_namespace):
     doctest_namespace["shutil"] = shutil
     doctest_namespace["Counter"] = Counter
     doctest_namespace["OrderedDict"] = OrderedDict
+    doctest_namespace["io"] = io
     try:
         spark = (
             SparkSession.builder.appName("test codebase")
