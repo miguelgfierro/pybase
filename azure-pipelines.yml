@@ -33,7 +33,7 @@ jobs:
 
   - bash: |
       conda create -q -n codebase python=$(python.version) -y
-      conda env update -q -n codebase -f python/conda.yaml
+      conda env update -q -n codebase -f conda.yaml
     displayName: 'Conda install dependencies'
 
   - bash: |
