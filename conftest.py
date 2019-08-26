@@ -36,7 +36,7 @@ def add_libraries(doctest_namespace):
     doctest_namespace["io"] = io
     try:
         spark = (
-            SparkSession.builder.appName("test codebase")
+            SparkSession.builder.appName("test pybase")
             .master("local[*]")
             .config("spark.driver.memory", "4g")
             .getOrCreate()
