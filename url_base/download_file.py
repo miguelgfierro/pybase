@@ -93,10 +93,3 @@ def download_path(path=None):
         yield path
 
         
-def download_from_google_drive(file_id, file_name):
-    # download a file from the Google Drive link
-    !rm -f ./cookie
-    !curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id={file_id}" > /dev/null
-    confirm_text = !awk '/download/ {print $NF}' ./cookie
-    confirm_text = confirm_text[0]
-    !curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm={confirm_text}&id={file_id}" -o {file_name}
