@@ -5,6 +5,7 @@ import logging
 from contextlib import contextmanager
 from tempfile import TemporaryDirectory
 from tqdm import tqdm
+import math
 
 
 log = logging.getLogger(__name__)
