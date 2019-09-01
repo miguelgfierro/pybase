@@ -20,7 +20,7 @@ def maybe_download(
         work_directory (str): Working directory.
         url (str): URL of the file to download.
         expected_bytes (int): Expected file size in bytes.
-        force_download (bool): 
+        force_download (bool): Force the download.
 
     Returns:
         str: File path of the file downloaded.
@@ -37,7 +37,7 @@ def maybe_download(
         filename = url.split("/")[-1]
     os.makedirs(work_directory, exist_ok=True)
     filepath = os.path.join(work_directory, filename)
-    if not os.path.exists(filepath):
+    if not os.path.exists(filepath) or force_download is True:
         r = requests.get(url, stream=True)
         total_size = int(r.headers.get("content-length", 0))
         block_size = 1024
