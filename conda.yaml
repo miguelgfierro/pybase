@@ -52,6 +52,7 @@ dependencies:
   - gevent-websocket>=0.10.1
   - wsaccel>=0.6.2
   - ujson>=1.35
+  - backoff>=1.8.0
 
 
 
