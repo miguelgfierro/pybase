@@ -105,12 +105,22 @@ def array_intersection(ar1, ar2, assume_unique=False, return_indices=False):
         array([3, 4])
 
     """
-    if any(isinstance(el, np.ndarray) for el in ar2) or any(isinstance(el, list) for el in ar2):
-        return reduce(lambda x, y: np.intersect1d(x, y, assume_unique=assume_unique, return_indices=return_indices), (ar1, *ar2))
+    if any(isinstance(el, np.ndarray) for el in ar2) or any(
+        isinstance(el, list) for el in ar2
+    ):
+        return reduce(
+            lambda x, y: np.intersect1d(
+                x, y, assume_unique=assume_unique, return_indices=return_indices
+            ),
+            (ar1, *ar2),
+        )
     elif isinstance(ar2, np.ndarray) or isinstance(ar2, list):
-        return np.intersect1d(ar1, ar2, assume_unique=assume_unique, return_indices=return_indices)
+        return np.intersect1d(
+            ar1, ar2, assume_unique=assume_unique, return_indices=return_indices
+        )
     else:
         raise ValueError("ar2 has a wrong type: {}".format(type(ar2)))
+
 
 def array_difference(ar1, ar2, assume_unique=False):
     """Find the difference between an array and another array or a group of arrays. Return the unique 
@@ -136,8 +146,12 @@ def array_difference(ar1, ar2, assume_unique=False):
         array([1])
 
     """
-    if any(isinstance(el, np.ndarray) for el in ar2) or any(isinstance(el, list) for el in ar2):
-        return reduce(lambda x, y: np.setdiff1d(x, y, assume_unique=assume_unique), (ar1, *ar2))
+    if any(isinstance(el, np.ndarray) for el in ar2) or any(
+        isinstance(el, list) for el in ar2
+    ):
+        return reduce(
+            lambda x, y: np.setdiff1d(x, y, assume_unique=assume_unique), (ar1, *ar2)
+        )
     elif isinstance(ar2, np.ndarray) or isinstance(ar2, list):
         return np.setdiff1d(ar1, ar2, assume_unique=assume_unique)
     else:
