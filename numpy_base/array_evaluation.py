@@ -110,7 +110,10 @@ def array_intersection(ar1, ar2, assume_unique=False, return_indices=False):
     ):
         return reduce(
             lambda x, y: np.intersect1d(
-                x, y, assume_unique=assume_unique, return_indices=return_indices
+                x,
+                y,
+                assume_unique=assume_unique,
+                # return_indices=return_indices # FIXME: return_indices not working properly
             ),
             (ar1, *ar2),
         )
