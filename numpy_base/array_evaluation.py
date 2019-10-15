@@ -79,7 +79,7 @@ def count_items(array, item):
 
 def array_intersection(ar1, ar2, assume_unique=False, return_indices=False):
     """Find the intersection between an array and another array or a group of arrays. Return the sorted, unique 
-    values that are in both of the input arrays.
+    values that are in of the input arrays.
     
     Args:
         ar1 (np.array or list): An array or list.
@@ -97,7 +97,7 @@ def array_intersection(ar1, ar2, assume_unique=False, return_indices=False):
     Examples: 
         >>> ar1 = [1,2,3,4,5]
         >>> ar2 = [3,4,5,6,5]
-        >>> ar3 = [3,4,6]
+        >>> ar3 = [2,3,4,6]
         >>> arr_list = [ar2, ar3, ar2]
         >>> array_intersection(ar1, ar2)
         array([3, 4, 5])
@@ -113,6 +113,29 @@ def array_intersection(ar1, ar2, assume_unique=False, return_indices=False):
         raise ValueError("ar2 has a wrong type: {}".format(type(ar2)))
 
 def array_difference(ar1, ar2, assume_unique=False):
+    """Find the difference between an array and another array or a group of arrays. Return the unique 
+    values in ar1 that are not in ar2..
+    
+    Args:
+        ar1 (np.array or list): An array or list.
+        ar2 (np.array, list, list of arrays or list of lists): Array, list or a list of the previous objects.
+        assume_unique (bool): If True, the input arrays are assumed to be unique, which can speed up the calculation.
+    
+    Returns:
+        np.array: values in ar1 that are not in ar2. The result is sorted when assume_unique=False, but otherwise 
+        only sorted if the input is sorted.
+        
+    Examples: 
+        >>> ar1 = [1,2,3,4,5]
+        >>> ar2 = [3,4,5,6,5]
+        >>> ar3 = [2,3,4,6]
+        >>> arr_list = [ar2, ar3, ar2]
+        >>> array_difference(ar1, ar2)
+        array([1, 2])
+        >>> array_difference(ar1, arr_list)
+        array([1])
+
+    """
     if any(isinstance(el, np.ndarray) for el in ar2) or any(isinstance(el, list) for el in ar2):
         return reduce(lambda x, y: np.setdiff1d(x, y, assume_unique=assume_unique), (ar1, *ar2))
     elif isinstance(ar2, np.ndarray) or isinstance(ar2, list):
