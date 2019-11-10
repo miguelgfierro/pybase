@@ -218,17 +218,19 @@ def get_cuda_version():
     
     """
     if sys.platform == "win32":
-        raise NotImplementedError("Implement this!")
+        candidate = "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v*\\version.txt"
+        path = glob.glob(candidate)[0]
     elif sys.platform == "linux" or sys.platform == "darwin":
         path = "/usr/local/cuda/version.txt"
-        if os.path.isfile(path):
-            with open(path, "r") as f:
-                data = f.read().replace("\n", "")
-            return data
-        else:
-            return "No CUDA in this machine"
     else:
         raise ValueError("Not in Windows, Linux or Mac")
+
+    if os.path.isfile(path):
+        with open(path, "r") as f:
+            data = f.read().replace("\n", "")
+        return data
+    else:
+        return "No CUDA in this machine"
 
 
 def get_cudnn_version():
