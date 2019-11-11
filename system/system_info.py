@@ -217,20 +217,24 @@ def get_cuda_version():
         str: Version of the library.
     
     """
-    if sys.platform == "win32":
-        candidate = "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v*\\version.txt"
-        path = glob.glob(candidate)[0]
-    elif sys.platform == "linux" or sys.platform == "darwin":
-        path = "/usr/local/cuda/version.txt"
-    else:
-        raise ValueError("Not in Windows, Linux or Mac")
+    try:
+        from tensorflow.python.platform import build_info 
+        return build_info.cuda_version_number
+    except ImportError:
+        if sys.platform == "win32":
+            candidate = "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v*\\version.txt"
+            path = glob.glob(candidate)[0]
+        elif sys.platform == "linux" or sys.platform == "darwin":
+            path = "/usr/local/cuda/version.txt"
+        else:
+            raise ValueError("Not in Windows, Linux or Mac")
 
-    if os.path.isfile(path):
-        with open(path, "r") as f:
-            data = f.read().replace("\n", "")
-        return data
-    else:
-        return "No CUDA in this machine"
+        if os.path.isfile(path):
+            with open(path, "r") as f:
+                data = f.read().replace("\n", "")
+            return data
+        else:
+            return "No CUDA in this machine"
 
 
 def get_cudnn_version():
@@ -240,7 +244,6 @@ def get_cudnn_version():
         str: Version of the library.
     
     """
-
     def find_cudnn_in_headers(candiates):
         for c in candidates:
             file = glob.glob(c)
@@ -263,19 +266,23 @@ def get_cudnn_version():
         else:
             return "No CUDNN in this machine"
 
-    if sys.platform == "win32":
-        candidates = [r"C:\NVIDIA\cuda\include\cudnn.h"]
-    elif sys.platform == "linux":
-        candidates = [
-            "/usr/include/x86_64-linux-gnu/cudnn_v[0-99].h",
-            "/usr/local/cuda/include/cudnn.h",
-            "/usr/include/cudnn.h",
-        ]
-    elif sys.platform == "darwin":
-        candidates = ["/usr/local/cuda/include/cudnn.h", "/usr/include/cudnn.h"]
-    else:
-        raise ValueError("Not in Windows, Linux or Mac")
-    return find_cudnn_in_headers(candidates)
+    try:
+        from tensorflow.python.platform import build_info 
+        return build_info.cudnn_version_number
+    except ImportError:
+        if sys.platform == "win32":
+            candidates = [r"C:\NVIDIA\cuda\include\cudnn.h"]
+        elif sys.platform == "linux":
+            candidates = [
+                "/usr/include/x86_64-linux-gnu/cudnn_v[0-99].h",
+                "/usr/local/cuda/include/cudnn.h",
+                "/usr/include/cudnn.h",
+            ]
+        elif sys.platform == "darwin":
+            candidates = ["/usr/local/cuda/include/cudnn.h", "/usr/include/cudnn.h"]
+        else:
+            raise ValueError("Not in Windows, Linux or Mac")
+        return find_cudnn_in_headers(candidates)
 
 
 def is_cuda_available():
