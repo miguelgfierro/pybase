@@ -1,3 +1,4 @@
+import os
 try:
     from pyspark.sql import SparkSession
 except ImportError: 
@@ -45,6 +46,9 @@ def spark(
     if packages is not None:
         submit_args = "--packages {} ".format(",".join(packages))
     if jars is not None:
+        for jar in jars:
+            if not os.path.isfile(jar):
+                raise FileNotFoundError("{} not found".format(jar))
         submit_args += "--jars {} ".format(",".join(jars))
     if repository is not None:
         submit_args += "--repositories {}".format(repository)
