@@ -54,6 +54,7 @@ def _get_raw_image(url):
 
 
 def _save_image(raw_image, image_type, save_directory):
+    os.makedirs(save_directory, exist_ok=True)
     extension = image_type if image_type else "jpg"
     file_name = str(uuid.uuid4().hex) + "." + extension
     save_path = os.path.join(save_directory, file_name)
@@ -85,7 +86,14 @@ def extract_image_links(query, num_images):
     return itertools.islice(link_type_records, num_images)
 
 
-def download_images_to_dir(images, save_directory, num_images):
+def download_images_to_dir(images, save_directory):
+    """Download a set of image urls to disk
+    
+    Args:
+        images ([type]): List of images urls and image types
+        save_directory (str): Folder.
+    """
+    num_images = len(images)
     for i, (url, image_type) in enumerate(images):
         try:
             logger.info("Making request (%d/%d): %s", i, num_images, url)
@@ -99,7 +107,7 @@ def run(query, save_directory, num_images=100):
     logger.info("Extracting image links")
     images = extract_image_links(query, num_images)
     logger.info("Downloading images")
-    download_images_to_dir(images, save_directory, num_images)
+    download_images_to_dir(images, save_directory)
     logger.info("Finished")
 
 
