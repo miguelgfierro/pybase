@@ -16,9 +16,6 @@ REQUEST_HEADER = {
     "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36"
 }
 
-logger = configure_logging()
-
-
 def configure_logging():
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
@@ -29,43 +26,58 @@ def configure_logging():
     logger.addHandler(handler)
     return logger
 
+logger = configure_logging()
 
-def get_soup(url, header):
+
+def _get_soup(url, header):
     response = urlopen(Request(url, headers=header))
     return BeautifulSoup(response, "html.parser")
 
 
-def get_query_url(query):
+def _get_query_url(query):
     return "https://www.google.co.in/search?q=%s&source=lnms&tbm=isch" % query
 
 
-def extract_images_from_soup(soup):
+def _extract_images_from_soup(soup):
     image_elements = soup.find_all("div", {"class": "rg_meta"})
     metadata_dicts = (json.loads(e.text) for e in image_elements)
     link_type_records = ((d["ou"], d["ity"]) for d in metadata_dicts)
     return link_type_records
 
 
-def get_raw_image(url):
+def _get_raw_image(url):
     req = Request(url, headers=REQUEST_HEADER)
     resp = urlopen(req)
     return resp.read()
 
 
-def save_image(raw_image, image_type, save_directory):
+def _save_image(raw_image, image_type, save_directory):
     extension = image_type if image_type else "jpg"
-    file_name = uuid.uuid4().hex
+    file_name = str(uuid.uuid4().hex) + "." + extension
     save_path = os.path.join(save_directory, file_name)
-    with open(save_path, "wb") as image_file:
+    with open(save_path, "wb+") as image_file:
         image_file.write(raw_image)
 
 
 def extract_images(query, num_images):
-    url = get_query_url(query)
+    """extract_images [summary]
+    
+    Args:
+        query ([type]): [description]
+        num_images ([type]): [description]
+    
+    Returns:
+        [type]: [description]
+
+    Examples:
+        >>> a=1
+    """
+    query = "+".join(query.split())
+    url = _get_query_url(query)
     logger.info("Souping")
-    soup = get_soup(url, REQUEST_HEADER)
+    soup = _get_soup(url, REQUEST_HEADER)
     logger.info("Extracting image urls")
-    link_type_records = extract_images_from_soup(soup)
+    link_type_records = _extract_images_from_soup(soup)
     return itertools.islice(link_type_records, num_images)
 
 
@@ -73,14 +85,13 @@ def download_images_to_dir(images, save_directory, num_images):
     for i, (url, image_type) in enumerate(images):
         try:
             logger.info("Making request (%d/%d): %s", i, num_images, url)
-            raw_image = get_raw_image(url)
-            save_image(raw_image, image_type, save_directory)
+            raw_image = _get_raw_image(url)
+            _save_image(raw_image, image_type, save_directory)
         except Exception as e:
             logger.exception(e)
 
 
 def run(query, save_directory, num_images=100):
-    query = "+".join(query.split())
     logger.info("Extracting image links")
     images = extract_images(query, num_images)
     logger.info("Downloading images")

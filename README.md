@@ -86,3 +86,10 @@ To add a note:
 
     This is a note
 ```
+
+or
+
+```
+Note:
+    This is a note
+```
