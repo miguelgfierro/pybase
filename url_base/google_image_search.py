@@ -16,6 +16,7 @@ REQUEST_HEADER = {
     "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36"
 }
 
+
 def configure_logging():
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
@@ -25,6 +26,7 @@ def configure_logging():
     )
     logger.addHandler(handler)
     return logger
+
 
 logger = configure_logging()
 
@@ -59,18 +61,20 @@ def _save_image(raw_image, image_type, save_directory):
         image_file.write(raw_image)
 
 
-def extract_images(query, num_images):
-    """extract_images [summary]
+def extract_image_links(query, num_images):
+    """Extract the image url and the file type based on a query.
     
     Args:
-        query ([type]): [description]
-        num_images ([type]): [description]
+        query (str): Text to search.
+        num_images (int): Max number of image links to return.
     
     Returns:
-        [type]: [description]
+        iterator: Iterator with a tuple of (image_url, image_type)
 
     Examples:
-        >>> a=1
+        >>> r = extract_image_links("Batman", 1)
+        >>> list(r)[0] # doctest: +ELLIPSIS
+        ('http...jpg', 'jpg')
     """
     query = "+".join(query.split())
     url = _get_query_url(query)
@@ -93,7 +97,7 @@ def download_images_to_dir(images, save_directory, num_images):
 
 def run(query, save_directory, num_images=100):
     logger.info("Extracting image links")
-    images = extract_images(query, num_images)
+    images = extract_image_links(query, num_images)
     logger.info("Downloading images")
     download_images_to_dir(images, save_directory, num_images)
     logger.info("Finished")
