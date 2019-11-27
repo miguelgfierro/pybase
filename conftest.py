@@ -10,6 +10,7 @@ import shutil
 from collections import Counter
 from collections import OrderedDict
 from skimage import io
+from tempfile import TemporaryDirectory
 
 
 try:
@@ -34,6 +35,7 @@ def add_libraries(doctest_namespace):
     doctest_namespace["Counter"] = Counter
     doctest_namespace["OrderedDict"] = OrderedDict
     doctest_namespace["io"] = io
+    doctest_namespace["TemporaryDirectory"] = TemporaryDirectory
     try:
         spark = (
             SparkSession.builder.appName("test pybase")

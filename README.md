@@ -17,7 +17,7 @@ To be able to run the test in [blob_io.py](python/io_base/blob_io.py), add the c
 
     cp share/blob_config_template.json share/blob_config.json
 
-## Tests
+## Doctests
 
 To execute the tests:
 
@@ -54,6 +54,11 @@ To handle [exceptions](https://docs.python.org/2.4/lib/doctest-exceptions.html),
     Traceback (most recent call last):
         ...
     ValueError: "Something bad happened"
+
+To execute a context manager with doctests:
+
+    >>> with TemporaryDirectory() as td:
+    ...     print(td.name)
 
 ## Documentation
 

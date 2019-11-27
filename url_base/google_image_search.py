@@ -1,5 +1,7 @@
 # Code attribution: https://gist.github.com/genekogan/ebd77196e4bf0705db51f86431099e57#gistcomment-2267063
 
+# Code attribution: https://gist.github.com/genekogan/ebd77196e4bf0705db51f86431099e57#gistcomment-2267063
+
 import argparse
 import json
 import itertools
@@ -19,7 +21,7 @@ REQUEST_HEADER = {
 
 def configure_logging():
     logger = logging.getLogger()
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.INFO)
     handler = logging.StreamHandler()
     handler.setFormatter(
         logging.Formatter("[%(asctime)s %(levelname)s %(module)s]: %(message)s")
@@ -42,8 +44,8 @@ def _get_query_url(query):
 
 def _extract_images_from_soup(soup):
     image_elements = soup.find_all("div", {"class": "rg_meta"})
-    metadata_dicts = (json.loads(e.text) for e in image_elements)
-    link_type_records = ((d["ou"], d["ity"]) for d in metadata_dicts)
+    metadata_dicts = [json.loads(e.text) for e in image_elements]
+    link_type_records = [(d["ou"], d["ity"]) for d in metadata_dicts]
     return link_type_records
 
 
@@ -70,11 +72,11 @@ def extract_image_links(query, num_images):
         num_images (int): Max number of image links to return.
     
     Returns:
-        iterator: Iterator with a tuple of (image_url, image_type)
+        list of tuples: List of tuples of (image_url, image_type)
 
     Examples:
         >>> r = extract_image_links("Batman", 1)
-        >>> list(r)[0] # doctest: +ELLIPSIS
+        >>> r[0] # doctest: +ELLIPSIS
         ('http...jpg', 'jpg')
     """
     query = "+".join(query.split())
@@ -83,15 +85,23 @@ def extract_image_links(query, num_images):
     soup = _get_soup(url, REQUEST_HEADER)
     logger.info("Extracting image urls")
     link_type_records = _extract_images_from_soup(soup)
-    return itertools.islice(link_type_records, num_images)
+    return link_type_records[:num_images]
 
 
 def download_images_to_dir(images, save_directory):
     """Download a set of image urls to disk
     
     Args:
-        images ([type]): List of images urls and image types
+        images (list of tuples): List of images urls and image types.
         save_directory (str): Folder.
+
+    Examples:
+        >>> with TemporaryDirectory() as td:
+        ...     r = extract_image_links("Batman", 1)
+        ...     filename = r[0][0].split("/")[-1]
+        ...     download_images_to_dir(r, td.name)
+        ...     os.isfile(filename)
+        True
     """
     num_images = len(images)
     for i, (url, image_type) in enumerate(images):
