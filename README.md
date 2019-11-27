@@ -17,7 +17,7 @@ To be able to run the test in [blob_io.py](python/io_base/blob_io.py), add the c
 
     cp share/blob_config_template.json share/blob_config.json
 
-## Tests
+## Doctests
 
 To execute the tests:
 
@@ -55,6 +55,11 @@ To handle [exceptions](https://docs.python.org/2.4/lib/doctest-exceptions.html),
         ...
     ValueError: "Something bad happened"
 
+To execute a context manager with doctests:
+
+    >>> with TemporaryDirectory() as td:
+    ...     print(td.name)
+
 ## Documentation
 
 For the documentation, I'm using the [Google Style](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
@@ -84,5 +89,12 @@ To add a note:
 ```
 .. note::
 
+    This is a note
+```
+
+or
+
+```
+Note:
     This is a note
 ```
