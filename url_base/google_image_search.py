@@ -17,9 +17,9 @@ REQUEST_HEADER = {
 }
 
 
-def configure_logging():
+def configure_logging(level=logging.ERROR):
     logger = logging.getLogger()
-    logger.setLevel(logging.INFO)
+    logger.setLevel(level)
     handler = logging.StreamHandler()
     handler.setFormatter(
         logging.Formatter("[%(asctime)s %(levelname)s %(module)s]: %(message)s")
