@@ -1,7 +1,5 @@
 # Code attribution: https://gist.github.com/genekogan/ebd77196e4bf0705db51f86431099e57#gistcomment-2267063
 
-# Code attribution: https://gist.github.com/genekogan/ebd77196e4bf0705db51f86431099e57#gistcomment-2267063
-
 import argparse
 import json
 import itertools
