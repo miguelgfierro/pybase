@@ -2,14 +2,13 @@
 
 import argparse
 import json
-import itertools
 import logging
-import re
 import os
 import uuid
 import sys
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
+from .url_common import get_image_name
 
 
 REQUEST_HEADER = {
@@ -53,11 +52,9 @@ def _get_raw_image(url):
     return resp.read()
 
 
-def _save_image(raw_image, image_type, save_directory):
+def _save_image(raw_image, image_name, save_directory):
     os.makedirs(save_directory, exist_ok=True)
-    extension = image_type if image_type else "jpg"
-    file_name = str(uuid.uuid4().hex) + "." + extension
-    save_path = os.path.join(save_directory, file_name)
+    save_path = os.path.join(save_directory, image_name)
     with open(save_path, "wb+") as image_file:
         image_file.write(raw_image)
 
@@ -94,11 +91,12 @@ def download_images_to_dir(images, save_directory):
         save_directory (str): Folder.
 
     Examples:
+        >>> from pybase.url_base.url_common import get_image_name
         >>> with TemporaryDirectory() as td:
         ...     r = extract_image_links("Batman", 1)
-        ...     filename = r[0][0].split("/")[-1]
-        ...     download_images_to_dir(r, td.name)
-        ...     os.isfile(filename)
+        ...     download_images_to_dir(r, td)
+        ...     filename = get_image_name(r[0][0])
+        ...     os.path.exists(os.path.join(td, filename))
         True
     """
     num_images = len(images)
@@ -106,7 +104,8 @@ def download_images_to_dir(images, save_directory):
         try:
             logger.info("Making request (%d/%d): %s", i, num_images, url)
             raw_image = _get_raw_image(url)
-            _save_image(raw_image, image_type, save_directory)
+            image_name = get_image_name(url)
+            _save_image(raw_image, image_name, save_directory)
         except Exception as e:
             logger.exception(e)
 
