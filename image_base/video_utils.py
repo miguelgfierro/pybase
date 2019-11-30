@@ -10,5 +10,5 @@ def cut_video(input_file, start_time, end_time, output_file):
         end_time (int): End time in seconds
         output_file (str): Output video file.
     """
-    ffmpeg_extract_subclip(filename, start_time, end_time, targetname)
+    ffmpeg_extract_subclip(input_file, start_time, end_time, output_file)
 
