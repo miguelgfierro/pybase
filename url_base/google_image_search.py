@@ -5,7 +5,7 @@ import json
 import logging
 import os
 import sys
-from urllib.request import urlopen, Request
+import requests
 from bs4 import BeautifulSoup
 from .url_common import get_image_name
 
@@ -13,6 +13,29 @@ from .url_common import get_image_name
 REQUEST_HEADER = {
     "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36"
 }
+SESSION = None
+
+
+def get_session(session=None):
+    """Get session object
+
+    Args:
+        session (requests.Session): request session object
+
+    Returns:
+        requests.Session: request session object
+    """
+
+    if session is None:
+        global SESSION
+        if SESSION is None:
+            SESSION = requests.Session()
+        session = SESSION
+
+    return session
+
+
+s = get_session()
 
 
 def configure_logging(level=logging.ERROR):
@@ -27,11 +50,12 @@ def configure_logging(level=logging.ERROR):
 
 
 logger = configure_logging()
+s = get_session()
 
 
-def _get_soup(url, header):
-    response = urlopen(Request(url, headers=header))
-    return BeautifulSoup(response, "html.parser")
+def _get_soup(url, headers):
+    response = SESSION.get(url, headers=headers)
+    return BeautifulSoup(response.text, "html.parser")
 
 
 def _get_query_url(query):
@@ -45,10 +69,9 @@ def _extract_images_from_soup(soup):
     return link_type_records
 
 
-def _get_raw_image(url):
-    req = Request(url, headers=REQUEST_HEADER)
-    resp = urlopen(req)
-    return resp.read()
+def _get_raw_image(url, headers):
+    resp = SESSION.get(url, headers=headers)
+    return resp.content
 
 
 def _save_image(raw_image, image_name, save_directory):
@@ -102,7 +125,7 @@ def download_images_to_dir(images, save_directory):
     for i, (url, image_type) in enumerate(images):
         try:
             logger.info("Making request (%d/%d): %s", i, num_images, url)
-            raw_image = _get_raw_image(url)
+            raw_image = _get_raw_image(url, REQUEST_HEADER)
             image_name = get_image_name(url)
             _save_image(raw_image, image_name, save_directory)
         except Exception as e:
