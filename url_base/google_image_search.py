@@ -35,9 +35,6 @@ def get_session(session=None):
     return session
 
 
-s = get_session()
-
-
 def configure_logging(level=logging.ERROR):
     logger = logging.getLogger()
     logger.setLevel(level)
@@ -92,9 +89,9 @@ def extract_image_links(query, num_images):
         list of tuples: List of tuples of (image_url, image_type)
 
     Examples:
-        >>> r = extract_image_links("Batman", 1)
+        >>> r = extract_image_links("Batman", 2)
         >>> r[0] # doctest: +ELLIPSIS
-        ('http...jpg', 'jpg')
+        ('http...', '...')
     """
     query = "+".join(query.split())
     url = _get_query_url(query)
@@ -115,7 +112,7 @@ def download_images_to_dir(images, save_directory):
     Examples:
         >>> from pybase.url_base.url_common import get_image_name
         >>> with TemporaryDirectory() as td:
-        ...     r = extract_image_links("Batman", 1)
+        ...     r = [("https://raw.githubusercontent.com/miguelgfierro/pybase/master/share/Lenna.png", "png")]
         ...     download_images_to_dir(r, td)
         ...     filename = get_image_name(r[0][0])
         ...     os.path.exists(os.path.join(td, filename))
