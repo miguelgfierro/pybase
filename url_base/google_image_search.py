@@ -4,7 +4,6 @@ import argparse
 import json
 import logging
 import os
-import uuid
 import sys
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
