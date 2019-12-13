@@ -1,4 +1,4 @@
-# Code attribution: https://gist.github.com/genekogan/ebd77196e4bf0705db51f86431099e57#gistcomment-2267063
+# Based on: https://gist.github.com/genekogan/ebd77196e4bf0705db51f86431099e57#gistcomment-2267063
 
 import argparse
 import json
@@ -18,16 +18,18 @@ logger = logging.getLogger(__name__)
 
 
 class ImageDownloader:
-    def __init__(self, session=None):
-        """Image Downloader constructor
+    def __init__(self):
+        """Image Downloader constructor"""
+        self._session = self.session
 
-        Args:
-            session (obj): Request session object.
-
-        """
-        self.session = session
-        if self.session is None:
-            self.session = requests.Session()
+    @property
+    def session(self, session=None, headers=None):
+        if session is None:
+            session = requests.Session()
+            session.headers.update(REQUEST_HEADER)
+        if headers is not None:
+            session.headers.update(headers)
+        return session
 
     def extract_image_links(self, query, num_images):
         """Extract the image url and the file type based on a query.
@@ -47,8 +49,11 @@ class ImageDownloader:
         """
         query = "+".join(query.split())
         url = self._get_query_url(query)
-        logger.info("Souping")
-        soup = self._get_soup(url, REQUEST_HEADER)
+        try:
+            logger.info("Souping")
+            soup = self._get_soup(url)
+        except Exception as e:
+            logger.exception("Error with url: {} \n{}".format(url, e))
         logger.info("Extracting image urls")
         link_type_records = self._extract_images_from_soup(soup)
         return link_type_records[:num_images]
@@ -72,14 +77,14 @@ class ImageDownloader:
         for i, (url, image_type) in enumerate(images):
             try:
                 logger.info("Making request (%d/%d): %s", i, num_images, url)
-                raw_image = self._get_raw_image(url, REQUEST_HEADER)
+                raw_image = self._get_raw_image(url)
                 image_name = get_image_name(url)
                 self._save_image(raw_image, image_name, save_directory)
             except Exception as e:
-                logger.exception(e)
+                logger.exception("Error with url: {} \n{}".format(url, e))
 
-    def _get_soup(self, url, headers):
-        response = self.session.get(url, headers=headers)
+    def _get_soup(self, url):
+        response = self._session.get(url)
         return BeautifulSoup(response.text, "html.parser")
 
     def _get_query_url(self, query):
@@ -91,8 +96,8 @@ class ImageDownloader:
         link_type_records = [(d["ou"], d["ity"]) for d in metadata_dicts]
         return link_type_records
 
-    def _get_raw_image(self, url, headers):
-        resp = self.session.get(url, headers=headers)
+    def _get_raw_image(self, url):
+        resp = self._session.get(url)
         return resp.content
 
     def _save_image(self, raw_image, image_name, save_directory):
