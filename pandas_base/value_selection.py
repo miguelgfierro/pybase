@@ -93,8 +93,7 @@ def select_values_by_range(df, row_ini, row_end, col_ini, col_end):
     
     Examples:
         >>> df = pd.DataFrame({"letters":["a","a","c"], "numbers":[1,2,3]})
-        >>> df_return = select_values_by_range(df, 0, 1, "letters", "numbers")
-        >>> df_return
+        >>> select_values_by_range(df, 0, 1, "letters", "numbers")
           letters  numbers
         0       a        1
         1       a        2
@@ -115,8 +114,7 @@ def select_values_by_index(df, vector_row_pos, vector_col_pos):
     
     Examples:
         >>> df = pd.DataFrame({"letters":["a","a","c"], "numbers":[1,2,3]})
-        >>> df_return = select_values_by_index(df, vector_row_pos=[0,2], vector_col_pos=[0,1])
-        >>> df_return
+        >>> select_values_by_index(df, vector_row_pos=[0,2], vector_col_pos=[0,1])
           letters  numbers
         0       a        1
         2       c        3
@@ -137,8 +135,7 @@ def select_rows_where_value_equal(df, column, value):
     
     Examples:
         >>> df = pd.DataFrame({"letters":["a","a","c"], "numbers":[1,2,3]})
-        >>> df_return = select_rows_where_value_equal(df, "letters", "a")
-        >>> df_return
+        >>> select_rows_where_value_equal(df, "letters", "a")
           letters  numbers
         0       a        1
         1       a        2
@@ -159,8 +156,7 @@ def select_rows_where_list_equal(df, column, items):
     
     Examples:
         >>> df = pd.DataFrame({"letters":["a","b","c"], "numbers":[1,2,3]})
-        >>> df_return = select_rows_where_list_equal(df, "letters", ["a","b"])
-        >>> df_return
+        >>> select_rows_where_list_equal(df, "letters", ["a","b"])
           letters  numbers
         0       a        1
         1       b        2
@@ -305,8 +301,7 @@ def set_value_where_condition(df, value, col_val, value_cond1, col_cond1):
     
     Examples:
         >>> df = pd.DataFrame({"letters":["a","b","c"], "numbers":[1,2,3], "numbers2":[4,5,6]})
-        >>> df_return = set_value_where_condition(df, 10, "numbers2", "a", "letters")
-        >>> df_return
+        >>> set_value_where_condition(df, 10, "numbers2", "a", "letters")
           letters  numbers  numbers2
         0       a        1        10
         1       b        2         5
@@ -335,8 +330,7 @@ def set_value_where_multiple_condition(
     
     Examples:
         >>> df = pd.DataFrame({"letters":["a","a","a"], "numbers":[1,2,3], "numbers2":[4,5,6]})
-        >>> df_return = set_value_where_multiple_condition(df, 10, "numbers2", "a", "letters", 1, "numbers")
-        >>> df_return
+        >>> set_value_where_multiple_condition(df, 10, "numbers2", "a", "letters", 1, "numbers")
           letters  numbers  numbers2
         0       a        1        10
         1       a        2         5
