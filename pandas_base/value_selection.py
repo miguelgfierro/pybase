@@ -250,7 +250,7 @@ def select_cols_with_nan(df):
         pd.DataFrame: Dataframe with selected columns.
 
     Examples:
-        >>> df = pd.DataFrame({"letters":["a",np.nan,"c"], "numbers":[1,2,3], "numbers2":[4,5,6]})
+        >>> df = pd.DataFrame({"letters":["a",np.nan,"c"], "numbers":[1,2,3]})
         >>> select_cols_with_nan(df)
           letters
         0       a
@@ -258,6 +258,27 @@ def select_cols_with_nan(df):
         2       c
     """
     return df.loc[:,df.isnull().any()]
+
+
+def select_cols_without_nan(df):
+    """Select columns without NaN values. 
+    
+    Args:
+        df (pd.DataFrame): Dataframe.
+
+    Returns:
+        pd.DataFrame: Dataframe with selected columns.
+
+    Examples:
+        >>> df = pd.DataFrame({"letters":["a",np.nan,"c"], "numbers":[1,2,3]})
+        >>> select_cols_without_nan(df)
+           numbers
+        0        1
+        1        2
+        2        3
+    """
+    return df.loc[:,df.notnull().all()]
+
 
 def split_rows_by_condition(df, mask):
     """Split dataframe based on logical indexes (that could come from a condition).
