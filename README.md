@@ -27,11 +27,10 @@ To execute coverage and see the report:
 
     coverage run playground.py
     coverage report
-    
+
 To see more details on the result, the following command will generate a web where the coverage details can be examined line by line:
 
     coverage html
-    
 
 To handle variable outputs in doctest you need to add at the end of the execution line `#doctest: +ELLIPSIS` and substitude the variable output with `...`
 An example can be found in the file [timer.py](python/log_base/timer.py).
@@ -64,7 +63,6 @@ To execute a context manager with doctests:
 
 For the documentation, I'm using the [Google Style](http://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
 
-
 To add a code block that can be rendered with sphinx: 
 
 ```
@@ -75,6 +73,7 @@ To add a code block that can be rendered with sphinx:
 ```
 
 This is equivalent, [having the python syntax](https://pythonhosted.org/an_example_pypi_project/sphinx.html#code):
+
 ```
 Code::
 
@@ -82,7 +81,6 @@ Code::
     print(sys.executable)
 
 ```
-
 
 To add a note:
 
