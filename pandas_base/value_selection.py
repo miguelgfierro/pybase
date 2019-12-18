@@ -195,15 +195,15 @@ def select_any_cols_where_operation_on_value(df, operation, value):
     Examples:
         >>> df = pd.DataFrame({"big_nums":[100, 200, 300], "numbers":[1,2,3]})
         >>> select_any_cols_where_operation_on_value(df, ">", 100)
-          big_nums
-        0      100
-        1      200
-        2      300
+           big_nums
+        0       100
+        1       200
+        2       300
         >>> select_any_cols_where_operation_on_value(df, "<", 5)
-          numbers
-        0       1
-        1       2
-        2       3
+           numbers
+        0        1
+        1        2
+        2        3
     """
     comparison = {
         ">": operator.gt,
