@@ -218,6 +218,33 @@ def select_any_cols_where_operation_on_value(df, operation, value):
     return df.loc[:, (COMPARISON[operation](df, value)).any()]
 
 
+def select_all_cols_where_operation_on_value(df, operation, value):
+    """Select all columns greater, lower or equal than a value. 
+    
+    Args:
+        df (pd.DataFrame): Dataframe.
+        operation (str): Comparison operation i.e. ">", "<=", "=", etc.
+        value (int, str, float): Value to compare with.
+
+    Returns:
+        pd.DataFrame: Dataframe with selected columns.
+
+    Examples:
+        >>> df = pd.DataFrame({"big_nums":[100, 200, 300], "numbers":[1,2,3]})
+        >>> select_all_cols_where_operation_on_value(df, ">", 100)
+        Empty DataFrame
+        Columns: []
+        Index: [0, 1, 2]
+        >>> select_all_cols_where_operation_on_value(df, "<", 5)
+           numbers
+        0        1
+        1        2
+        2        3
+    """
+    # return df.loc[:,(df > value).all()]
+    return df.loc[:, (COMPARISON[operation](df, value)).all()]
+
+
 def split_rows_by_condition(df, mask):
     """Split dataframe based on logical indexes (that could come from a condition).
     
