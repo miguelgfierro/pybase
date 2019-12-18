@@ -180,8 +180,7 @@ def select_all_columns_except_some(df, column_names):
     
     Examples:
         >>> df = pd.DataFrame({"letters":["a","b","c"], "numbers":[1,2,3], "numbers2":[4,5,6]})
-        >>> df_return = select_all_columns_except_some(df, ["numbers","numbers2"])
-        >>> df_return
+        >>> select_all_columns_except_some(df, ["numbers","numbers2"])
           letters
         0       a
         1       b
@@ -244,6 +243,25 @@ def select_all_cols_where_operation_on_value(df, operation, value):
     # return df.loc[:,(df > value).all()]
     return df.loc[:, (COMPARISON[operation](df, value)).all()]
 
+
+def select_cols_with_nan(df):
+    """Select columns with NaN values. 
+    
+    Args:
+        df (pd.DataFrame): Dataframe.
+
+    Returns:
+        pd.DataFrame: Dataframe with selected columns.
+
+    Examples:
+        >>> df = pd.DataFrame({"letters":["a",np.nan,"c"], "numbers":[1,2,3], "numbers2":[4,5,6]})
+        >>> select_cols_with_nan(df)
+          letters
+        0       a
+        1     NaN
+        2       c
+    """
+    return df.loc[:,df.isnull().any()]
 
 def split_rows_by_condition(df, mask):
     """Split dataframe based on logical indexes (that could come from a condition).
