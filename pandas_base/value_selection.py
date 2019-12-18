@@ -2,6 +2,15 @@ import pandas as pd
 import operator
 
 
+COMPARISON = {
+    ">": operator.gt,
+    "<": operator.lt,
+    ">=": operator.ge,
+    "<=": operator.le,
+    "=": operator.eq,
+}
+
+
 def get_unique_values_in_column(df, col_name):
     """Get unique values in a column.
     
@@ -205,15 +214,8 @@ def select_any_cols_where_operation_on_value(df, operation, value):
         1        2
         2        3
     """
-    comparison = {
-        ">": operator.gt,
-        "<": operator.lt,
-        ">=": operator.ge,
-        "<=": operator.le,
-        "=": operator.eq,
-    }
     # return df.loc[:,(df > value).any()]
-    return df.loc[:, (comparison[operation](df, value)).any()]
+    return df.loc[:, (COMPARISON[operation](df, value)).any()]
 
 
 def split_rows_by_condition(df, mask):
