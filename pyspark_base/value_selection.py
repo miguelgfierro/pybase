@@ -16,11 +16,15 @@ def get_unique_values_in_column(df, col_name):
     
     Returns:
         spark.DataFrame: Unique values.
-    
-    Examples:
-        >>> df = spark.createDataFrame([("a", 1), ("a", 2), ("c", 3)], ["letters", "numbers"])
-        >>> get_unique_values_in_column(df, "letters")
-        [Row(letters='c'), Row(letters='a')]
+        
+    **Examples**
+
+        .. code-block:: python
+        
+            df = spark.createDataFrame([("a", 1), ("a", 2), ("c", 3)], ["letters", "numbers"])
+            get_unique_values_in_column(df, "letters") 
+            # [Row(letters='c'), Row(letters='a')]
+
     """
     return df.select(col_name).distinct().collect()
 
@@ -35,10 +39,13 @@ def count_unique_values_in_column(df, col_name):
     Returns:
         spark.DataFrame: Unique values.
     
-    Examples:
-        >>> df = spark.createDataFrame([("a", 1), ("a", 2), ("c", 3)], ["letters", "numbers"])
-        >>> count_unique_values_in_column(df, "letters")
-        [Row(count(DISTINCT letters)=2)]
+    **Examples**
+
+        .. code-block:: python
+        
+            df = spark.createDataFrame([("a", 1), ("a", 2), ("c", 3)], ["letters", "numbers"])
+            count_unique_values_in_column(df, "letters")
+            # [Row(count(DISTINCT letters)=2)]
     """
     return df.select(F.countDistinct(col_name)).collect()
 
