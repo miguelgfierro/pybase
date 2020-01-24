@@ -7,9 +7,26 @@
 
 This is a codebase for basic python utilities.
 
-To install the libraries:
+## Dependencies
 
-    conda env create -n codebase -f conda.yaml
+To install the dependencies on a conda environment named `pybase`:
+
+    conda env create -n pybase -f conda.yaml
+
+Make sure Java and Spark are available in the machine. Then, we need to set the environment variables `PYSPARK_PYTHON` and `PYSPARK_DRIVER_PYTHON` to point to the conda python executable.
+
+<details>
+<summary><strong><em>Press to get the instructions for installing PySpark on Linux or MacOS</em></strong></summary>
+
+
+
+</details>
+
+<details>
+<summary><strong><em>Press to get the instructions for installing PySpark on Windows</em></strong></summary>
+
+
+</details>
 
 ## Configuration
 
