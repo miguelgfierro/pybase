@@ -34,8 +34,7 @@ def read_file(filename, dataset_name="data"):
     Examples:
         >>> read_file('share/data.hdf5')
         array([[1, 2, 3],
-               [4, 5, 6]])
-
+               [4, 5, 6]], dtype=int64)
 
     """
     with h5py.File(filename, "r") as f:
