@@ -32,7 +32,7 @@ def spark(
         >>> config = {"spark.executor.cores": "8"}
         >>> config.update({"spark.executor.memory": "16g"})
         >>> config.update({"spark.memory.fraction": "0.9"})
-        >>> config.update({"spark.memory.stageFraction": "0.3})
+        >>> config.update({"spark.memory.stageFraction": "0.3"})
         >>> config.update({"spark.executor.instances": 1})
         >>> config.update({"spark.executor.heartbeatInterval": "36000s"})
         >>> config.update({"spark.network.timeout": "10000000s"})
