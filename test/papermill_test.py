@@ -9,6 +9,7 @@ def test_notebook_runs():
     pm.execute_notebook(
         INPUT_NOTEBOOK,
         OUTPUT_NOTEBOOK,
+        kernel_name="python3",
         parameters=dict(version=pm.__version__, integer=10),
     )
     results = pm.read_notebook(OUTPUT_NOTEBOOK).dataframe.set_index("name")["value"]
