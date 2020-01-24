@@ -220,10 +220,13 @@ def get_cuda_version():
     try:
         from tensorflow.python.platform import build_info 
         return build_info.cuda_version_number
-    except ImportError:
+    except (ImportError, ModuleNotFoundError):
+        path = ""
         if sys.platform == "win32":
             candidate = "C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v*\\version.txt"
-            path = glob.glob(candidate)[0]
+            path_list = glob.glob(candidate)
+            if path_list:
+                path = path_list[0]
         elif sys.platform == "linux" or sys.platform == "darwin":
             path = "/usr/local/cuda/version.txt"
         else:
@@ -234,7 +237,7 @@ def get_cuda_version():
                 data = f.read().replace("\n", "")
             return data
         else:
-            return "No CUDA in this machine"
+            return "Cannot find CUDA in this machine"
 
 
 def get_cudnn_version():
@@ -264,12 +267,12 @@ def get_cudnn_version():
             else:
                 return "Cannot find CUDNN version"
         else:
-            return "No CUDNN in this machine"
+            return "Cannot find CUDNN version"
 
     try:
         from tensorflow.python.platform import build_info 
         return build_info.cudnn_version_number
-    except ImportError:
+    except (ImportError, ModuleNotFoundError):
         if sys.platform == "win32":
             candidates = [r"C:\NVIDIA\cuda\include\cudnn.h"]
         elif sys.platform == "linux":
