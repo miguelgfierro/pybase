@@ -77,6 +77,19 @@ See more details on how to install PySpark on Windows [here](https://towardsdata
 
 </details>
 
+<details>
+<summary><strong><em>Press to get the instructions for CUDA and CuDNN on Linux or MacOS</em></strong></summary>
+
+
+</details>
+
+
+<details>
+<summary><strong><em>Press to get the instructions for CUDA and CuDNN on Windows</em></strong></summary>
+
+
+</details>
+
 ## Configuration
 
 To be able to run the test in [blob_io.py](python/io_base/blob_io.py), add the correct credentials after renaming the template:
