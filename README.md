@@ -80,6 +80,7 @@ See more details on how to install PySpark on Windows [here](https://towardsdata
 <details>
 <summary><strong><em>Press to get the instructions for CUDA and CuDNN on Linux or MacOS</em></strong></summary>
 
+**TODO**
 
 </details>
 
@@ -87,6 +88,15 @@ See more details on how to install PySpark on Windows [here](https://towardsdata
 <details>
 <summary><strong><em>Press to get the instructions for CUDA and CuDNN on Windows</em></strong></summary>
 
+1. Check the capability of your GPU [here](https://developer.nvidia.com/cuda-gpus).
+1. Select the version of CUDA toolkit you want to [download](https://developer.nvidia.com/cuda-toolkit-archive). The latest version can be found [here](https://developer.nvidia.com/cuda-downloads).
+1. Download the corresponding CuDNN based on the CUDA version [here](https://developer.nvidia.com/rdp/cudnn-download).
+1. Copy three files from the unzipped directory to CUDA X.X install location. For reference, NVIDIA team has put them in their own directory. So all you have to do is to copy file from :
+    * {unzipped dir}/bin/ --> C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\vX.X\bin
+    * {unzipped dir}/include/ --> C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\vX.X\include
+    * {unzipped dir}/lib/ --> C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\vX.X\lib
+
+See the full installation guide [here](https://medium.com/@akshaysin_86681/installing-cuda-and-cudnn-on-windows-10-f735585159f7).
 
 </details>
 
