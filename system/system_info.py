@@ -291,6 +291,11 @@ def get_cudnn_version():
 def is_cuda_available():
     """Check if the system has cuda
     
+    Note:
+        If one types `nvidia-smi`, the CUDA version appears, however, this is just indicates 
+        the driver CUDA version support. It does not provide any information about which 
+        CUDA version is installed or even whether there is CUDA installed at all.
+    
     Returns:
         bool: True if cuda is installed, False otherwise.
     
