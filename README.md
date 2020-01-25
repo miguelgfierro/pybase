@@ -20,20 +20,20 @@ For setting up PySpark, make sure Java and Spark are available in the machine. T
 
 To set these variables every time the environment is activated, we can follow the steps of this [guide](https://conda.io/docs/user-guide/tasks/manage-environments.html#macos-and-linux). First, get the path of the environment `pybase` is installed:
 
-    RECO_ENV=$(conda env list | grep pybase | awk '{print $NF}')
+    CONDA_ENV=$(conda env list | grep pybase | awk '{print $NF}')
 
-Then, create the file `$RECO_ENV/etc/conda/activate.d/env_vars.sh` and add:
+Then, create the file `$CONDA_ENV/etc/conda/activate.d/env_vars.sh` and add:
 
     #!/bin/sh
-    RECO_ENV=$(conda env list | grep pybase | awk '{print $NF}')
-    export PYSPARK_PYTHON=$RECO_ENV/bin/python
-    export PYSPARK_DRIVER_PYTHON=$RECO_ENV/bin/python
+    CONDA_ENV=$(conda env list | grep pybase | awk '{print $NF}')
+    export PYSPARK_PYTHON=$CONDA_ENV/bin/python
+    export PYSPARK_DRIVER_PYTHON=$CONDA_ENV/bin/python
     export SPARK_HOME_BACKUP=$SPARK_HOME
     unset SPARK_HOME
 
 This will export the variables every time we do `conda activate pybase`.
 To unset these variables when we deactivate the environment,
-create the file `$RECO_ENV/etc/conda/deactivate.d/env_vars.sh` and add:
+create the file `$CONDA_ENV/etc/conda/deactivate.d/env_vars.sh` and add:
 
     #!/bin/sh
     unset PYSPARK_PYTHON
@@ -48,14 +48,14 @@ create the file `$RECO_ENV/etc/conda/deactivate.d/env_vars.sh` and add:
 
 To set these variables every time the environment is activated, we can follow the steps of this [guide](https://conda.io/docs/user-guide/tasks/manage-environments.html#windows). First, get the path of the environment `pybase` is installed:
 
-    for /f "delims=" %A in ('conda env list ^| grep pybase ^| awk "{print $NF}"') do set "RECO_ENV=%A"
+    for /f "delims=" %A in ('conda env list ^| grep pybase ^| awk "{print $NF}"') do set "CONDA_ENV=%A"
 
-Then, create the file `%RECO_ENV%\etc\conda\activate.d\env_vars.bat` and add:
+Then, create the file `%CONDA_ENV%\etc\conda\activate.d\env_vars.bat` and add:
  
     @echo off
-    for /f "delims=" %%A in ('conda env list ^| grep pybase ^| awk "{print $NF}"') do set "RECO_ENV=%%A"
-    set PYSPARK_PYTHON=%RECO_ENV%\python.exe
-    set PYSPARK_DRIVER_PYTHON=%RECO_ENV%\python.exe
+    for /f "delims=" %%A in ('conda env list ^| grep pybase ^| awk "{print $NF}"') do set "CONDA_ENV=%%A"
+    set PYSPARK_PYTHON=%CONDA_ENV%\python.exe
+    set PYSPARK_DRIVER_PYTHON=%CONDA_ENV%\python.exe
     set SPARK_HOME_BACKUP=%SPARK_HOME%
     set SPARK_HOME=
     set PYTHONPATH_BACKUP=%PYTHONPATH%
@@ -63,7 +63,7 @@ Then, create the file `%RECO_ENV%\etc\conda\activate.d\env_vars.bat` and add:
 
 This will export the variables every time we do `conda activate pybase`.
 To unset these variables when we deactivate the environment,
-create the file `%RECO_ENV%\etc\conda\deactivate.d\env_vars.bat` and add:
+create the file `%CONDA_ENV%\etc\conda\deactivate.d\env_vars.bat` and add:
 
     @echo off
     set PYSPARK_PYTHON=
