@@ -113,4 +113,5 @@ python/test/output.ipynb
 file.*
 output.ipynb
 license.txt
+test_spark*/
 

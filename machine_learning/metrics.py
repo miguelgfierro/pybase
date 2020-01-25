@@ -40,7 +40,7 @@ def classification_metrics_binary(y_true, y_pred):
         >>> result = classification_metrics_binary(y_true, y_pred)
         >>> OrderedDict(sorted(result.items()))
         OrderedDict([('Accuracy', 0.8), ('Confusion Matrix', array([[2, 1],
-               [0, 2]])), ('F1', 0.8), ('Precision', 0.6666666666666666), ('Recall', 1.0)])
+               [0, 2]], dtype=int64)), ('F1', 0.8), ('Precision', 0.6666666666666666), ('Recall', 1.0)])
     """
     m_acc = accuracy_score(y_true, y_pred)
     m_f1 = f1_score(y_true, y_pred)
@@ -86,7 +86,7 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
         >>> OrderedDict(sorted(result.items()))
         OrderedDict([('Accuracy', 0.6), ('Confusion Matrix', array([[1, 1, 0],
                [0, 2, 0],
-               [1, 0, 0]])), ('F1', 0.52), ('Precision', 0.4666666666666666), ('Recall', 0.6)])
+               [1, 0, 0]], dtype=int64)), ('F1', 0.52), ('Precision', 0.4666666666666666), ('Recall', 0.6)])
     """
     m_acc = accuracy_score(y_true, y_pred)
     m_f1 = f1_score(y_true, y_pred, labels, average="weighted")
