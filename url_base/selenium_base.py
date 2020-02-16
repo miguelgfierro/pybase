@@ -37,13 +37,13 @@ def create_page_driver(url, browser="chrome", **kwargs):
     return driver
 
 
-def _driver_map(browser="safari"):
+def _driver_map(browser):
     browser_map = {
+        "chrome": webdriver.Chrome,
         "safari": webdriver.Safari,
         "firefox": webdriver.Firefox,
         "ie": webdriver.Ie,
         "edge": webdriver.Edge,
-        "chrome": webdriver.Chrome,
     }
     return browser_map[browser]
 
