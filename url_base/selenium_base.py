@@ -2,16 +2,20 @@ import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def create_page_driver(url, browser="safari", driver_path=None):
+def create_page_driver(url, browser="chrome", **kwargs):
     """Generates the selenium driver to parse a web
+    
+    To instantiate this function, a driver has to be added to the path, see all
+    drivers in https://selenium-python.readthedocs.io/installation.html#drivers
     
     Args:
         url (str): URL to parse
+        browser (str): Broser, one of firefox, chrome, edge, ie, safari.
     
     Returns:
         obj: Driver of the web
@@ -22,7 +26,13 @@ def create_page_driver(url, browser="safari", driver_path=None):
         $ driver.title
         'Sciblog - A blog designed like a scientific paper'
     """
-    driver = _driver_map(browser)(executable_path=driver_path)
+    try:
+        driver = _driver_map(browser)(**kwargs)
+    except WebDriverException as e:
+        logging.error(
+            "Driver not found, download one in https://selenium-python.readthedocs.io/installation.html#drivers"
+        )
+        raise
     driver.get(url)
     return driver
 
