@@ -1,39 +1,52 @@
 import os
+import logging
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def create_page_driver(url, browser="safari", driver_path=None):
+def create_page_driver(url, browser="firefox", **kwargs):
     """Generates the selenium driver to parse a web
+    
+    To instantiate this function, a driver has to be added to the path, see all
+    drivers in https://selenium-python.readthedocs.io/installation.html#drivers
     
     Args:
         url (str): URL to parse
+        browser (str): Broser, one of firefox, chrome, edge, ie, safari.
     
     Returns:
         obj: Driver of the web
     
-    Example (not executable):
-        $ url = 'http://miguelgfierro.com/'
-        $ driver = create_page_driver(url)
-        $ driver.title
-        'Sciblog - A blog designed like a scientific paper'
+    **Examples**
+
+    .. code-block:: python
+
+        url = 'http://miguelgfierro.com/'
+        driver = create_page_driver(url)
+        print(driver.title) # 'Sciblog - A blog designed like a scientific paper'
     """
-    driver = _driver_map(browser)(executable_path=driver_path)
+    try:
+        driver = _driver_map(browser)(**kwargs)
+    except WebDriverException as e:
+        logging.error(
+            "Driver not found, download one in https://selenium-python.readthedocs.io/installation.html#drivers"
+        )
+        raise
     driver.get(url)
     return driver
 
 
-def _driver_map(browser="safari"):
+def _driver_map(browser):
     browser_map = {
+        "chrome": webdriver.Chrome,
         "safari": webdriver.Safari,
         "firefox": webdriver.Firefox,
         "ie": webdriver.Ie,
         "edge": webdriver.Edge,
-        "chrome": webdriver.Chrome,
     }
     return browser_map[browser]
 
@@ -49,11 +62,13 @@ def search_form(driver, html_class_form, search_term):
     Returns:
         obj: driver of the web
     
-    Example (not executable):
-        $ driver = create_page_driver('http://miguelgfierro.com/')
-        $ search_form(driver, 'navigation-bar-search-input', 'deep learning')
-        $ driver.current_url
-        'https://miguelgfierro.com/search?q=deep+learning'
+    **Examples**
+
+    .. code-block:: python
+
+        driver = create_page_driver('http://miguelgfierro.com/')
+        search_form(driver, 'navigation-bar-search-input', 'deep learning')
+        print(driver.current_url) # 'https://miguelgfierro.com/search?q=deep+learning'
     """
     element = driver.find_element_by_class_name(html_class_form)
     element.clear()
@@ -69,9 +84,12 @@ def screenshot(driver, path="", filename="page.png"):
         path (str): Path to file
         filename (str): Filename
     
-    Example (not executable):
-        $ driver = create_page_driver('http://miguelgfierro.com/')
-        $ screenshot(driver, filename='mig.png')
+    **Examples**
+
+    .. code-block:: python
+    
+        driver = create_page_driver('http://miguelgfierro.com/')
+        screenshot(driver, filename='mig.png')
 
     """
     driver.get_screenshot_as_file(os.path.join(path, filename))
@@ -79,6 +97,7 @@ def screenshot(driver, path="", filename="page.png"):
 
 def find_element(driver, value, selector_type="class", multiple=False):
     """Find an element using a selector.
+
     More info: https://gist.github.com/casschin/1990245
     
     Args:
@@ -91,20 +110,19 @@ def find_element(driver, value, selector_type="class", multiple=False):
     Returns:
         obj: driver of the web
     
-    Example (not executable):
-        $ driver = create_page_driver('https://miguelgfierro.com/blog/2017/a-gentle-introduction-to-transfer-learning-for-image-classification/')
-        $ element = find_element(driver, 'title', 'class')
-        $ element.text
-        ' A Gentle Introduction to Transfer Learning for Image Classification'
-        $ element = find_element(driver, 'h1', 'tag')
-        $ element.text
-        ' A Gentle Introduction to Transfer Learning for Image Classification'
-        $ element = find_element(driver, 'h1.title', 'css')
-        $ element.text
-        ' A Gentle Introduction to Transfer Learning for Image Classification'
-        $ element = find_element(driver, '/html/body/div[5]/div/div[2]/div[2]/h1', 'xpath')
-        $ element.text
-        ' A Gentle Introduction to Transfer Learning for Image Classification'
+    **Examples**
+
+    .. code-block:: python
+    
+        driver = create_page_driver('https://miguelgfierro.com/blog/2017/a-gentle-introduction-to-transfer-learning-for-image-classification/')
+        element = find_element(driver, 'title', 'class')
+        print(element.text) # ' A Gentle Introduction to Transfer Learning for Image Classification'
+        element = find_element(driver, 'h1', 'tag')
+        print(element.text) # ' A Gentle Introduction to Transfer Learning for Image Classification'
+        element = find_element(driver, 'h1.title', 'css')
+        print(element.text) # ' A Gentle Introduction to Transfer Learning for Image Classification'
+        element = find_element(driver, '/html/body/div[5]/div/div[2]/div[2]/h1', 'xpath')
+        print(element.text) # ' A Gentle Introduction to Transfer Learning for Image Classification'
 
     """
     selector_dict = {
@@ -130,6 +148,6 @@ def find_element(driver, value, selector_type="class", multiple=False):
         else:
             element = driver.find_element(by=by_func, value=value)
     except NoSuchElementException as e:
-        print("Element {} not found".format(value))
+        logging.error("Element {} not found".format(value))
         raise e
     return element
