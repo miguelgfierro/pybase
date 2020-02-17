@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def create_page_driver(url, browser="chrome", **kwargs):
+def create_page_driver(url, browser="firefox", **kwargs):
     """Generates the selenium driver to parse a web
     
     To instantiate this function, a driver has to be added to the path, see all
