@@ -3,7 +3,9 @@
 [![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/pybase.svg)](https://github.com/miguelgfierro/pybase/commits/master)
 [![Code style:black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 [![Python 3.5+supported](https://img.shields.io/badge/python-3.5+-blue.svg)](https://www.python.org/downloads/release/python-350/)
-
+[![Twitter](https://img.shields.io/twitter/follow/miguelgfierro?style=social)](https://twitter.com/intent/follow?screen_name=miguelgfierro
+)
+[![Beerpay](https://img.shields.io/beerpay/miguelgfierro/pybase)](https://beerpay.io/miguelgfierro/pybase)
 
 # Python pybase
 
