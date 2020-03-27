@@ -76,13 +76,12 @@ def get_library_version(library_name):
     try:
         version = pkg_resources.get_distribution(library_name).version
     except Exception:
-        pass  # FIXME: better way?
+        pass 
     try:
         lib = importlib.import_module(library_name)
         version = lib.__version__
     except Exception as e:
-        print(e)
-        raise
+        version = "Could not find the version"
     return version
 
 
