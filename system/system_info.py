@@ -1,4 +1,5 @@
 import sys
+from functools import lru_cache
 import pkg_resources
 import importlib
 import os
@@ -59,6 +60,7 @@ def get_python_version():
     return sys.version
 
 
+@lru_cache()
 def get_library_version(library_name):
     """Get the version of a library.
     
@@ -76,12 +78,11 @@ def get_library_version(library_name):
     try:
         version = pkg_resources.get_distribution(library_name).version
     except Exception:
-        pass 
-    try:
-        lib = importlib.import_module(library_name)
-        version = lib.__version__
-    except Exception as e:
-        version = "Could not find the version"
+        try:
+            lib = importlib.import_module(library_name)
+            version = lib.__version__
+        except AttributeError as e:
+            version = "Could not find the version"
     return version
 
 
