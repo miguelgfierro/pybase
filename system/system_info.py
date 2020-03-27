@@ -82,6 +82,7 @@ def get_library_version(library_name):
         version = lib.__version__
     except Exception as e:
         print(e)
+        raise
     return version
 
 
