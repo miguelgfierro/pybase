@@ -53,7 +53,7 @@ dependencies:
   - wsaccel>=0.6.2
   - ujson>=1.35
   - backoff>=1.8.0
-  - pytube>=9.5.3
+  - pytube3>=9.5.3
   - moviepy>=1.0.1
 
 
