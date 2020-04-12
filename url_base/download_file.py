@@ -7,15 +7,35 @@ from contextlib import contextmanager
 from tempfile import TemporaryDirectory
 from tqdm import tqdm
 import math
+from pytube import YouTube
 
 
 log = logging.getLogger(__name__)
 
 
-@backoff.on_exception(backoff.expo, 
-                      requests.exceptions.HTTPError, 
-                      max_tries=5
-                     )
+def download_youtube(url, filename=None, work_directory="."):
+    """Download a youtube video. It takes the one with the highest resolution.
+    
+    Args:
+        url (str): Youtube url.
+        filename (str): File name
+        work_directory (str): Working directory.
+
+    Returns:
+        str: Path to the video file.
+    """
+    os.makedirs(work_directory, exist_ok=True)
+    filepath = (
+        YouTube(url)
+        .streams.order_by("resolution")
+        .desc()
+        .first()
+        .download(output_path=work_directory, filename=filename)
+    )
+    return filepath
+
+
+@backoff.on_exception(backoff.expo, requests.exceptions.HTTPError, max_tries=5)
 def maybe_download(
     url, filename=None, work_directory=".", expected_bytes=None, force_download=False
 ):
@@ -104,4 +124,3 @@ def download_path(path=None):
     else:
         path = os.path.realpath(path)
         yield path
-
