@@ -43,14 +43,14 @@ def video_from_frames_cv(filename, folder, fps=25, img_format=".jpeg"):
     video.release()
 
 
-def video_from_frames_ffmpeg(filename, folder, fps, **kwargs):
+def video_from_frames_ffmpeg(filename, folder, fps=25, **kwargs):
     """Create a video from a set of frames in a folder using ffmpeg.
 
     Args:
         filename (str): Name of the video.
         folder (str): Folder with images.
         fps (int): Frames per second.
-        
+
     """
     allowed_kwargs = {"digits", "bitrate"}
     for k in kwargs:
