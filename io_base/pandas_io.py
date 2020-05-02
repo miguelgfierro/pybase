@@ -58,6 +58,11 @@ def read_csv(filename, **kwargs):
                t   q0   q1
         0  0.041  443  205
         1  0.083  444  206
+        >>> df.dtypes
+        t     float64
+        q0      int64
+        q1      int64
+        dtype: object
     """
     return pd.read_csv(filename, **kwargs)
 
