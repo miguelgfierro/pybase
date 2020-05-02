@@ -37,9 +37,34 @@ def read_csv(filename, **kwargs):
                time   q1   q2
         0  0.041667  443  205
         1  0.083333  444  206
+        >>> df = read_csv(filename="share/traj_header.csv", usecols=["t","q0"])
+        >>> df
+                  t   q0
+        0  0.041667  443
+        1  0.083333  444
+        >>> df.dtypes
+        t     float64
+        q0      int64
+        dtype: object
+        >>> df = read_csv(filename="share/traj_header.csv", dtype={"t": str, "q0":float})
+        >>> df.dtypes
+        t      object
+        q0    float64
+        q1      int64
+        dtype: object
+        >>> ff = lambda x: float(x[:5]) # NOTE: that the data is read as str, and then it can be transformed to float
+        >>> df = read_csv(filename="share/traj_header.csv", converters={"t":ff})
+        >>> df
+               t   q0   q1
+        0  0.041  443  205
+        1  0.083  444  206
+        >>> df.dtypes
+        t     float64
+        q0      int64
+        q1      int64
+        dtype: object
     """
-    dataframe = pd.read_csv(filename, **kwargs)
-    return dataframe
+    return pd.read_csv(filename, **kwargs)
 
 
 def save_to_sqlite(dataframe, database, table_name, **kargs):
@@ -93,4 +118,3 @@ def read_from_sqlite(database, query, **kargs):
     connection_string = "sqlite:///" + database
     engine = create_engine(connection_string)
     return pd.read_sql(query, engine, **kargs)
-
