@@ -48,16 +48,16 @@ def read_csv(filename, **kwargs):
         dtype: object
         >>> df = read_csv(filename="share/traj_header.csv", dtype={"t": str, "q0":float})
         >>> df.dtypes
-        t    object
-        q0   float64
-        q1   int64
+        t      object
+        q0    float64
+        q1      int64
         dtype: object
-        >>> ff = lambda x: "{:.2f}".format(x)
+        >>> ff = lambda x: float(x[:5]) # NOTE: that the data is read as str, and then it can be transformed to float
         >>> df = read_csv(filename="share/traj_header.csv", converters={"t":ff})
         >>> df
-              t   q0   q1
-        0  0.04  443  205
-        1  0.08  444  206
+               t   q0   q1
+        0  0.041  443  205
+        1  0.083  444  206
     """
     return pd.read_csv(filename, **kwargs)
 
