@@ -54,8 +54,7 @@ def read_csv(filename, **kwargs):
         0  0.04  443  205
         1  0.08  444  206
     """
-    dataframe = pd.read_csv(filename, **kwargs)
-    return dataframe
+    return pd.read_csv(filename, **kwargs)
 
 
 def save_to_sqlite(dataframe, database, table_name, **kargs):
