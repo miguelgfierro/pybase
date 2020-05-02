@@ -37,6 +37,11 @@ def read_csv(filename, **kwargs):
                time   q1   q2
         0  0.041667  443  205
         1  0.083333  444  206
+        >>> df = read_csv(filename="share/traj_header.csv", usecols=["q0","q1"])
+        >>> df
+            q0   q1
+        0  443  205
+        1  444  206
     """
     dataframe = pd.read_csv(filename, **kwargs)
     return dataframe
@@ -93,4 +98,3 @@ def read_from_sqlite(database, query, **kargs):
     connection_string = "sqlite:///" + database
     engine = create_engine(connection_string)
     return pd.read_sql(query, engine, **kargs)
-
