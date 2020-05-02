@@ -42,6 +42,12 @@ def read_csv(filename, **kwargs):
             q0   q1
         0  443  205
         1  444  206
+        >>> ff = lambda x: "{:.2f}".format(x)
+        >>> df = read_csv(filename="share/traj_header.csv", dtype={"t": float}, converters={"t":ff})
+        >>> df
+           time   q0   q1
+        0  0.04  443  205
+        1  0.08  444  206
     """
     dataframe = pd.read_csv(filename, **kwargs)
     return dataframe
