@@ -37,6 +37,11 @@ def read_csv(filename, **kwargs):
                time   q1   q2
         0  0.041667  443  205
         1  0.083333  444  206
+        >>> df.dtypes
+        time    float64
+        q1        int64
+        q2        int64
+        dtype: object
         >>> df = read_csv(filename="share/traj_header.csv", usecols=["q0","q1"])
         >>> df
             q0   q1
@@ -45,7 +50,7 @@ def read_csv(filename, **kwargs):
         >>> ff = lambda x: "{:.2f}".format(x)
         >>> df = read_csv(filename="share/traj_header.csv", dtype={"t": float}, converters={"t":ff})
         >>> df
-           time   q0   q1
+              t   q0   q1
         0  0.04  443  205
         1  0.08  444  206
     """
