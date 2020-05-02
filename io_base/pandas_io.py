@@ -48,7 +48,7 @@ def read_csv(filename, **kwargs):
         0  443  205
         1  444  206
         >>> ff = lambda x: "{:.2f}".format(x)
-        >>> df = read_csv(filename="share/traj_header.csv", dtype={"t": float}, converters={"t":ff})
+        >>> df = read_csv(filename="share/traj_header.csv", converters={"t":ff})
         >>> df
               t   q0   q1
         0  0.04  443  205
