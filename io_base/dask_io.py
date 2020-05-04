@@ -1,5 +1,4 @@
 import dask.dataframe as dd
-import pandas as pd
 
 
 def save_csv(data, filename="file.*.csv", npartitions=1, **kwargs):
@@ -8,7 +7,7 @@ def save_csv(data, filename="file.*.csv", npartitions=1, **kwargs):
     Args:
         data (pd.DataFrame): A dataframe
         filename (str): Name of the file with a globstring '*'. Dask will substitude
-                        '*' with the number of partitions
+            '*' with the number of partitions
         npartitions (int): Number of partitions of the data. It will generate a file per partition
     
     Examples:
@@ -46,5 +45,4 @@ def read_csv(filename, **kwargs):
         1  0.083333  444  206
     """
     data = dd.read_csv(filename, **kwargs)
-    d = data.compute().reset_index(drop=True)
-    return d
+    return data.compute().reset_index(drop=True)
