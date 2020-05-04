@@ -38,6 +38,25 @@ def get_object_size(obj, units="Mb"):
     return _manage_memory_units(s_bytes, units)
 
 
+def get_pandas_df_size(obj, units="Mb"):
+    """Calculate the size of a pandas DataFrame.
+
+    Args:
+        obj (pd.DataFrame): Dataframe.
+        units (str): Units [bytes, Kb, Mb, Gb]
+    
+    Returns:
+        float: Size of the object.
+    
+    Examples:
+        >>> df = pd.DataFrame({"a":[1]*100, "b":[0.5]*100}) 
+        >>> get_pandas_df_size(df, "Kb")
+        1.6875
+    """
+    obj_bytes = obj.memory_usage(deep=True).sum()
+    return _manage_memory_units(obj_bytes, units)
+
+
 def get_ram_memory(units="Mb"):
     """Get the RAM memory of the current machine.
     
