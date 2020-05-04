@@ -39,6 +39,4 @@ def read_file(filename):
         >>> b.shape
         (5,)
     """
-    data = np.load(filename)
-    return data
-
+    return np.load(filename)
