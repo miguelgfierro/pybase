@@ -11,9 +11,9 @@ def _manage_memory_units(data_in_bytes, units):
     elif units == "Kb":
         return data_in_bytes / 1024
     elif units == "Mb":
-        return data_in_bytes / 1024 / 1024
+        return data_in_bytes / 1048576  # 1024**2
     elif units == "Gb":
-        return data_in_bytes / 1024 / 1024 / 1024
+        return data_in_bytes / 1073741824  # 1024**3
     else:
         raise AttributeError("Units not correct")
 
