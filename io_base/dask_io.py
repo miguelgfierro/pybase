@@ -43,12 +43,18 @@ def read_csv(filename, **kwargs):
                   0    1    2
         0  0.041667  443  205
         1  0.083333  444  206
+        >>> df = read_csv(filename="share/traj_header.csv", usecols=lambda x: x not in ['q1']) # usecols=["t","q0"])
+        >>> df
+                  t   q0
+        0  0.041667  443
+        1  0.083333  444
         >>> df = read_csv(filename="share/traj_header.csv", dtype={"t": str, "q0":float})
         >>> df.dtypes
         t      object
         q0    float64
         q1      int64
         dtype: object
+
     """
     data = dd.read_csv(filename, **kwargs)
     return data.compute().reset_index(drop=True)

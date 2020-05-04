@@ -37,7 +37,7 @@ def read_csv(filename, **kwargs):
                time   q1   q2
         0  0.041667  443  205
         1  0.083333  444  206
-        >>> df = read_csv(filename="share/traj_header.csv", usecols=["t","q0"])
+        >>> df = read_csv(filename="share/traj_header.csv", usecols=["t","q0"]) # usecols=lambda x: x not in ['q1']
         >>> df
                   t   q0
         0  0.041667  443
