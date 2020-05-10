@@ -8,7 +8,7 @@ def derivate(func, x, val):
     `See more info <https://adel.ac/automatic-differentiation/>`_
 
     Args:
-        func (callable): The objective function to be minimized. 
+        func (callable): The objective function to be differentiated. 
         x (np.array): Initial conditions.
 
     Returns:

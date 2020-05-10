@@ -44,7 +44,7 @@ def derivate(func, x):
     `See more info <https://adel.ac/automatic-differentiation/>`_
 
     Args:
-        func (callable): The objective function to be minimized. 
+        func (callable): The objective function to be differentiated. 
         x (list of tensors): Initial conditions.
 
     Returns:
