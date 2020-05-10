@@ -25,6 +25,7 @@ def rosenbrock(x):
         float: The value of the Rosenbrock function.
     
     """
+    # return 100*(x[1] - x[0]**2)**2 + (1 - x[0])**2
     return rosen(x)
 
 
