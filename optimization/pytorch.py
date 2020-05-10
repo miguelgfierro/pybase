@@ -55,7 +55,7 @@ def derivate(func, x):
         >>> x = [Variable(FloatTensor([1]), requires_grad=True), Variable(FloatTensor([1]), requires_grad=True)]
         >>> xd1, xd2, y = derivate(rosenbrock, x)
         >>> xd1, xd2
-        (tensor([-0.]) tensor([0.]))
+        (tensor([-0.]), tensor([0.]))
         >>> y
         tensor([0.], grad_fn=<AddBackward0>)
 
