@@ -13,7 +13,7 @@ def optimize_function(func, x, rounds=10000, lr=0.001):
         lr (float): Learning rate.
 
     Returns:
-        list, tensor: Minimization final value and function evaluated at the minimum.
+        tensor, tensor: Minimization final value and function evaluated at the minimum.
 
     Examples:
         >>> from .functions import rosenbrock
@@ -36,3 +36,30 @@ def optimize_function(func, x, rounds=10000, lr=0.001):
         # if (i + 1) % 1000 == 0:
         #     print(i + 1, x, y)
     return x, y
+
+
+def derivate(func, x):
+    """Perform autodifferentiation.
+
+    `See more info <https://adel.ac/automatic-differentiation/>`_
+
+    Args:
+        func (callable): The objective function to be minimized. 
+        x (list of tensors): Initial conditions.
+
+    Returns:
+        tensor, tensor, tensor: Derivative and value function.
+
+    Examples:
+        >>> from .functions import rosenbrock
+        >>> x = [Variable(FloatTensor([1]), requires_grad=True), Variable(FloatTensor([1]), requires_grad=True)]
+        >>> xd1, xd2, y = derivate(rosenbrock, x)
+        >>> xd1, xd2
+        (tensor([-0.]) tensor([0.]))
+        >>> y
+        tensor([0.], grad_fn=<AddBackward0>)
+
+    """
+    y = func(x)
+    y.backward()
+    return x[0].grad, x[1].grad, y
