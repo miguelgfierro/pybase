@@ -23,6 +23,10 @@ def rosenbrock(x):
 
     Returns:
         float: The value of the Rosenbrock function.
+
+    Examples:
+        >>> rosenbrock([1, 1])
+        0.0
     
     """
     # return 100*(x[1] - x[0]**2)**2 + (1 - x[0])**2
