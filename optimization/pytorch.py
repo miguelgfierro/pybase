@@ -20,7 +20,7 @@ def optimize_function(func, x, rounds=10000, lr=0.001):
         >>> x = [Variable(FloatTensor([2]), requires_grad=True), Variable(FloatTensor([2]), requires_grad=True)]
         >>> x, y = optimize_function(rosenbrock, x)
         >>> x
-        [tensor([1.0081], requires_grad=True), tensor([1.0162], requires_grad=True)] 
+        [tensor([1.0081], requires_grad=True), tensor([1.0162], requires_grad=True)]
         >>> y
         tensor([6.5133e-05], grad_fn=<AddBackward0>)
 
