@@ -183,9 +183,9 @@ def replace_column_values(df, val_dict, col_name, new_col_name=None):
     """
     df_return = df.copy()
     if new_col_name is None:
-        df_return[col_name].replace(val_dict, inplace=True)
+        df_return[col_name] = df_return[col_name].map(val_dict)
     else:
-        df_return[new_col_name] = df_return[col_name].replace(val_dict, inplace=False)
+        df_return[new_col_name] = df_return[col_name].map(val_dict)
     return df_return
 
 
