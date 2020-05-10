@@ -9,14 +9,14 @@ def derivate(func, x):
 
     Args:
         func (callable): The objective function to be minimized. 
-        x (list of tensors): Initial conditions.
+        x (np.array): Initial conditions.
 
     Returns:
-        tensor, tensor, tensor: Derivative and value function.
+        list, float: Derivative and value function.
 
     Examples:
-        >>> y = tf.add(tf.pow(tf.subtract(1.0, x[0]), 2.0), tf.multiply(100.0, tf.pow(tf.subtract(x[1],tf.pow(x[0], 2.0)), 2.0)), 'y') # rosenbrock function
         >>> x = np.array([1.0, 1.0], dtype=np.float32)
+        >>> y = tf.add(tf.pow(tf.subtract(1.0, x[0]), 2.0), tf.multiply(100.0, tf.pow(tf.subtract(x[1],tf.pow(x[0], 2.0)), 2.0)), 'y') # rosenbrock function
         >>> xd, y = derivate(y, x)
         >>> xd
         [0. 0.]
