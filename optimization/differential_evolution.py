@@ -17,7 +17,7 @@ def optimize_function(func, bounds, **kargs):
     Examples:
         >>> from .functions import rosenbrock
         >>> bounds = [(0,2), (0, 2), (0, 2), (0, 2), (0, 2)]
-        >>> result = optimize_function(rosenbrock, bounds)
+        >>> result = optimize_function(rosenbrock, bounds, workers=-1, updating="deferred")
         >>> result.x # Solution
         array([1., 1., 1., 1., 1.])
         >>> result.fun # Final value of the objective function
@@ -26,7 +26,7 @@ def optimize_function(func, bounds, **kargs):
         True
         >>> from .functions import ackley
         >>> bounds = [(-5, 5), (-5, 5)]
-        >>> result = optimize_function(ackley, bounds, strategy='best2exp')
+        >>> result = optimize_function(ackley, bounds, strategy='best2exp', workers=-1, updating="deferred")
         >>> result.x # Solution
         array([0., 0.])
         >>> round(result.fun) # Final value of the objective function (around 4e-16)
@@ -35,4 +35,3 @@ def optimize_function(func, bounds, **kargs):
         True
     """
     return differential_evolution(func, bounds, **kargs)
-
