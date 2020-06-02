@@ -183,9 +183,13 @@ def replace_column_values(df, val_dict, col_name, new_col_name=None):
     """
     df_return = df.copy()
     if new_col_name is None:
-        df_return[col_name] = df_return[col_name].map(val_dict)
+        # NOTE: even though according to https://stackoverflow.com/a/41678874/5620182, using map
+        # is 10x faster than replace, in my own benchmarks replace is 3x faster than 
+        # map(val_dict).fillna(df_return[col_name]) and about the same as map(val_dict), however
+        # this last one will leave as NaN all values that are not in val_dict
+        df_return[col_name] = df_return[col_name].replace(val_dict)
     else:
-        df_return[new_col_name] = df_return[col_name].map(val_dict)
+        df_return[new_col_name] = df_return[col_name].replace(val_dict)
     return df_return
 
 
