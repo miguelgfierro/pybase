@@ -37,6 +37,9 @@ def plot_image_matplotlib(img, figsize=None, title=None):
 
         >> img = cv2.imread('share/Lenna.png')
         >> plot_image_matplotlib(img)
+        >> img_gray = cv2.imread('share/Lenna_gray.png')
+        >> img_comb = cv2.hconcat([img, img_gray]) 
+        >> plot_image_matplotlib(img_comb, figsize=(8, 4))
     """
     shape_len = len(img.shape)
     if shape_len == 3:  # color image
@@ -73,6 +76,7 @@ def draw_rectangle(img, rect, color=(0, 0, 255), thickness=2):
         >> img = cv2.imread('share/Lenna.png')
         >> img_box = draw_rectangle(img, (40, 20, 400, 491))
         >> plot_image_matplotlib(img_box)
+
 
     """
     x, y, w, h = _ensure_rec_inside_image(img, rect)
