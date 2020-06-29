@@ -278,6 +278,7 @@ def get_cudnn_version():
             candidates = [r"C:\NVIDIA\cuda\include\cudnn.h"]
         elif sys.platform == "linux":
             candidates = [
+                "/usr/include/cudnn_version.h",
                 "/usr/include/x86_64-linux-gnu/cudnn_v[0-99].h",
                 "/usr/local/cuda/include/cudnn.h",
                 "/usr/include/cudnn.h",
