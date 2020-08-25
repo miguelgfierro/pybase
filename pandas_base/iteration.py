@@ -1,5 +1,13 @@
 # Pandas rows iteration benchmark
 
+import pandas as pd
+
+rows = 100000
+df = pd.DataFrame({"a": np.random.normal(size=(rows)),
+                   "b": np.random.normal(size=(rows)),
+                   "c": np.random.randint(0, 5, size=(rows))
+                  })
+
 def iteration_itertuples():
     a = 0
     for row in df.itertuples():
