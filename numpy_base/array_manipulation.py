@@ -1,4 +1,5 @@
 import numpy as np
+import numexpr as ne
 
 
 def split_array_in_subarrays(data, n_subarrays, axis=0):
@@ -95,4 +96,4 @@ def binarize_array(data, threshold, lower, upper):
         array([[1, 1, 6],
                [1, 6, 6]])
     """
-    return np.where(data > threshold, upper, lower)
+    return ne.evaluate("where(data > threshold, upper, lower)")
