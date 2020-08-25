@@ -33,7 +33,7 @@ Then, create the file `$CONDA_ENV/etc/conda/activate.d/env_vars.sh` and add:
     export PYSPARK_PYTHON=$CONDA_ENV/bin/python
     export PYSPARK_DRIVER_PYTHON=$CONDA_ENV/bin/python
     export SPARK_HOME_BACKUP=$SPARK_HOME
-    unset SPARK_HOME
+    export SPARK_HOME=/home/root/installer/spark
 
 This will export the variables every time we do `conda activate pybase`.
 To unset these variables when we deactivate the environment,

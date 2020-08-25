@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 
+
 if __name__ == "__main__":
     df = pd.DataFrame({'col1':[1,2,3],
                        'col2':[0.1,np.nan,0.3],
@@ -14,6 +15,9 @@ if __name__ == "__main__":
     print(df.sum())
     print(df.clip(lower=1, upper=10))
     print(df.describe())
+    print(df.duplicated().any()) # faster than any(df.duplicated())
+    print(df.isnull().values.any()) # is there any missing value?
+    print(df.isnull().values.sum()) # faster than df.isnull().sum().sum()
 
 
 
