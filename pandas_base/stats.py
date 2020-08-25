@@ -16,6 +16,8 @@ if __name__ == "__main__":
     print(df.clip(lower=1, upper=10))
     print(df.describe())
     print(df.duplicated().any()) # faster than any(df.duplicated())
+    print(df.isnull().values.any()) # is there any missing value?
+    print(df.isnull().values.sum()) # faster than df.isnull().sum().sum()
 
 
 
