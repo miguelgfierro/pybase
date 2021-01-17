@@ -1,9 +1,10 @@
-def save_line(line, filename):
+def save_line(line, filename, mode="w"):
     """Save a line of text.
     
     Args:
         line (str): Text.
         filename (str): Name of the file.
+        mode (str): Open mode https://docs.python.org/3/library/functions.html#open
     
     Examples:
         >>> save_line("hello world!", "file.txt")
@@ -13,15 +14,16 @@ def save_line(line, filename):
         >>> os.path.isfile('file.txt')
         False
     """
-    with open(filename, "w") as f:
-        f.write(line)
+    with open(filename, mode) as f:
+        f.write(line + "\n")
 
 
-def read_line(filename):
+def read_line(filename, mode="r):
     """Read a line of text.
     
     Args:
         filename (str): Name of the file.
+        mode (str): Open mode https://docs.python.org/3/library/functions.html#open
     
     Returns:
         str: Text.
@@ -30,7 +32,7 @@ def read_line(filename):
         >>> read_line("share/data1.txt")
         'I like to move it, move it'
     """
-    with open(filename, "r") as f:
+    with open(filename, mode) as f:
         txt = f.readline()
     return txt
 
