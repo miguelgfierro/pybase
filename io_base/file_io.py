@@ -18,7 +18,7 @@ def save_line(line, filename, mode="w"):
         f.write(line + "\n")
 
 
-def read_line(filename, mode="r):
+def read_line(filename, mode="r"):
     """Read a line of text.
     
     Args:
