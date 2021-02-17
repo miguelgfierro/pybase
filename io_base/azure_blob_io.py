@@ -1,10 +1,11 @@
 import os
 import pandas as pd
 from io import StringIO
+
 try:
     from pyspark.sql import SparkSession
-except ImportError: 
-      pass # so the environment without spark doesn't break
+except ImportError:
+    pass  # so the environment without spark doesn't break
 
 from azure.storage.blob import BlockBlobService
 
@@ -102,8 +103,7 @@ class BlobIO(object):
             >> blob.list_blobs('codebase', 'upload')
             ['upload/traj.csv', 'upload/traj.txt']
         """
-        blobs = [b.name for b in self.service.list_blobs(container, prefix=blob_path)]
-        return blobs
+        return [b.name for b in self.service.list_blobs(container, prefix=blob_path)]
 
     def list_containers(self):
         """List the containers
@@ -122,10 +122,9 @@ class BlobIO(object):
             >> blob.list_containers()
             ['codebase', 'datasets', 'deep-learning', 'installer', 'projects', 'vhds']
         """
-        containers = [c.name for c in self.service.list_containers()]
-        return containers
+        return [c.name for c in self.service.list_containers()]
 
-    def read_pandas_dataframe(self, container, blob_path, **kargs):
+    def read_pandas_dataframe(self, container, blob_path, **kwargs):
         """Read a pandas dataframe from blob
         
         Args:
@@ -157,10 +156,9 @@ class BlobIO(object):
             3  0.166667 444 204
         """
         blob = self.service.get_blob_to_text(container, blob_path)
-        df = pd.read_csv(StringIO(blob.content), **kargs)
-        return df
+        return pd.read_csv(StringIO(blob.content), **kwargs)
 
-    def read_spark_dataframe(self, container, blob_path, spark=None, **kargs):
+    def read_spark_dataframe(self, container, blob_path, spark=None, **kwargs):
         """Read a spark dataframe from blob
         
         Args:
@@ -188,8 +186,7 @@ class BlobIO(object):
         wasb = wasb_template.format(
             container=container, store_name=self.account_name, blob_name=blob_path
         )
-        df = spark.read.csv(wasb, **kargs)
-        return df
+        return spark.read.csv(wasb, **kwargs)
 
     def _manage_spark_blob_config(self, spark):
         if spark is None:
@@ -209,3 +206,32 @@ class BlobIO(object):
         )
         spark.conf.set(spark_config, self.account_key)
         return spark
+
+
+def read_spark_dataframe(
+    spark, account_name, container, blob_path, sas_token, spark=None, **kwargs
+):
+    """Read a csv file storaged on a blob to a PySpark Dataframe
+
+    Args:
+        account_name (str): Account name
+        container (str): Container name
+        blob_path (str): Blob path
+        sas_token (str): SAS token
+        spark (object): Spark context
+
+    Returns:
+        pyspark.sql.dataframe.DataFrame: Pyspark dataframe
+    """
+    if spark is None:
+        spark = (
+            SparkSession.builder.appName("Blob")
+            .config("spark.driver.memory", "4g")
+            .getOrCreate()
+        )
+    wasbs_path = f"wasbs://{container}@{account_name}.blob.core.windows.net/{blob_path}"
+    spark.conf.set(
+        f"fs.azure.sas.{container}.{account_name}.blob.core.windows.net", sas_token
+    )
+
+    return spark.read.csv(wasbs_path, **kwargs)
