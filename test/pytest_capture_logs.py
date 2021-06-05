@@ -1,3 +1,14 @@
+# Explanation on how to manage logs in pytest
+# The fixture caplog contains the stdout and can be queried
+#
+# To execute:
+# $ pytest test/pytest_capture_logs.py
+# 
+# To run pytest and see the logging output
+# $ pytest test/pytest_capture_logs.py -o log_cli=true
+
+
+
 import logging
 
 
@@ -19,8 +30,8 @@ def test_logging(caplog):
     assert "This is an INFO log" in caplog.text
 
 
-def test_print(caplog):
-    caplog.clear()
+def test_print(capsys):
     func_print()
-    assert "This is a print" in caplog.text
+    captured = capsys.readouterr()
+    assert "This is a print" in captured.out
 
