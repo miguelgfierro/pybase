@@ -7,7 +7,7 @@
 [![Files](https://tokei.rs/b1/github/miguelgfierro/pybase?category=files)](https://github.com/miguelgfierro/pybase/graphs/contributors)
 
 [![Linkedin](https://img.shields.io/badge/Linkedin-Follow%20Miguel-blue?logo=linkedin)](https://www.linkedin.com/in/miguelgfierro/)
-[![Blog](https://img.shields.io/badge/Blog-Visit%20miguelgfierro.com-blue.svg)](https://miguelgfierro.com)
+[![Blog](https://img.shields.io/badge/Blog-Visit%20miguelgfierro.com-blue.svg)](https://miguelgfierro.com?utm_source=github.com&utm_medium=profile&utm_campaign=pybase)
 
 # Python pybase
 
