@@ -3,8 +3,6 @@
 [![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/pybase.svg)](https://github.com/miguelgfierro/pybase/commits/master)
 [![Code style:black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 [![Python 3.5+supported](https://img.shields.io/badge/python-3.5+-blue.svg)](https://www.python.org/downloads/release/python-350/)
-[![Lines of code](https://tokei.rs/b1/github/miguelgfierro/pybase)](https://github.com/miguelgfierro/pybase/graphs/contributors)
-[![Files](https://tokei.rs/b1/github/miguelgfierro/pybase?category=files)](https://github.com/miguelgfierro/pybase/graphs/contributors)
 
 [![Linkedin](https://img.shields.io/badge/Linkedin-Follow%20Miguel-blue?logo=linkedin)](https://www.linkedin.com/in/miguelgfierro/)
 [![Blog](https://img.shields.io/badge/Blog-Visit%20miguelgfierro.com-blue.svg)](https://miguelgfierro.com?utm_source=github.com&utm_medium=profile&utm_campaign=pybase)
