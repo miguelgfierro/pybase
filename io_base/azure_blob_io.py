@@ -12,9 +12,9 @@ from azure.storage.blob import BlockBlobService
 
 class BlobIO(object):
     """Azure Blob Storage IO manager.
-    
+
     `More info here <http://azure-storage.readthedocs.io/ref/azure.storage.blob.blockblobservice.html>`_
-    
+
     Attributes:
         service (object): Blob service object
         account_name (str): Account name
@@ -23,7 +23,7 @@ class BlobIO(object):
 
     def __init__(self, account_name, account_key):
         """Initializer
-    
+
         Args:
             account_name (str): Account name
             account_key (str): Account key
@@ -36,12 +36,12 @@ class BlobIO(object):
 
     def upload_file(self, container, blob_path, local_path):
         """Uploads a file to a blob inside a container
-    
+
         Args:
             container (str): Container name
             blob_path (str): Blob path
             local_path (str): Local path to the file
-        
+
         **Examples**::
 
             from python.io_base.json_io import read_file
@@ -59,15 +59,15 @@ class BlobIO(object):
 
     def download_file(self, container, blob_path, local_path):
         """Download a file from a blob inside a container
-        
+
         Args:
             container (str): Container name
             blob_path (str): Blob path
             local_path (str): Local path to the file
-        
+
         Returns:
             str: Value to check if the blob has been modified
-        
+
         **Examples**::
 
             >> from python.io_base.json_io import read_file
@@ -87,14 +87,14 @@ class BlobIO(object):
 
     def list_blobs(self, container, blob_path=None):
         """List files (blobs) in container
-        
+
         Args:
             container (str): Container name
             blob_path (str): Blob path
-        
+
         Returns:
             list: List of blobs
-        
+
         **Examples**::
 
             >> from python.io_base.json_io import read_file
@@ -107,13 +107,13 @@ class BlobIO(object):
 
     def list_containers(self):
         """List the containers
-        
+
         Args:
             container (str): Container name
-        
+
         Returns:
             list: List of blobs
-        
+
         **Examples**::
 
             >> from python.io_base.json_io import read_file
@@ -126,15 +126,15 @@ class BlobIO(object):
 
     def read_pandas_dataframe(self, container, blob_path, **kwargs):
         """Read a pandas dataframe from blob
-        
+
         Args:
             container (str): Container name
             blob_path (str): Blob path
             sep (str): Separator
-        
+
         Returns:
             pd.DataFrame: Dataframe
-        
+
         **Examples**::
 
             >> from python.io_base.json_io import read_file
@@ -160,15 +160,15 @@ class BlobIO(object):
 
     def read_spark_dataframe(self, container, blob_path, spark=None, **kwargs):
         """Read a spark dataframe from blob
-        
+
         Args:
             container (str): Container name
             blob_path (str): Blob path
             spark (object): Spark context
-        
+
         Returns:
             pyspark.sql.dataframe.DataFrame: Pyspark dataframe
-        
+
         **Examples**::
 
             >> from python.io_base.json_io import read_file
@@ -209,7 +209,7 @@ class BlobIO(object):
 
 
 def read_spark_dataframe(
-    spark, account_name, container, blob_path, sas_token, spark=None, **kwargs
+    account_name, container, blob_path, sas_token, spark=None, **kwargs
 ):
     """Read a csv file storaged on a blob to a PySpark Dataframe
 
