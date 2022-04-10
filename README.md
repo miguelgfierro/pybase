@@ -16,6 +16,7 @@ This is a codebase for basic python utilities.
 To install the dependencies on a conda environment named `pybase`:
 
     conda env create -n pybase -f conda.yaml
+    conda install pyspark
 
 For setting up PySpark, make sure Java and Spark are available in the machine. Then, we need to set the environment variables `PYSPARK_PYTHON` and `PYSPARK_DRIVER_PYTHON` to point to the conda python executable.
 
