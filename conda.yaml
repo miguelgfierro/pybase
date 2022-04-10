@@ -1,11 +1,11 @@
-# To create the conda environment (codebase):
-# $ conda env create -n codebase -f conda.yaml
+# To create the conda environment (pybase):
+# $ conda env create -n pybase -f conda.yaml
 #
 # To update the conda environment:
-# $ conda env update -n codebase -f conda.yaml
+# $ conda env update -n pybase -f conda.yaml
 #
 # To register the conda environment in Jupyter:
-# $ python -m ipykernel install --user --name codebase --display-name "Python (codebase)"
+# $ python -m ipykernel install --user --name pybase --display-name "Python (pybase)"
 #
 
 channels:
