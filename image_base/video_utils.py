@@ -8,7 +8,7 @@ from moviepy.video.io.ffmpeg_tools import (
 
 def cut_video(input_file, start_time, end_time, output_file):
     """Cut a portion of a video.
-    
+
     Args:
         input_file (str): Input video file.
         start_time (int): Start time in seconds.
@@ -37,7 +37,7 @@ def video_from_frames_cv(filename, folder, fps=25, img_format=".jpeg"):
     )
 
     for image in images:
-        video.write(cv2.imread(os.path.join(image_folder, image)))
+        video.write(cv2.imread(os.path.join(folder, image)))
 
     cv2.destroyAllWindows()
     video.release()
