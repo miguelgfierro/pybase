@@ -12,6 +12,7 @@ channels:
 - conda-forge
 - defaults
 dependencies:
+- pip>=19.2
 - numpy>=1.13.3
 - opencv>=3.3.0
 - pyodbc>=4.0.21
