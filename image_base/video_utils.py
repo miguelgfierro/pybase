@@ -43,6 +43,9 @@ def video_from_frames_cv(filename, folder, fps=25, img_format=".jpeg"):
     video.release()
 
 
+def video_to_frames_cv():
+    
+
 def video_from_frames_ffmpeg(filename, folder, fps=25, **kwargs):
     """Create a video from a set of frames in a folder using ffmpeg.
 
@@ -59,3 +62,5 @@ def video_from_frames_ffmpeg(filename, folder, fps=25, **kwargs):
                 "Unexpected keyword argument passed to optimizer: " + str(k)
             )
     ffmpeg_movie_from_frames(filename, folder, fps, kwargs)
+
+
