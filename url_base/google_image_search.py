@@ -33,18 +33,19 @@ class ImageDownloader:
 
     def extract_image_links(self, query, num_images):
         """Extract the image url and the file type based on a query.
-        
+
         Args:
             query (str): Text to search.
             num_images (int): Max number of image links to return.
-        
+
         Returns:
             list of tuples: List of tuples of (image_url, image_type)
 
-        Examples:
-            >>> client = ImageDownloader()
-            >>> r = client.extract_image_links("Batman", 2)
-            >>> r[0] # doctest: +ELLIPSIS
+        **Examples**::
+
+            >> client = ImageDownloader()
+            >> r = client.extract_image_links("Batman", 2)
+            >> r[0] # doctest: +ELLIPSIS
             ('http...', '...')
         """
         query = "+".join(query.split())
@@ -60,14 +61,15 @@ class ImageDownloader:
 
     def download_images_to_dir(self, images, save_directory):
         """Download a set of image urls to disk
-        
+
         Args:
             images (list of tuples): List of images urls and image types.
             save_directory (str): Folder.
 
-        Examples:
-            >>> client = ImageDownloader()
-            >>> with TemporaryDirectory() as td:
+        **Examples**::
+
+            >> client = ImageDownloader()
+            >> with TemporaryDirectory() as td:
             ...     r = [("https://raw.githubusercontent.com/miguelgfierro/pybase/master/share/Lenna.png", "png")]
             ...     client.download_images_to_dir(r, td)
             ...     os.path.exists(os.path.join(td, "Lenna.png"))

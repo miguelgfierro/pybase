@@ -6,7 +6,9 @@ INPUT_NOTEBOOK = "test/papermill_notebook.ipynb"
 OUTPUT_NOTEBOOK = "output.ipynb"
 
 
-@pytest.mark.skipif(sys.platform == "win32", reason="got a papermill internal error in windows")
+@pytest.mark.skipif(
+    sys.platform == "win32", reason="got a papermill internal error in windows"
+)
 def test_notebook_runs():
     pm.execute_notebook(
         INPUT_NOTEBOOK,

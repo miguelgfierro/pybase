@@ -15,7 +15,7 @@ channels:
 - conda-forge
 - defaults
 dependencies:
-- python>=3.7.13
+- python==3.7.13
 - pip>=19.2
 - jupyter>=1.0.0
 - pyodbc>=4.0.21
@@ -43,7 +43,8 @@ dependencies:
   - xmlrunner>=1.7.7
   - coverage>=4.5.1
   - pytest>=3.6.3
-  - papermill>=0.17.1
+  - papermill>=2.1.2,<3
+  - scrapbook>=0.5.0,<1.0.0 
   - opencv-python>=3.3.0
   - wget>=3.2
   - h5py>=2.8.0

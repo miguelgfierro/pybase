@@ -115,7 +115,7 @@ To be able to run the test in [blob_io.py](python/io_base/blob_io.py), add the c
 
 To execute the tests:
 
-    pytest --doctest-modules --continue-on-collection-errors
+    pytest --doctest-modules --continue-on-collection-errors --durations 0
 
 To execute coverage and see the report:
 
