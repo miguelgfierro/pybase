@@ -44,7 +44,23 @@ def video_from_frames_cv(filename, folder, fps=25, img_format=".jpeg"):
 
 
 def video_to_frames_cv():
-    
+    pass
+    # capture = cv2.VideoCapture(os.path.join(folder, filename))
+    # frame_number = 0
+
+    # while True:
+    #     success, frame = capture.read()
+    #     print(success)
+    #     if success:
+    #         image_number = str(frame_number).rjust(leading_zeros, "0")
+    #         image_name = filename.split(".")[0] + "_" + image_number + img_format
+    #         print(f"Processing {image_name}")
+    #         cv2.imwrite(os.path.join(folder, image_name), frame)
+    #     else:
+    #         break
+    #     frame_number += 1
+    # capture.release()
+
 
 def video_from_frames_ffmpeg(filename, folder, fps=25, **kwargs):
     """Create a video from a set of frames in a folder using ffmpeg.
@@ -62,5 +78,3 @@ def video_from_frames_ffmpeg(filename, folder, fps=25, **kwargs):
                 "Unexpected keyword argument passed to optimizer: " + str(k)
             )
     ffmpeg_movie_from_frames(filename, folder, fps, kwargs)
-
-
