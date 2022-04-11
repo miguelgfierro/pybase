@@ -86,13 +86,13 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
         >>> OrderedDict(sorted(result.items()))
         OrderedDict([('Accuracy', 0.6), ('Confusion Matrix', array([[1, 1, 0],
                [0, 2, 0],
-               [1, 0, 0]], dtype=int64)), ('F1', 0.52), ('Precision', 0.4666666666666666), ('Recall', 0.6)])
+               [1, 0, 0]])), ('F1', 0.52), ('Precision', 0.4666666666666666), ('Recall', 0.6)])
     """
     m_acc = accuracy_score(y_true, y_pred)
-    m_f1 = f1_score(y_true, y_pred, labels, average="weighted")
-    m_precision = precision_score(y_true, y_pred, labels, average="weighted")
-    m_recall = recall_score(y_true, y_pred, labels, average="weighted")
-    m_conf = confusion_matrix(y_true, y_pred, labels)
+    m_f1 = f1_score(y_true, y_pred, labels=labels, average="weighted")
+    m_precision = precision_score(y_true, y_pred, labels=labels, average="weighted")
+    m_recall = recall_score(y_true, y_pred, labels=labels, average="weighted")
+    m_conf = confusion_matrix(y_true, y_pred, labels=labels)
     report = {
         "Accuracy": m_acc,
         "Precision": m_precision,

@@ -24,7 +24,7 @@ dependencies:
   - memory_profiler>=0.47
   - pandas>=0.23.4
   - scikit-image>=0.14.2
-  - scikit-learn>=0.19.1
+  - scikit-learn>=1.0
   - scipy>=0.19.0
   - matplotlib>=1.5.3
   - bokeh>=0.12.6
