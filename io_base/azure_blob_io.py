@@ -4,10 +4,9 @@ from io import StringIO
 
 try:
     from pyspark.sql import SparkSession
+    from azure.storage.blob import BlockBlobService
 except ImportError:
-    pass  # so the environment without spark doesn't break
-
-from azure.storage.blob import BlockBlobService
+    pass  # so the environment without the libraries don't break
 
 
 class BlobIO(object):

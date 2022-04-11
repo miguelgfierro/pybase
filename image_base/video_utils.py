@@ -26,7 +26,6 @@ def video_from_frames_cv(filename, folder, fps=25, img_format=".jpeg"):
         folder (str): Folder with images.
         fps (int): Frames per second.
         img_format (str): Image format.
-
     """
     images = [img for img in os.listdir(folder) if img.endswith(img_format)]
     frame = cv2.imread(os.path.join(folder, images[0]))
@@ -43,23 +42,28 @@ def video_from_frames_cv(filename, folder, fps=25, img_format=".jpeg"):
     video.release()
 
 
-def video_to_frames_cv():
-    pass
-    # capture = cv2.VideoCapture(os.path.join(folder, filename))
-    # frame_number = 0
+def video_to_frames_cv(filename, folder, img_format=".jpeg", leading_zeros=6):
+    """Convert a video into a set of images.
 
-    # while True:
-    #     success, frame = capture.read()
-    #     print(success)
-    #     if success:
-    #         image_number = str(frame_number).rjust(leading_zeros, "0")
-    #         image_name = filename.split(".")[0] + "_" + image_number + img_format
-    #         print(f"Processing {image_name}")
-    #         cv2.imwrite(os.path.join(folder, image_name), frame)
-    #     else:
-    #         break
-    #     frame_number += 1
-    # capture.release()
+    Args:
+        filename (str): Name of the video.
+        folder (str): Folder with images.
+        img_format (str): Image format.
+        leading_zeros (int): Leading zeros added to the image name.
+    """
+    video_path = os.path.join(folder, filename)
+    if not os.path.isfile(video_path):
+        raise FileNotFoundError(f"Video not found at {video_path}")
+    capture = cv2.VideoCapture(video_path)
+    count = 0
+    success, frame = capture.read()
+    while success:
+        image_number = str(count).rjust(leading_zeros, "0")
+        image_name = filename.split(".")[0] + "_" + image_number + img_format
+        cv2.imwrite(os.path.join(folder, image_name), frame)
+        success, frame = capture.read()
+        count += 1
+    capture.release()
 
 
 def video_from_frames_ffmpeg(filename, folder, fps=25, **kwargs):
