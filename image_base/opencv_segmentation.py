@@ -127,7 +127,7 @@ def color_clustering_kmeans(image, n_clusters=4, **kwargs):
 
     Examples:
         >>> img = cv2.imread('share/home.jpg')
-        >>> mask_list = color_clustering_kmeans(img, n_clusters=4, n_jobs=-1, n_init=10, max_iter=100)
+        >>> mask_list = color_clustering_kmeans(img, n_clusters=4, n_init=10, max_iter=50)
 
     """
     # initialization
