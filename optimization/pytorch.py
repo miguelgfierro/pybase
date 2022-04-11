@@ -1,13 +1,16 @@
-import torch
-from torch.autograd import Variable
-from torch import FloatTensor
+try:
+    import torch
+    from torch.autograd import Variable
+    from torch import FloatTensor
+except ImportError:
+    pass  # so the environment without the libraries don't break
 
 
 def optimize_function(func, x, rounds=10000, lr=0.001):
     """Minimize a pytorch function starting from initial condition x.
 
     Args:
-        func (callable): The objective function to be minimized. 
+        func (callable): The objective function to be minimized.
         x (list of tensors): Initial conditions.
         rounds (int): Number of rounds.
         lr (float): Learning rate.
@@ -44,7 +47,7 @@ def derivate(func, x):
     `See more info <https://adel.ac/automatic-differentiation/>`_
 
     Args:
-        func (callable): The objective function to be differentiated. 
+        func (callable): The objective function to be differentiated.
         x (list of tensors): Initial conditions.
 
     Returns:

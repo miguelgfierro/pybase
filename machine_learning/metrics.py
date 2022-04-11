@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.metrics import (
     confusion_matrix,
     accuracy_score,
@@ -10,7 +11,6 @@ from sklearn.metrics import (
     mean_absolute_error,
     r2_score,
 )
-import numpy as np
 
 
 def classification_metrics_binary(y_true, y_pred):

@@ -1,5 +1,7 @@
-import tensorflow as tf
-import numpy as np
+try:
+    import tensorflow as tf
+except ImportError:
+    pass  # so the environment without the libraries don't break
 
 
 def derivate(func, x, val):
@@ -8,7 +10,7 @@ def derivate(func, x, val):
     `See more info <https://adel.ac/automatic-differentiation/>`_
 
     Args:
-        func (callable): The objective function to be differentiated. 
+        func (callable): The objective function to be differentiated.
         x (np.array): Initial conditions.
 
     Returns:
