@@ -5,14 +5,14 @@ from sklearn.cluster import KMeans, AffinityPropagation
 
 def apply_mask_to_image(img, mask):
     """Apply a binary mask to an image
-    
+
     Args:
         img (np.array): An image.
         mask (np.array): Binary image.
-    
+
     Returns:
         np.array: A masked image.
-    
+
     Examples:
         >>> img = cv2.imread('share/Lenna.png')
         >>> mask = cv2.imread('share/Lenna_mask.png', 0)
@@ -23,22 +23,20 @@ def apply_mask_to_image(img, mask):
 
 def bounding_box(mask, max_contours=10):
     """Get the external bounding box of a mask.
-    
+
     Args:
         mask (np.array): Binary image.
         max_contours (int): Maximum number of contours to consider for computing the bounding box.
-    
+
     Returns:
         tuple: A tuple of integers defining x, y, width and height.
-    
+
     Examples:
         >>> mask = cv2.imread('share/Lenna_mask.png', 0)
         >>> bounding_box(mask)
         (60, 32, 380, 480)
     """
-    _, cnts, hierarchy = cv2.findContours(
-        mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE
-    )
+    cnts, hierarchy = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     x_min, x_max = mask.shape[1], 0
     y_min, y_max = mask.shape[0], 0
     cnts = sorted(cnts, key=cv2.contourArea, reverse=True)[
@@ -59,16 +57,16 @@ def bounding_box(mask, max_contours=10):
 
 def grabcut_rect(img, rect, iterations=3):
     """Grabcut segmentation using a rectangle as initial region of confidence.
-    
+
     Args:
         img (np.array): An image.
         rect (tuple): A tuple of integers defining x, y, width and height.
         iterations (int): Iterations.
-    
+
     Returns:
         np.array: A segmented image.
         np.array: Binary image.
-    
+
     Examples:
         >>> img = cv2.imread('share/Lenna.png')
         >>> rect = (60, 32, 380, 480)
@@ -80,16 +78,16 @@ def grabcut_rect(img, rect, iterations=3):
 
 def grabcut_mask(img, mask, iterations=3):
     """Grabcut segmentation using a mask as initial region of confidence.
-    
+
     Args:
         img (np.array): An image.
         mask (np.array): Binary image.
         iterations (int): Iterations.
-    
+
     Returns:
         np.array: A segmented image.
         np.array: Binary image.
-    
+
     Examples:
         >>> img = cv2.imread('share/Lenna.png')
         >>> mask = cv2.imread('share/Lenna_mask.png', 0)
@@ -117,16 +115,16 @@ def _grabcut(img, mask=None, rect=None, iterations=3):
 
 def color_clustering_kmeans(image, n_clusters=4, **kwargs):
     """Segmentation using KMeans color clustering
-    
+
     See the `source here <https://nrsyed.com/2018/03/29/image-segmentation-via-k-means-clustering-with-opencv-python>`_.
-    
+
     Args:
         img (np.array): An image.
         n_clusters (int): Number of clusters.
-    
+
     Returns:
         list: A list of segmented masks.
-    
+
     Examples:
         >>> img = cv2.imread('share/home.jpg')
         >>> mask_list = color_clustering_kmeans(img, n_clusters=4, n_jobs=-1, n_init=10, max_iter=100)
@@ -149,4 +147,3 @@ def color_clustering_kmeans(image, n_clusters=4, **kwargs):
         mask_list.append(mask)
 
     return mask_list
-
