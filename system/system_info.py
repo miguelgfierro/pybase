@@ -1,11 +1,10 @@
+import os
 import sys
+import glob
 from functools import lru_cache
 import pkg_resources
 import importlib
-import os
-import subprocess
 import socket
-import glob
 import numpy as np
 from psutil import virtual_memory
 from numba import cuda

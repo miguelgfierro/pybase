@@ -16,14 +16,15 @@ def derivate(func, x, val):
     Returns:
         list, float: Derivative and value function.
 
-    Examples:
-        >>> x = tf.Variable([0., 0.], tf.float32)
-        >>> y = tf.add(tf.pow(tf.subtract(1.0, x[0]), 2.0), tf.multiply(100.0, tf.pow(tf.subtract(x[1],tf.pow(x[0], 2.0)), 2.0)), 'y') # rosenbrock function
-        >>> val = np.array([1, 1], dtype=np.float32)
-        >>> xd, y = derivate(y, x, val)
-        >>> xd
+    **Examples**::
+
+        >> x = tf.Variable([0., 0.], tf.float32)
+        >> y = tf.add(tf.pow(tf.subtract(1.0, x[0]), 2.0), tf.multiply(100.0, tf.pow(tf.subtract(x[1],tf.pow(x[0], 2.0)), 2.0)), 'y') # rosenbrock function
+        >> val = np.array([1, 1], dtype=np.float32)
+        >> xd, y = derivate(y, x, val)
+        >> xd
         array([0., 0.], dtype=float32)
-        >>> y
+        >> y
         0.0
     """
     dx = tf.gradients(func, x)[0]
