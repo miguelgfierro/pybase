@@ -1,30 +1,39 @@
 # Pandas rows iteration benchmark
 
+import numpy as np
 import pandas as pd
 
+
 rows = 100000
-df = pd.DataFrame({"a": np.random.normal(size=(rows)),
-                   "b": np.random.normal(size=(rows)),
-                   "c": np.random.randint(0, 5, size=(rows))
-                  })
+df = pd.DataFrame(
+    {
+        "a": np.random.normal(size=(rows)),
+        "b": np.random.normal(size=(rows)),
+        "c": np.random.randint(0, 5, size=(rows)),
+    }
+)
+
 
 def iteration_itertuples():
     a = 0
     for row in df.itertuples():
-        a += row[1] + row[2] + row[3] # row[0] is the index
+        a += row[1] + row[2] + row[3]  # row[0] is the index
     return a
-        
+
+
 def iteration_zip():
-    a = 0 
-    for row in zip(df['a'], df['b'], df['c']):
+    a = 0
+    for row in zip(df["a"], df["b"], df["c"]):
         a += row[0] + row[1] + row[2]
     return a
-    
+
+
 def iteration_range():
     a = 0
     for i in range(df.shape[0]):
         a += df["a"].values[i] + df["b"].values[i] + df["c"].values[i]
     return a
+
 
 # with rows = 10:
 # - 689 µs ± 76.6 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)

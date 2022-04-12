@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.metrics import (
     confusion_matrix,
     accuracy_score,
@@ -10,7 +11,6 @@ from sklearn.metrics import (
     mean_absolute_error,
     r2_score,
 )
-import numpy as np
 
 
 def classification_metrics_binary(y_true, y_pred):
@@ -23,24 +23,24 @@ def classification_metrics_binary(y_true, y_pred):
     classifier not to label as positive a sample that is negative.
     - Recall: Number of true positives divided by the number of true positives and false negatives. It is the ability
     of the classifier to find all the positive samples.
-    High Precision and low Recall will return few positive results but most of them will be correct. 
+    High Precision and low Recall will return few positive results but most of them will be correct.
     High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
-    
+
     Args:
         y_true (list or np.array): True labels.
         y_pred (list or np.array): Predicted labels (binary).
-    
+
     Returns:
         dict: Dictionary with metrics.
-    
+
     Examples:
         >>> y_true = [0,1,0,0,1]
         >>> y_pred = [0,1,0,1,1]
         >>> result = classification_metrics_binary(y_true, y_pred)
         >>> OrderedDict(sorted(result.items()))
         OrderedDict([('Accuracy', 0.8), ('Confusion Matrix', array([[2, 1],
-               [0, 2]], dtype=int64)), ('F1', 0.8), ('Precision', 0.6666666666666666), ('Recall', 1.0)])
+               [0, 2]])), ('F1', 0.8), ('Precision', 0.6666666666666666), ('Recall', 1.0)])
     """
     m_acc = accuracy_score(y_true, y_pred)
     m_f1 = f1_score(y_true, y_pred)
@@ -67,18 +67,18 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
     classifier not to label as positive a sample that is negative.
     - Recall: Number of true positives divided by the number of true positives and false negatives. It is the ability
     of the classifier to find all the positive samples.
-    High Precision and low Recall will return few positive results but most of them will be correct. 
+    High Precision and low Recall will return few positive results but most of them will be correct.
     High Recall and low Precision will return many positive results but most of them will be incorrect.
     - F1 Score: 2*((precision*recall)/(precision+recall)). It measures the balance between precision and recall.
-    
+
     Args:
         y_true (list or np.array): True labels.
         y_pred (list or np.array): Predicted labels.
         labels (list): Label index or name.
-    
+
     Returns:
         dict: Dictionary with metrics.
-    
+
     Examples:
         >>> y_true = [0,1,2,0,1]
         >>> y_pred = [0,1,0,1,1]
@@ -86,13 +86,13 @@ def classification_metrics_multilabel(y_true, y_pred, labels):
         >>> OrderedDict(sorted(result.items()))
         OrderedDict([('Accuracy', 0.6), ('Confusion Matrix', array([[1, 1, 0],
                [0, 2, 0],
-               [1, 0, 0]], dtype=int64)), ('F1', 0.52), ('Precision', 0.4666666666666666), ('Recall', 0.6)])
+               [1, 0, 0]])), ('F1', 0.52), ('Precision', 0.4666666666666666), ('Recall', 0.6)])
     """
     m_acc = accuracy_score(y_true, y_pred)
-    m_f1 = f1_score(y_true, y_pred, labels, average="weighted")
-    m_precision = precision_score(y_true, y_pred, labels, average="weighted")
-    m_recall = recall_score(y_true, y_pred, labels, average="weighted")
-    m_conf = confusion_matrix(y_true, y_pred, labels)
+    m_f1 = f1_score(y_true, y_pred, labels=labels, average="weighted")
+    m_precision = precision_score(y_true, y_pred, labels=labels, average="weighted")
+    m_recall = recall_score(y_true, y_pred, labels=labels, average="weighted")
+    m_conf = confusion_matrix(y_true, y_pred, labels=labels)
     report = {
         "Accuracy": m_acc,
         "Precision": m_precision,
@@ -110,14 +110,14 @@ def classification_metrics_binary_prob(y_true, y_prob):
     - Log loss: Also called logistic regression loss or cross-entropy loss. It quantifies the performance by
     penalizing false classifications. Minimizing the Log Loss is equivalent to minimizing the squared error but using
     probabilistic predictions. Log loss penalize heavily classifiers that are confident about incorrect classifications.
-    
+
     Args:
         y_true (list or np.array): True labels.
         y_prob (list or np.array): Predicted labels (probability).
-    
+
     Returns:
         dict: Dictionary with metrics.
-    
+
     Examples:
         >>> y_true = [0,1,0,0,1]
         >>> y_prob = [0.2,0.7,0.4,0.3,0.2]
@@ -146,14 +146,14 @@ def regression_metrics(y_true, y_pred):
     score is 1.0 and it can be negative (because the model can be arbitrarily worse). A score of 0 means that the
     variables are not linearly correlated.
     - Root Mean Squared Error: RMSE is the square root of MSE. It also gives a relatively high weight to large errors.
-    
+
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
-    
+
     Returns:
         dict: Dictionary with metrics.
-    
+
     Examples:
         >>> y_true = [5,1,0,7,1]
         >>> y_pred = [6,0.7,0.4,10,20]
@@ -175,15 +175,15 @@ def regression_metrics(y_true, y_pred):
 
 def precision_at_k(y_true, y_pred, k=None):
     """Precision at K.
-    
+
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
-    
+
     Returns:
         float: precision at k (max=1, min=0)
-    
+
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -201,15 +201,15 @@ def precision_at_k(y_true, y_pred, k=None):
 
 def recall_at_k(y_true, y_pred, k=None):
     """Recall at K.
-    
+
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
-    
+
     Returns:
         float: recall at k (max=1, min=0)
-    
+
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -229,15 +229,15 @@ def recall_at_k(y_true, y_pred, k=None):
 def discounted_cumulative_gain(y_true, y_pred, k=None):
     """Discounted Cumulative Gain (DCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
-    
+
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
-    
+
     Returns:
         float: DCG
-    
+
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -256,15 +256,15 @@ def discounted_cumulative_gain(y_true, y_pred, k=None):
 def exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
     """Exponential Discounted Cumulative Gain (eDCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
-    
+
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
-    
+
     Returns:
         float: eDCG
-    
+
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -283,15 +283,15 @@ def exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
 def normalized_discounted_cumulative_gain(y_true, y_pred, k=None):
     """Normalized Discounted Cumulative Gain (nDCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
-    
+
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
-    
+
     Returns:
         float: nDCG (max=1, min=0)
-    
+
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -310,15 +310,15 @@ def normalized_discounted_cumulative_gain(y_true, y_pred, k=None):
 def normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
     """Normalized Exponential Discounted Cumulative Gain (neDCG).
     Info: https://en.wikipedia.org/wiki/Discounted_cumulative_gain
-    
+
     Args:
         y_true (list or np.array): True values.
         y_pred (list or np.array): Predicted values.
         k (int): Limit of predicted values.
-    
+
     Returns:
         float: neDCG (max=1, min=0)
-    
+
     Examples:
         >>> y_true = [5,1,0,7,2]
         >>> y_pred = [2,5,0,1,7]
@@ -337,14 +337,14 @@ def normalized_exponential_discounted_cumulative_gain(y_true, y_pred, k=None):
 def gini(y_true, y_pred):
     """Normalized Gini Coefficient.
     It is a measure of statistical dispersion intended to represent a measurement of inequality.
-    
+
     Args:
         y (np.array): True values.
         p (np.array): Predicted values.
-    
+
     Returns:
         float: Normalized Gini coefficient.
-    
+
     Examples:
         >>> actual = np.array([0.3, 0.8, 0.1, 0.5])
         >>> pred1 = np.array([0.3, 0.8, 0.1, 0.5])
@@ -374,4 +374,3 @@ def gini(y_true, y_pred):
 
     # normalize to true Gini coefficient
     return g_pred / g_true
-

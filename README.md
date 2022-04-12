@@ -16,6 +16,7 @@ This is a codebase for basic python utilities.
 To install the dependencies on a conda environment named `pybase`:
 
     conda env create -n pybase -f conda.yaml
+    conda install pyspark
 
 For setting up PySpark, make sure Java and Spark are available in the machine. Then, we need to set the environment variables `PYSPARK_PYTHON` and `PYSPARK_DRIVER_PYTHON` to point to the conda python executable.
 
@@ -114,7 +115,7 @@ To be able to run the test in [blob_io.py](python/io_base/blob_io.py), add the c
 
 To execute the tests:
 
-    pytest --doctest-modules --continue-on-collection-errors
+    pytest --doctest-modules --continue-on-collection-errors --durations 0
 
 To execute coverage and see the report:
 

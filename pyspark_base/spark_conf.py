@@ -1,9 +1,10 @@
 import os
+
 try:
     from pyspark.sql import SparkSession
-except ImportError: 
-      pass # so the environment without spark doesn't break
-    
+except ImportError:
+    pass  # so the environment without spark doesn't break
+
 
 def spark(
     app_name="App",
@@ -27,18 +28,19 @@ def spark(
 
     Returns:
         obj: Spark context.
-        
-    Examples:
-        >>> config = {"spark.executor.cores": "8"}
-        >>> config.update({"spark.executor.memory": "16g"})
-        >>> config.update({"spark.memory.fraction": "0.9"})
-        >>> config.update({"spark.memory.stageFraction": "0.3"})
-        >>> config.update({"spark.executor.instances": 1})
-        >>> config.update({"spark.executor.heartbeatInterval": "36000s"})
-        >>> config.update({"spark.network.timeout": "10000000s"})
-        >>> config.update({"spark.driver.maxResultSize": "50g"})
-        >>> spark = spark(config=config) # doctest: +SKIP
-        >>> spark is not None
+
+    **Examples**::
+
+        >> config = {"spark.executor.cores": "8"}
+        >> config.update({"spark.executor.memory": "16g"})
+        >> config.update({"spark.memory.fraction": "0.9"})
+        >> config.update({"spark.memory.stageFraction": "0.3"})
+        >> config.update({"spark.executor.instances": 1})
+        >> config.update({"spark.executor.heartbeatInterval": "36000s"})
+        >> config.update({"spark.network.timeout": "10000000s"})
+        >> config.update({"spark.driver.maxResultSize": "50g"})
+        >> spark = spark(config=config) # doctest: +SKIP
+        >> spark is not None
         True
     """
 

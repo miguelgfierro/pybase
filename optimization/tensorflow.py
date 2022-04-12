@@ -1,5 +1,7 @@
-import tensorflow as tf
-import numpy as np
+try:
+    import tensorflow as tf
+except ImportError:
+    pass  # so the environment without the libraries don't break
 
 
 def derivate(func, x, val):
@@ -8,20 +10,21 @@ def derivate(func, x, val):
     `See more info <https://adel.ac/automatic-differentiation/>`_
 
     Args:
-        func (callable): The objective function to be differentiated. 
+        func (callable): The objective function to be differentiated.
         x (np.array): Initial conditions.
 
     Returns:
         list, float: Derivative and value function.
 
-    Examples:
-        >>> x = tf.Variable([0., 0.], tf.float32)
-        >>> y = tf.add(tf.pow(tf.subtract(1.0, x[0]), 2.0), tf.multiply(100.0, tf.pow(tf.subtract(x[1],tf.pow(x[0], 2.0)), 2.0)), 'y') # rosenbrock function
-        >>> val = np.array([1, 1], dtype=np.float32)
-        >>> xd, y = derivate(y, x, val)
-        >>> xd
+    **Examples**::
+
+        >> x = tf.Variable([0., 0.], tf.float32)
+        >> y = tf.add(tf.pow(tf.subtract(1.0, x[0]), 2.0), tf.multiply(100.0, tf.pow(tf.subtract(x[1],tf.pow(x[0], 2.0)), 2.0)), 'y') # rosenbrock function
+        >> val = np.array([1, 1], dtype=np.float32)
+        >> xd, y = derivate(y, x, val)
+        >> xd
         array([0., 0.], dtype=float32)
-        >>> y
+        >> y
         0.0
     """
     dx = tf.gradients(func, x)[0]

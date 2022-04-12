@@ -7,54 +7,55 @@
 # To register the conda environment in Jupyter:
 # $ python -m ipykernel install --user --name pybase --display-name "Python (pybase)"
 #
+# To delete the conda environment:
+# $ conda env remove -n pybase
+#
 
 channels:
 - conda-forge
 - defaults
 dependencies:
-- numpy>=1.13.3
-- opencv>=3.3.0
-- pyodbc>=4.0.21
-- requests>=2.18.4
-- beautifulsoup4>=4.6.0
-- flask>=1.0.2
-- cherrypy>=12.0.1
-- paste>=2.0.3
-- fastparquet>=0.1.4
-- dask>=0.17.1
+- python==3.8.13
+- pip>=19.2
 - jupyter>=1.0.0
-- pyspark==2.3.1
+- pyodbc>=4.0.21
 - pip:
+  - numpy>=1.19
   - memory_profiler>=0.47
-  - pandas>=0.23.4
+  - pandas>1.0.3,<2
   - scikit-image>=0.14.2
-  - scikit-learn>=0.19.1
+  - scikit-learn>=1.0
   - scipy>=0.19.0
   - matplotlib>=1.5.3
   - bokeh>=0.12.6
   - selenium>=3.4.3
+  - requests>=2.18.4
+  - flask>=1.0.2
+  - beautifulsoup4>=4.6.0
+  - cherrypy>=12.0.1
+  - paste>=2.0.3
+  - fastparquet>=0.1.4
+  - dask>=0.17.1
   - pillow>=4.3.0
   - sqlalchemy>=1.2.4
   - gitpython>=2.1.8
   - pytrends>=4.3.0
-  - azure-storage>=0.36.0
-  - pyspark>=2.3.0
   - xmlrunner>=1.7.7
   - coverage>=4.5.1
   - pytest>=3.6.3
-  - papermill>=0.17.1
+  - papermill>=2.1.2,<3
+  - scrapbook>=0.5.0,<1.0.0 
+  - opencv-python>=4.0.0
   - wget>=3.2
   - h5py>=2.8.0
   - numexpr>=2.6.8
   - python-dateutil>=2.7.5
-  # For websockets, add flask-socketio, gevent-websocket, wsaccel and ujson
-  - flask-socketio>=3.0.1
+  - flask-socketio>=3.0.1 # For websockets, add flask-socketio, gevent-websocket, wsaccel and ujson
   - gevent-websocket>=0.10.1
   - wsaccel>=0.6.2
   - ujson>=1.35
   - backoff>=1.8.0
   - pytube3>=9.5.3
   - moviepy>=1.0.1
-
-
+  - numba>=0.38.1,<1
 

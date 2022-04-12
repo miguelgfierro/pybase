@@ -4,11 +4,14 @@ import numpy as np
 
 def get_n_first_elements(py_list, n_elements):
     """Get the first `n` elements of a list.
+
     Args:
         py_list (list): A list of elements.
         n_elements (int): The number of elements.
+
     Returns:
-        sub_list (list): A list with the first `n` elements of `py_list`.
+        list: A list with the first `n` elements of `py_list`.
+
     Examples:
         >>> py_list = [1,2,3,4,5,6,7,8]
         >>> py_list_first = get_n_first_elements(py_list, 2)
@@ -21,11 +24,14 @@ def get_n_first_elements(py_list, n_elements):
 
 def get_n_last_elements(py_list, n_elements):
     """Get the last `n` elements of a list.
+
     Args:
         py_list (list): A list of elements.
         n_elements (int): The number of elements.
+
     Returns:
-        sub_list (list): A list with the last `n` elements of `py_list`.
+        list: A list with the last `n` elements of `py_list`.
+
     Examples:
         >>> py_list = [1,2,3,4,5,6,7,8]
         >>> py_list_first = get_n_last_elements(py_list, 2)
@@ -38,12 +44,15 @@ def get_n_last_elements(py_list, n_elements):
 
 def find_item_index(py_list, item):
     """Find the index of an item in a list.
+
     Args:
         py_list (list): A list of elements.
         item (int or str): The element in the list.
         n (int): The upper limit of the range to generate, from 0 to `n` - 1.
+
     Returns:
-        index (int): the index of the element.
+        int: the index of the element.
+
     Examples:
         >>> py_list = ["foo", "bar", "baz"]
         >>> item = "bar"
@@ -61,8 +70,10 @@ def generate_random_integers(number_values, min_val, max_val):
         number_values (int): Number of values to generate.
         min_val (int): Minimum value.
         max_val (int): Maximum value.
+
     Returns:
-        result_list (list): A list with random values.
+        list: A list with random values.
+
     Examples:
         >>> result_list = generate_random_integers(number_values=5, min_val=0, max_val=10)
         >>> len(result_list)
@@ -79,11 +90,14 @@ def shuffle_list(py_list, inplace=False):
     """Shuffle a list
     If `inplace=True` the input list is modified (faster & less memory), if `inplace=False` a new list is
     generated (slower & more memory).
+
     Args:
         py_list (list): A list of elements.
         inplace (bool): If `True` the input list is modified, if `False` a new list is generated.
+
     Returns:
-        result_list (list): A list with the values shuffled.
+        list: A list with the values shuffled.
+
     Examples:
         >>> py_list = [1,2,3,4,5]
         >>> l = shuffle_list(py_list, False)
@@ -104,12 +118,15 @@ def reverse_list(py_list, inplace=True):
     """Reverse a list.
     If `inplace=True` the input list is modified (faster & less memory), if
     `inplace=False` a new list is generated (slower & more memory).
+
     Args:
         py_list (list): A list of elements.
         inplace (bool): If `True` the input list is modified, if `False` a new
-        list is generated.
+            list is generated.
+
     Returns:
-        result_list (list): A list with the values reversed.
+        list: A list with the values reversed.
+
     Examples:
         >>> py_list = [1,2,3,4,5]
         >>> reverse_list(py_list, False)
@@ -130,12 +147,14 @@ def reverse_list(py_list, inplace=True):
 def create_consecutive_numbers(initial_num, final_num):
     """Create a list of consecutive numbers from `initial_num` to `final_num`.
     source: http://interactivepython.org/runestone/static/pythonds/AlgorithmAnalysis/Lists.html
+
     Args:
         initial_num (int): The first number of the series.
         final_num (int): The last number of the series.
+
     Returns:
-        result_list (list): A list with values from `initial_num` to
-                            `final_num`.
+        list: A list with values from `initial_num` to `final_num`.
+
     Examples:
         >>> create_consecutive_numbers(1,5)
         [1, 2, 3, 4, 5]
@@ -158,11 +177,14 @@ def create_consecutive_numbers(initial_num, final_num):
 
 
 def flatten_list_of_lists(list_of_lists):
-    """Convert a list os lists to a single list
+    """Convert a list os lists to a single list.
+
     Args:
          list_of_lists (list of lists): A list of lists.
+
     Returns:
-        result_list (list): A list
+        list: A list
+
     Examples:
         >>> list_of_lists = [[1,2,3],[0,3,9]]
         >>> flatten_list_of_lists(list_of_lists)
@@ -174,13 +196,16 @@ def flatten_list_of_lists(list_of_lists):
 
 
 def split_list(py_list, perc_size=[0.8, 0.2], shuffle=False):
-    """Split a list in weighted chunks
+    """Split a list in weighted chunks.
+
     Args:
         py_list (list): A list of elements.
         perc_size (list): The percentual size of each chunk size.
-        shuffle (bool): Shuffle the list or not
+        shuffle (bool): Shuffle the list or not.
+
     Returns:
-        result_list (list of list): A list of lists with the chunks.
+        list of lists: A list of lists with the chunks.
+
     Examples:
         >>> split_list(list(range(7)),[0.47,0.33,0.2])
         [[0, 1, 2], [3, 4, 5], [6]]
@@ -200,18 +225,21 @@ def split_list(py_list, perc_size=[0.8, 0.2], shuffle=False):
     splits *= len(l)
 
     # Turn double indices into integers.
-    splits = splits.round().astype(np.int)
+    splits = splits.round().astype(np.int32)
 
     return [list(chunks) for chunks in np.split(l, splits)]
 
 
 def intersection(list1, list2):
     """Intersection of two lists, returns the common elements in both lists.
+
     Args:
         list1 (list): A list of elements.
         list2 (list): A list of elements.
+
     Returns:
-        result_list (list): A list with the common elements.
+        list: A list with the common elements.
+
     Examples:
         >>> intersection([1,2,3], [2,3,4])
         [2, 3]
@@ -221,13 +249,15 @@ def intersection(list1, list2):
 
 
 def union(list1, list2):
-    """Union of two lists, returns the elements that appear in one list OR the
-    other.
+    """Union of two lists, returns the elements that appear in one list OR the other.
+
     Args:
         list1 (list): A list of elements.
         list2 (list): A list of elements.
+
     Returns:
-        result_list (list): A list with the union elements.
+        list: A list with the union elements.
+
     Examples:
         >>> union([1,2,3], [2,3,4])
         [1, 2, 3, 4]
@@ -237,17 +267,17 @@ def union(list1, list2):
 
 
 def unique(list1, list2):
-    """Get the unique items that are in the first list but not in the second 
+    """Get the unique items that are in the first list but not in the second
     list.
     NOTE: unique(l1,l2) is not always equal to unique(l2,l1)
-    
+
     Args:
         list1 (list): A list of elements.
         list2 (list): A list of elements.
-    
+
     Returns:
         list: A list with the unique elements.
-    
+
     Examples:
         >>> unique([1,2,3], [2,3,4])
         [1]
