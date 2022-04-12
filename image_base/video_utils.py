@@ -28,11 +28,15 @@ def video_from_frames_cv(filename, folder, fps=25, img_format=".jpeg"):
         img_format (str): Image format.
     """
     images = [img for img in os.listdir(folder) if img.endswith(img_format)]
+    images = sorted(images)
     frame = cv2.imread(os.path.join(folder, images[0]))
     height, width, layers = frame.shape
 
     video = cv2.VideoWriter(
-        filename, cv2.VideoWriter_fourcc(*"mp4v"), fps, (width, height)
+        os.path.join(folder, filename),
+        cv2.VideoWriter_fourcc(*"mp4v"),
+        fps,
+        (width, height),
     )
 
     for image in images:
