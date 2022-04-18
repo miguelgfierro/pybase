@@ -2,7 +2,7 @@
 [![Commits](https://img.shields.io/github/commit-activity/y/miguelgfierro/pybase.svg?color=success)](https://github.com/miguelgfierro/pybase/commits/master)
 [![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/pybase.svg)](https://github.com/miguelgfierro/pybase/commits/master)
 [![Code style:black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
-[![Python 3.7+supported](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/release/python-350/)
+[![Python 3.6+supported](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 [![Linkedin](https://img.shields.io/badge/Linkedin-Follow%20Miguel-blue?logo=linkedin)](https://www.linkedin.com/in/miguelgfierro/)
 [![Blog](https://img.shields.io/badge/Blog-Visit%20miguelgfierro.com-blue.svg)](https://miguelgfierro.com?utm_source=github&utm_medium=profile&utm_campaign=pybase)

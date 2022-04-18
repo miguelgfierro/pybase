@@ -21,8 +21,8 @@ jobs:
       fail-fast: false
       max-parallel: 8
       matrix:
-        os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
-        python: ['3.6','3.7', '3.8', '3.9', '3.10']
+        os: [macos-latest, ubuntu-18.04, ubuntu-20.04]
+        python: ['3.6', '3.7', '3.8', '3.9', '3.10']
     steps:
     - name: Checkout
       uses: actions/checkout@v3
