@@ -34,11 +34,9 @@ jobs:
     - name: Setup environment
       shell: bash
       run: |
-        export BUILD_DIRECTORY="$GITHUB_WORKSPACE"
-        export CONDA=${HOME}/miniforge
-        export PATH=${CONDA}/bin:${PATH}
+        echo $CONDA/bin >> $GITHUB_PATH
         ls -lha
-        conda env update -f conda.yml
+        conda env update -f conda.yml -n base
         pip list
 
     - name: Python version
