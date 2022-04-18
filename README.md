@@ -2,7 +2,7 @@
 [![Commits](https://img.shields.io/github/commit-activity/y/miguelgfierro/pybase.svg?color=success)](https://github.com/miguelgfierro/pybase/commits/master)
 [![Last commit](https://img.shields.io/github/last-commit/miguelgfierro/pybase.svg)](https://github.com/miguelgfierro/pybase/commits/master)
 [![Code style:black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
-[![Python 3.5+supported](https://img.shields.io/badge/python-3.5+-blue.svg)](https://www.python.org/downloads/release/python-350/)
+[![Python 3.7+supported](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/release/python-350/)
 
 [![Linkedin](https://img.shields.io/badge/Linkedin-Follow%20Miguel-blue?logo=linkedin)](https://www.linkedin.com/in/miguelgfierro/)
 [![Blog](https://img.shields.io/badge/Blog-Visit%20miguelgfierro.com-blue.svg)](https://miguelgfierro.com?utm_source=github&utm_medium=profile&utm_campaign=pybase)
@@ -13,17 +13,16 @@ This is a codebase for basic python utilities.
 
 ## Dependencies
 
-To install the dependencies on a conda environment named `pybase`:
+To install the dependencies:
 
-    conda env create -n pybase -f conda.yaml
-    conda install pyspark
+    pip install -r requirements.txt
 
-For setting up PySpark, make sure Java and Spark are available in the machine. Then, we need to set the environment variables `PYSPARK_PYTHON` and `PYSPARK_DRIVER_PYTHON` to point to the conda python executable.
+For setting up PySpark, make sure Java and Spark are available in the machine. Then, we need to set the environment variables `PYSPARK_PYTHON` and `PYSPARK_DRIVER_PYTHON` to point to the python executable.
 
 <details>
-<summary><strong><em>Press to get the instructions for PySpark on Linux or MacOS</em></strong></summary>
+<summary><strong><em>Press to get the instructions for PySpark on Linux or MacOS in a Conda environment</em></strong></summary>
 
-To set these variables every time the environment is activated, we can follow the steps of this [guide](https://conda.io/docs/user-guide/tasks/manage-environments.html#macos-and-linux). First, get the path of the environment `pybase` is installed:
+To set these variables every time the environment is activated, we can follow the steps of this [guide](https://conda.io/docs/user-guide/tasks/manage-environments.html#macos-and-linux). First, get the path of the Conda environment `pybase` is installed:
 
     CONDA_ENV=$(conda env list | grep pybase | awk '{print $NF}')
 
@@ -49,7 +48,7 @@ create the file `$CONDA_ENV/etc/conda/deactivate.d/env_vars.sh` and add:
 </details>
 
 <details>
-<summary><strong><em>Press to get the instructions for PySpark on Windows</em></strong></summary>
+<summary><strong><em>Press to get the instructions for PySpark on Windows in a Conda environment</em></strong></summary>
 
 To set these variables every time the environment is activated, we can follow the steps of this [guide](https://conda.io/docs/user-guide/tasks/manage-environments.html#windows). First, get the path of the environment `pybase` is installed:
 

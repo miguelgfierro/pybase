@@ -82,7 +82,7 @@ def get_filenames_in_folder(folderpath, pattern="*"):
 
     Examples:
         >>> l = get_filenames_in_folder(".github")
-        >>> Counter(l) == Counter(["CODEOWNERS", "PULL_REQUEST_TEMPLATE.md", "workflows/pr_gate.yml"])
+        >>> Counter(l) == Counter(["CODEOWNERS", "PULL_REQUEST_TEMPLATE.md", "workflows"])
         True
         >>> get_filenames_in_folder(".github", "*.md")
         ['PULL_REQUEST_TEMPLATE.md']

@@ -3,12 +3,8 @@ from abc import ABC, abstractmethod
 
 class AbstractClassExample(ABC):
     """Abstract class example.
-    
+
     Examples:
-        >>> c1 = DontDoAnything(1)
-        Traceback (most recent call last):
-            ...
-        TypeError: Can't instantiate abstract class DontDoAnything with abstract methods do_something
         >>> c2 = DoAdd42(2)
         >>> c2.do_something()
         44
@@ -29,6 +25,16 @@ class AbstractClassExample(ABC):
 
 
 class DontDoAnything(AbstractClassExample):
+    """This class will return an error because it is not implemented.
+
+    **Examples**::
+
+        >> c1 = DontDoAnything(1)
+        Traceback (most recent call last):
+            ...
+        TypeError: Can't instantiate abstract class DontDoAnything with abstract methods do_something
+    """
+
     pass
 
 

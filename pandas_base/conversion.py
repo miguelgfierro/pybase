@@ -198,26 +198,26 @@ def add_row(df, row):
 
     .. note::
 
-        according to `this source <https://stackoverflow.com/questions/41888080/python-efficient-way-to-add-rows-to-dataframe/41888241#41888241>`_
-        using ``loc`` is 14x faster
+        According to `this source <https://stackoverflow.com/questions/41888080/python-efficient-way-to-add-rows-to-dataframe/41888241#41888241>`_
+        using ``loc`` is 14x faster.
 
     Args:
         df (pd.DataFrame): Dataframe.
         row (dict): A dictionary.
 
     Examples:
-        >>> df = pd.DataFrame(columns=["letters", "numbers"])
-        >>> row = {"letters": "a", "numbers": 1}
+        >>> df = pd.DataFrame(columns=["l", "n"])
+        >>> row = {"l": "a", "n": 1}
         >>> add_row(df, row)
         >>> df
-          letters  numbers
-        0       a        1
-        >>> row = {"letters": "b", "numbers": 2}
+           l  n
+        0  a  1
+        >>> row = {"l": "b", "n": 2}
         >>> add_row(df, row)
         >>> df
-          letters  numbers
-        0       a        1
-        1       b        2
+           l  n
+        0  a  1
+        1  b  2
 
     """
     df.loc[df.shape[0]] = row
