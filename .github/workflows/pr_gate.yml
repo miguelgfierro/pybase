@@ -10,7 +10,7 @@ on:
     input:
       tags:
         description: 'Tags to label this manual run (optional)'
-        default: 'Anything to describe this manual run'
+        default: 'Manual run'
 
 jobs:
   test:
