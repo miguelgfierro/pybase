@@ -36,3 +36,5 @@ backoff>=1.8.0
 pytube3>=9.5.3
 moviepy>=1.0.1
 numba>=0.38.1,<1
+jupyter>=1.0.0
+pyodbc>=4.0.21

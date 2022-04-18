@@ -54,3 +54,8 @@ jobs:
     - name: Run tests
       run: |
         pytest test/pytest* -m "not system"
+        python test/unittest_fixtures.py
+
+    - name: Run doctests
+      run: |
+        pytest --doctest-modules --continue-on-collection-errors --durations 0    
