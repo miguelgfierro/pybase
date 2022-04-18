@@ -324,4 +324,8 @@ def get_conda_environment():
         '...'
 
     """
-    return os.environ["CONDA_DEFAULT_ENV"]
+    try:
+        env = os.environ["CONDA_DEFAULT_ENV"]
+    except KeyError:
+        env = "No conda env found"
+    return env
