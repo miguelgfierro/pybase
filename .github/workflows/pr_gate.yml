@@ -1,12 +1,16 @@
 name: PR gate
 
 on:
-  push:
-    branches:
-    - master
   pull_request:
     branches:
     - master
+
+  # enable manual trigger
+  workflow_dispatch:
+    input:
+      tags:
+        description: 'Tags to label this manual run (optional)'
+        default: 'Anything to describe this manual run'
 
 jobs:
   test:
