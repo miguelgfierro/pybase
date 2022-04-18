@@ -1,0 +1,46 @@
+name: PR gate
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  test:
+    name: Test Python ${{ matrix.python_version }} on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-18.04, ubuntu-20.04]
+        python: [3.6, 3.7, 3.8, 3.9, 3.10]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Use Python ${{ matrix.python }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python }}
+
+    - name: Setup environment
+      shell: bash
+      run: |
+        export BUILD_DIRECTORY="$GITHUB_WORKSPACE"
+        export CONDA=${HOME}/miniforge
+        export PATH=${CONDA}/bin:${PATH}
+        conda env update -f conda.yml
+        pip list
+
+    - name: Python version
+      run: |
+        echo "Python: ${{ matrix.python }}"
+        python --version
+
+    - name: Run tests
+      run: |
+        pytest test/pytest* -m "not system"

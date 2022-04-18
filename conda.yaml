@@ -15,7 +15,6 @@ channels:
 - conda-forge
 - defaults
 dependencies:
-- python==3.8.13
 - pip>=19.2
 - jupyter>=1.0.0
 - pyodbc>=4.0.21
