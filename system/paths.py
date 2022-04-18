@@ -5,11 +5,11 @@ import shutil
 
 
 def get_current_folder_path():
-    """ Get parent path of current file.
-    
+    """Get parent path of current file.
+
     Returns:
         str: parent path
-    
+
     Examples:
         >>> get_current_folder_path() #doctest: +ELLIPSIS
         '...system'
@@ -18,11 +18,11 @@ def get_current_folder_path():
 
 
 def get_parent_folder_path():
-    """ Get parent path of current file.
-    
+    """Get parent path of current file.
+
     Returns:
         str: parent path
-    
+
     Examples:
         >>> get_parent_folder_path() #doctest: +ELLIPSIS
         '...pybase'
@@ -32,17 +32,17 @@ def get_parent_folder_path():
 
 def count_files_in_folder(folderpath, pattern="*"):
     """Return the number of files in a folder.
-    
+
     Args:
         folderpath (str): folder path.
         pattern (str): Pattern to filter.
-    
+
     Returns:
         int: number of files in a folder
-    
+
     Examples:
         >>> count_files_in_folder(".github")
-        2
+        3
         >>> count_files_in_folder("share", pattern="*.npy")
         2
     """
@@ -51,17 +51,17 @@ def count_files_in_folder(folderpath, pattern="*"):
 
 def count_files_in_folder_recursively(folderpath):
     """Return the number of files in a folder recursively.
-    
+
     Args:
         folderpath (str): folder path
-    
+
     Returns:
         int: number of files in a folder
-    
+
     Examples:
         >>> count_files_in_folder_recursively("share")
         26
-        
+
     """
     if folderpath[-1] != os.path.sep:  # Add final '/' if it doesn't exist
         folderpath += os.path.sep
@@ -72,17 +72,17 @@ def count_files_in_folder_recursively(folderpath):
 
 def get_filenames_in_folder(folderpath, pattern="*"):
     """Return the files or folder names inside a folder.
-    
+
     Args:
         folderpath (str): Folder path.
         pattern (str): Pattern to find.
 
     Returns:
         list: list of files
-    
+
     Examples:
-        >>> l = get_filenames_in_folder(".github")   
-        >>> Counter(l) == Counter(["CODEOWNERS", "PULL_REQUEST_TEMPLATE.md"])
+        >>> l = get_filenames_in_folder(".github")
+        >>> Counter(l) == Counter(["CODEOWNERS", "PULL_REQUEST_TEMPLATE.md", "workflows"])
         True
         >>> get_filenames_in_folder(".github", "*.md")
         ['PULL_REQUEST_TEMPLATE.md']
@@ -94,14 +94,14 @@ def get_filenames_in_folder(folderpath, pattern="*"):
 
 def get_files_in_folder_recursively(folderpath, pattern=None):
     """Return the files inside a folder recursively.
-    
+
     Args:
         folderpath (str): Folder path.
         pattern (str): Pattern to find recursively.
-    
+
     Returns:
         list: list of files
-    
+
     Examples:
         >>> l = get_files_in_folder_recursively(".", "*.npy")
         >>> Counter(l) == Counter(["share" + os.sep + "data.npy", "share" + os.sep + "Lenna_contours.npy"])
@@ -125,7 +125,7 @@ def remove_file(filename):
     """Remove file if it exists.
 
     `Link to original code <https://stackoverflow.com/a/10840586/5620182>`_
-    
+
     Examples:
         >>> s = shutil.copyfile(os.path.join("share", "traj.csv"), "copy.csv")
         >>> os.path.isfile("copy.csv")
@@ -144,7 +144,7 @@ def remove_file(filename):
 
 def remove_dir(filepath):
     """Remove directory
-    
+
     Args:
         filepath (str): Filepath
 

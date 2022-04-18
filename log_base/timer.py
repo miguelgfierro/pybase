@@ -4,18 +4,18 @@ from datetime import timedelta
 
 class Timer:
     """Timer class.
-    
+
     Examples:
         >>> import time
         >>> t = Timer()
         >>> t.start()
         >>> time.sleep(1)
         >>> t.stop()
-        >>> t.interval > 0.9 and t.interval < 1.1
+        >>> t.interval > 0.8 and t.interval < 1.2
         True
         >>> with Timer() as t:
         ...   time.sleep(1)
-        >>> t.interval > 0.9 and t.interval < 1.1
+        >>> t.interval > 0.8 and t.interval < 1.2
         True
         >>> "Time elapsed {}".format(t) #doctest: +ELLIPSIS
         'Time elapsed 1...'
@@ -58,4 +58,3 @@ class Timer:
             raise ValueError("Timer has not been stopped, please use stop().")
         else:
             return self._interval
-

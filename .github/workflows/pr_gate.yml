@@ -3,48 +3,54 @@ name: PR gate
 on:
   pull_request:
     branches:
-    - master
+    - main
 
   # enable manual trigger
   workflow_dispatch:
     input:
       tags:
         description: 'Tags to label this manual run (optional)'
-        default: 'Anything to describe this manual run'
+        default: 'Manual run'
 
 jobs:
   test:
-    name: Test Python ${{ matrix.python_version }} on ${{ matrix.os }}
+    name: Test Python ${{ matrix.python }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
     strategy:
       fail-fast: false
+      max-parallel: 8
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
-        python: [3.6, 3.7, 3.8, 3.9, 3.10]
+        os: [macos-latest, ubuntu-18.04, ubuntu-20.04]
+        python: ['3.6', '3.7', '3.8', '3.9', '3.10']
+        exclude: 
+          - os: macos-latest
+            python: '3.6' # error with fastparquet (everything else works)
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     
     - name: Use Python ${{ matrix.python }}
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python }}
-
-    - name: Setup environment
-      shell: bash
+    
+    - name: Install dependencies
       run: |
-        export BUILD_DIRECTORY="$GITHUB_WORKSPACE"
-        export CONDA=${HOME}/miniforge
-        export PATH=${CONDA}/bin:${PATH}
-        conda env update -f conda.yml
-        pip list
+        pip install -r requirements.txt
 
-    - name: Python version
+    - name: Python version and dependency list
       run: |
-        echo "Python: ${{ matrix.python }}"
+        echo "Python version expected: ${{ matrix.python }}"
         python --version
+        which python
+        pip list
 
     - name: Run tests
       run: |
         pytest test/pytest* -m "not system"
+        python test/unittest_fixtures.py
+
+    - name: Run doctests
+      run: |
+        pytest --doctest-modules --continue-on-collection-errors --durations 0    
