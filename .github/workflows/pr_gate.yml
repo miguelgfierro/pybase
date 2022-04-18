@@ -14,7 +14,7 @@ on:
 
 jobs:
   test:
-    name: Test Python ${{ matrix.python_version }} on ${{ matrix.os }}
+    name: Test Python ${{ matrix.python }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
     strategy:
@@ -37,6 +37,7 @@ jobs:
         export BUILD_DIRECTORY="$GITHUB_WORKSPACE"
         export CONDA=${HOME}/miniforge
         export PATH=${CONDA}/bin:${PATH}
+        ls -lha
         conda env update -f conda.yml
         pip list
 
