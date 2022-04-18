@@ -23,6 +23,9 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-18.04, ubuntu-20.04]
         python: ['3.6', '3.7', '3.8', '3.9', '3.10']
+        exclude:
+          - os: [macos-latest]
+            python: ['3.6'] # error with fastparquet (everything else works)
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -35,13 +38,13 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        pip list
 
-    - name: Python version
+    - name: Python version and dependency list
       run: |
         echo "Python version expected: ${{ matrix.python }}"
         python --version
         which python
+        pip list
 
     - name: Run tests
       run: |
