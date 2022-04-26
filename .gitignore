@@ -116,4 +116,4 @@ license.txt
 test_spark*/
 Playground.ipynb
 PLAYGROUND.ipynb
-
+mlruns/
