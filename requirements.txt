@@ -41,3 +41,4 @@ numba>=0.38.1,<1
 jupyter>=1.0.0
 pyodbc>=4.0.21
 mlflow>=1.14.0
+jupyter>=1,<2
