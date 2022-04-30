@@ -2,13 +2,13 @@ from itertools import product
 
 
 def combine_params(*values):
-    """combine_params _summary_
+    """Create a generator that returns a combination of any arbitrary set of values.
 
     Args:
-        values (_type_): _description_
+        values (list): An arbitrary number of lists to be combined.    
 
     Returns:
-        iterator: _description_
+        iterator: A generator with the combines values.
 
     Examples:
         >>> n = [1, 2]
