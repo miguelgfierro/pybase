@@ -1,5 +1,6 @@
 import random
 import numpy as np
+from itertools import compress
 
 
 def get_n_first_elements(py_list, n_elements):
@@ -285,3 +286,23 @@ def unique(list1, list2):
         [4]
     """
     return list(set(list1) - set(list2))
+
+
+def select_list_elements(py_list, mask):
+    """Selects the elements of a list based on a binary mask
+
+    Args:
+        py_list (list): A list of elements.
+        mask (list): A list of 0s or 1s.
+
+    Returns:
+        list: A masked list with the size of the 1s in the mask.
+
+    Examples:
+        >>> py_list = [1,2,3,4,5]
+        >>> mask = [0,1,0,1,0]
+        >>> select_list_elements(py_list, mask)
+        [2, 4]
+
+    """
+    return list(compress(py_list, mask))

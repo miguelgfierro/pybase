@@ -1,3 +1,39 @@
+from itertools import product
+
+
+def combine_params(*values):
+    """Create a generator that returns a combination of any arbitrary set of values.
+
+    Args:
+        values (list): An arbitrary number of lists to be combined.    
+
+    Returns:
+        iterator: A generator with the combines values.
+
+    Examples:
+        >>> n = [1, 2]
+        >>> l = ["a", "b"]
+        >>> for vals in combine_params(n,l):
+        ...     print(vals)
+        (1, 'a')
+        (1, 'b')
+        (2, 'a')
+        (2, 'b')
+        >>> f = [0.1, 0.2]
+        >>> for vals in combine_params(n,l,f):
+        ...     print(vals)
+        (1, 'a', 0.1)
+        (1, 'a', 0.2)
+        (1, 'b', 0.1)
+        (1, 'b', 0.2)
+        (2, 'a', 0.1)
+        (2, 'a', 0.2)
+        (2, 'b', 0.1)
+        (2, 'b', 0.2)
+    """
+    return product(*values)
+
+
 def yield_data(data, batch_size, complete_batches=False):
     """Yield an array in batches.
     

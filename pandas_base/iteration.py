@@ -55,4 +55,4 @@ def iteration_range():
 # - 48.5 ms ± 5.71 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 # - 1.3 s ± 160 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 #
-# SUMMARY: Always Use zip, unless it is necessary to get the index, then use itertuples
+# SUMMARY: Always use zip, unless it is necessary to get the index, then use itertuples
