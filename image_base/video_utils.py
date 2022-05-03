@@ -28,6 +28,8 @@ def video_from_frames_cv(filename, folder, fps=25, img_format=".jpeg"):
         img_format (str): Image format.
     """
     images = [img for img in os.listdir(folder) if img.endswith(img_format)]
+    if not images:
+        raise FileNotFoundError(f"No images found with extension {img_format}")
     images = sorted(images)
     frame = cv2.imread(os.path.join(folder, images[0]))
     height, width, layers = frame.shape
