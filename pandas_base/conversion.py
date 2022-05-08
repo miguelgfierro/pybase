@@ -251,3 +251,21 @@ def split_text_in_column(df, component, col_name, new_col_list):
     df = pd.concat([df, df_exp], axis=1)
     df.drop(columns=col_name, inplace=True)
     return df
+
+
+def expand_list_in_rows(df, columns=None):
+    """expand_list_in_rows _summary_
+
+    Args:
+        df (pd.DataFrame): Dataframe.
+        columns (list): List of columns to apply the expansion.
+
+    Returns:
+        pd.DataFrame: A dataframe with a row for each value in the list.
+
+    Example:
+        >>> df = pd.DataFrame({"a":[[1,2,3]], "b":[[4,5,6]]})
+        >>> df
+                   a          b
+        0  [1, 2, 3]  [4, 5, 6]
+    """
