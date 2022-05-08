@@ -253,7 +253,7 @@ def split_text_in_column(df, component, col_name, new_col_list):
     return df
 
 
-def expand_list_in_rows(df, columns=None):
+def expand_list_in_rows(df, columns=None, reset_index=True):
     """expand_list_in_rows _summary_
 
     Args:
@@ -268,4 +268,17 @@ def expand_list_in_rows(df, columns=None):
         >>> df
                    a          b
         0  [1, 2, 3]  [4, 5, 6]
+        >>> expand_list_in_rows(df)
+           a  b
+        0  1  4
+        1  2  5
+        2  3  6
     """
+    if columns is None:
+        # Using apply with pd.Series.explode is 30x faster than df.explode(columns)
+        df_return = df.apply(pd.Series.explode)
+    else:
+        df_return = df.explode(columns)
+    if reset_index is True:
+        return df_return.reset_index(drop=True)
+    return df_return
