@@ -254,7 +254,7 @@ def split_text_in_column(df, component, col_name, new_col_list):
 
 
 def expand_list_in_rows(df, columns=None, reset_index=True):
-    """expand_list_in_rows _summary_
+    """Expand a dataframe with a list into multiple rows.
 
     Args:
         df (pd.DataFrame): Dataframe.
