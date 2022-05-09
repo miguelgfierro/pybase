@@ -278,7 +278,7 @@ def expand_list_in_rows(df, columns=None, reset_index=True):
         0  1  4
         1  2  5
         2  3  6
-        >>> expand_list_in_rows(df, columns=["a"])
+        >>> expand_list_in_rows(df, columns="a")
            a          b
         0  1  [4, 5, 6]
         1  2  [4, 5, 6]
