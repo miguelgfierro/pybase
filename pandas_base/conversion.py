@@ -251,3 +251,49 @@ def split_text_in_column(df, component, col_name, new_col_list):
     df = pd.concat([df, df_exp], axis=1)
     df.drop(columns=col_name, inplace=True)
     return df
+
+
+def expand_list_in_rows(df, columns=None, reset_index=True):
+    """Expand a dataframe with a list into multiple rows.
+
+    Args:
+        df (pd.DataFrame): Dataframe.
+        columns (list): List of columns to apply the expansion.
+
+    Returns:
+        pd.DataFrame: A dataframe with a row for each value in the list.
+
+    Example:
+        >>> df = pd.DataFrame({"a":[[1,2,3]], "b":[[4,5,6]]})
+        >>> df
+                   a          b
+        0  [1, 2, 3]  [4, 5, 6]
+        >>> expand_list_in_rows(df)
+           a  b
+        0  1  4
+        1  2  5
+        2  3  6
+        >>> expand_list_in_rows(df, columns=["a","b"])
+           a  b
+        0  1  4
+        1  2  5
+        2  3  6
+        >>> expand_list_in_rows(df, columns="a")
+           a          b
+        0  1  [4, 5, 6]
+        1  2  [4, 5, 6]
+        2  3  [4, 5, 6]
+        >>> expand_list_in_rows(df, reset_index=False)
+           a  b
+        0  1  4
+        0  2  5
+        0  3  6
+    """
+    if columns is None or columns == df.columns.tolist():
+        # Using apply with pd.Series.explode is 30x faster than df.explode(columns)
+        df_return = df.apply(pd.Series.explode)
+    else:
+        df_return = df.explode(columns)
+    if reset_index is True:
+        return df_return.reset_index(drop=True)
+    return df_return
