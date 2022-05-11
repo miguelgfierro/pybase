@@ -218,9 +218,8 @@ def get_cuda_version():
 
     """
     try:
-        from tensorflow.python.platform import build_info
-
-        return build_info.cuda_version_number
+        import torch
+        return torch.version.cuda
     except (ImportError, ModuleNotFoundError):
         path = ""
         if sys.platform == "win32":
@@ -272,11 +271,10 @@ def get_cudnn_version():
                 return "Cannot find CUDNN version"
         else:
             return "Cannot find CUDNN version"
-
+            
     try:
-        from tensorflow.python.platform import build_info
-
-        return build_info.cudnn_version_number
+        import torch
+        return torch.backends.cudnn.version()
     except (ImportError, ModuleNotFoundError):
         if sys.platform == "win32":
             candidates = [r"C:\NVIDIA\cuda\include\cudnn.h"]
