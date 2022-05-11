@@ -218,9 +218,8 @@ def get_cuda_version():
 
     """
     try:
-        from tensorflow.python.platform import build_info
-
-        return build_info.cuda_version_number
+        import torch
+        return torch.version.cuda
     except (ImportError, ModuleNotFoundError):
         path = ""
         if sys.platform == "win32":
