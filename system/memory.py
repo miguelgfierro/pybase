@@ -68,7 +68,7 @@ def get_ram_memory(units="Mb"):
     
     Examples:
         >>> num = get_ram_memory("Gb") 
-        >>> num >= 4
+        >>> num >= 2
         True
     """
     s_bytes = psutil.virtual_memory()[0]
