@@ -7,8 +7,6 @@ import importlib
 import socket
 import numpy as np
 from psutil import virtual_memory
-import numba
-from numba.cuda.cudadrv.error import CudaSupportError
 
 
 def get_os():
@@ -131,8 +129,9 @@ def get_gpu_name():
 
     """
     try:
+        import numba
         return [gpu.name.decode("utf-8") for gpu in numba.cuda.gpus]
-    except CudaSupportError:
+    except numba.cuda.cudadrv.error.CudaSupportError:
         return []
 
 
@@ -193,8 +192,9 @@ def get_number_gpus():
     except (ImportError, ModuleNotFoundError):
         pass
     try:
+        import numba
         return len(numba.cuda.gpus)
-    except CudaSupportError:
+    except numba.cuda.cudadrv.error.CudaSupportError:
         return 0
 
 
@@ -210,8 +210,9 @@ def get_gpu_compute_capability():
 
     """
     try:
+        import numba
         return [gpu.compute_capability for gpu in numba.cuda.gpus]
-    except CudaSupportError:
+    except numba.cuda.cudadrv.error.CudaSupportError:
         return []
 
 
@@ -317,7 +318,12 @@ def is_cuda_available():
         import torch
         return torch.cuda.is_available()
     except (ImportError, ModuleNotFoundError):
-        return numba.cuda.is_available()
+        pass
+    try:
+        import numba
+        return len(numba.cuda.gpus)
+    except numba.cuda.cudadrv.error.CudaSupportError:
+        return False
 
 
 def get_conda_environment():
