@@ -117,24 +117,6 @@ def get_java_version():
     os.system("java -version")
 
 
-def get_gpu_name():
-    """Get the GPU names in the system.
-
-    Returns:
-        list: List of strings with the GPU name.
-
-    Examples:
-        >>> get_gpu_name() #doctest: +SKIP
-        ['Tesla P100-PCIE-16GB']
-
-    """
-    try:
-        import numba
-        return [gpu.name.decode("utf-8") for gpu in numba.cuda.gpus]
-    except numba.cuda.cudadrv.error.CudaSupportError:
-        return []
-
-
 def get_blas_version():
     """Shows BLAS version of MKL, OpenBLAS, ATLAS and LAPACK libraries.
 
@@ -175,6 +157,24 @@ def get_blas_version():
     return np.__config__.show()
 
 
+def get_gpu_name():
+    """Get the GPU names in the system.
+
+    Returns:
+        list: List of strings with the GPU name.
+
+    Examples:
+        >>> get_gpu_name() #doctest: +SKIP
+        ['Tesla P100-PCIE-16GB']
+
+    """
+    try:
+        import numba
+        return [gpu.name.decode("utf-8") for gpu in numba.cuda.gpus]
+    except Exception: # numba.cuda.cudadrv.error.CudaSupportError:
+        return []
+
+
 def get_number_gpus():
     """Get the number of GPUs in the system.
 
@@ -194,7 +194,7 @@ def get_number_gpus():
     try:
         import numba
         return len(numba.cuda.gpus)
-    except numba.cuda.cudadrv.error.CudaSupportError:
+    except Exception: # numba.cuda.cudadrv.error.CudaSupportError:
         return 0
 
 
@@ -212,7 +212,7 @@ def get_gpu_compute_capability():
     try:
         import numba
         return [gpu.compute_capability for gpu in numba.cuda.gpus]
-    except numba.cuda.cudadrv.error.CudaSupportError:
+    except Exception: # numba.cuda.cudadrv.error.CudaSupportError:
         return []
 
 
@@ -322,7 +322,7 @@ def is_cuda_available():
     try:
         import numba
         return len(numba.cuda.gpus)
-    except numba.cuda.cudadrv.error.CudaSupportError:
+    except Exception: # numba.cuda.cudadrv.error.CudaSupportError:
         return False
 
 

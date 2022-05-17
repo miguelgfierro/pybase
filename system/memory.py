@@ -90,7 +90,7 @@ def get_total_gpu_memory(units="Mb"):
                 meminfo = numba.cuda.current_context().get_memory_info()
                 memory_list.append(_manage_memory_units(meminfo[1], units))
         return memory_list
-    except numba.cuda.cudadrv.error.CudaSupportError:
+    except Exception: #numba.cuda.cudadrv.error.CudaSupportError:
         return []
 
 
@@ -113,7 +113,7 @@ def get_free_gpu_memory(units="Mb"):
                 meminfo = numba.cuda.current_context().get_memory_info()
                 memory_list.append(_manage_memory_units(meminfo[0], units))
         return memory_list
-    except numba.cuda.cudadrv.error.CudaSupportError:
+    except Exception: # numba.cuda.cudadrv.error.CudaSupportError:
         return []
 
 
@@ -130,7 +130,7 @@ def clear_memory_all_gpus():
         for gpu in numba.cuda.gpus:
             with gpu:
                 numba.cuda.current_context().deallocations.clear()
-    except numba.cuda.cudadrv.errorCudaSupportError:
+    except Exception: # numba.cuda.cudadrv.errorCudaSupportError:
         print("No CUDA available")
 
 
@@ -149,7 +149,7 @@ def clear_memory_gpu_id(id):
         for gpu in numba.cuda.gpus:
             numba.cuda.select_device(gpu.id)
             numba.cuda.close()
-    except numba.cuda.cudadrv.error.CudaSupportError:
+    except Exception: # numba.cuda.cudadrv.error.CudaSupportError:
         print("No CUDA available")
     except IndexError:
         raise ValueError("GPU id should be between 0 and {}".format(len(numba.cuda.gpus) - 1))
