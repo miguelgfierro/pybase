@@ -1,6 +1,5 @@
 import sys
 import psutil
-import subprocess
 from numba import cuda
 from numba.cuda.cudadrv.error import CudaSupportError
 
