@@ -1,7 +1,5 @@
 import sys
 import psutil
-from numba import cuda
-from numba.cuda.cudadrv.error import CudaSupportError
 
 
 def _manage_memory_units(data_in_bytes, units):
@@ -85,13 +83,14 @@ def get_total_gpu_memory(units="Mb"):
         [16280.875]
     """
     try:
+        import numba
         memory_list = []
-        for gpu in cuda.gpus:
+        for gpu in numba.cuda.gpus:
             with gpu:
-                meminfo = cuda.current_context().get_memory_info()
+                meminfo = numba.cuda.current_context().get_memory_info()
                 memory_list.append(_manage_memory_units(meminfo[1], units))
         return memory_list
-    except CudaSupportError:
+    except numba.cuda.cudadrv.error.CudaSupportError:
         return []
 
 
@@ -107,13 +106,14 @@ def get_free_gpu_memory(units="Mb"):
 
     """
     try:
+        import numba
         memory_list = []
-        for gpu in cuda.gpus:
+        for gpu in numba.cuda.gpus:
             with gpu:
-                meminfo = cuda.current_context().get_memory_info()
+                meminfo = numba.cuda.current_context().get_memory_info()
                 memory_list.append(_manage_memory_units(meminfo[0], units))
         return memory_list
-    except CudaSupportError:
+    except numba.cuda.cudadrv.error.CudaSupportError:
         return []
 
 
@@ -126,10 +126,11 @@ def clear_memory_all_gpus():
 
     """
     try:
-        for gpu in cuda.gpus:
+        import numba
+        for gpu in numba.cuda.gpus:
             with gpu:
-                cuda.current_context().deallocations.clear()
-    except CudaSupportError:
+                numba.cuda.current_context().deallocations.clear()
+    except numba.cuda.cudadrv.errorCudaSupportError:
         print("No CUDA available")
 
 
@@ -144,10 +145,11 @@ def clear_memory_gpu_id(id):
         No CUDA available
     """
     try:
-        for gpu in cuda.gpus:
-            cuda.select_device(gpu.id)
-            cuda.close()
-    except CudaSupportError:
+        import numba
+        for gpu in numba.cuda.gpus:
+            numba.cuda.select_device(gpu.id)
+            numba.cuda.close()
+    except numba.cuda.cudadrv.error.CudaSupportError:
         print("No CUDA available")
     except IndexError:
-        raise ValueError("GPU id should be between 0 and {}".format(len(cuda.gpus) - 1))
+        raise ValueError("GPU id should be between 0 and {}".format(len(numba.cuda.gpus) - 1))
