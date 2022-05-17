@@ -188,6 +188,11 @@ def get_number_gpus():
 
     """
     try:
+        import torch
+        return torch.cuda.device_count()
+    except (ImportError, ModuleNotFoundError):
+        pass
+    try:
         return len(numba.cuda.gpus)
     except CudaSupportError:
         return 0
