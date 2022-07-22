@@ -7,7 +7,7 @@ on:
     paths:
     - '!README.md'
     - '!LICENSE'
-    - database/**
+    - '!database/**'
 
   # enable manual trigger
   workflow_dispatch:
