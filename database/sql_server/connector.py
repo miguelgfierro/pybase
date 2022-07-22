@@ -9,7 +9,7 @@ def connect_to_database(
     server="localhost",
     port=1433,
 ):
-    """    Connect to a SQL server database.
+    """Connect to a SQL server database.
     
     Args:
         database (str): Database name.
