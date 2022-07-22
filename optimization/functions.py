@@ -55,7 +55,7 @@ def ackley(x):
 
 
 def plot_function2D(x, y, z):
-    """Plot 2D function with matplotlib
+    """Plot 2D function with matplotlib.
     
     Args:
         x (np.array): X value.
