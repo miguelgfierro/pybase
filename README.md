@@ -9,7 +9,7 @@
 
 # Python pybase
 
-This is a codebase for basic python utilities.
+This is a codebase for basic Python utilities.
 
 ## Dependencies
 
