@@ -104,12 +104,6 @@ See the full installation guide [here](https://medium.com/@akshaysin_86681/insta
 
 </details>
 
-## Configuration
-
-To be able to run the test in [blob_io.py](python/io_base/blob_io.py), add the correct credentials after renaming the template:
-
-    cp share/blob_config_template.json share/blob_config.json
-
 ## Doctests
 
 To execute the tests:
@@ -126,7 +120,7 @@ To see more details on the result, the following command will generate a web whe
     coverage html
 
 To handle variable outputs in doctest you need to add at the end of the execution line `#doctest: +ELLIPSIS` and substitude the variable output with `...`
-An example can be found in the file [timer.py](python/log_base/timer.py).
+An example can be found in the file [timer.py](log_base/timer.py).
 
 Original:
 
