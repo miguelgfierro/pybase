@@ -5,9 +5,11 @@ on:
     branches:
     - main
     paths-ignore:
-    - README.md
-    - LICENSE
+    - 'README.md'
+    - 'LICENSE'
     - 'database/**'
+    - '.github/**'
+    - '.gitignore'
 
   # enable manual trigger
   workflow_dispatch:
