@@ -4,11 +4,10 @@ on:
   pull_request:
     branches:
     - main
-    paths:
-    - '**'
-    - '!README.md'
-    - '!LICENSE'
-    - '!database/**'
+    paths-ignore:
+    - README.md
+    - LICENSE
+    - 'database/**'
 
   # enable manual trigger
   workflow_dispatch:
