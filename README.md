@@ -108,7 +108,7 @@ See the full installation guide [here](https://medium.com/@akshaysin_86681/insta
 
 To execute the tests:
 
-    pytest --doctest-modules --continue-on-collection-errors --durations 0
+    pytest --doctest-modules --continue-on-collection-errors --durations 0 --disable-warnings
 
 To execute coverage and see the report:
 
