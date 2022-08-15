@@ -61,7 +61,7 @@ def has_same_sign_or_zero(data):
 
 
 def count_items(array, item):
-    """Count the number of items in the array
+    """Count the number of items in the array.
     
     Args:
         array (np.array): An array.

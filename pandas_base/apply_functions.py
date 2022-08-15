@@ -55,7 +55,7 @@ def apply_function_elementwise_dataframe(df, func):
 
 
 def apply_function_elementwise_series(ser, func):
-    """Apply a function on a row/column basis of a DataFrame.
+    """Apply a function on a row/column basis to a Series.
     
     Args:
         ser (pd.Series): Series.

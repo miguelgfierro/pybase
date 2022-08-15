@@ -1,4 +1,5 @@
 # NOTE: Before reading this file, make sure you have read pytest_fixtures_in_common_file.py
+#
 # Pytest can be used with different scope levels: function, class, module or session.
 # The default scope is function. This means that the fixture will be computed
 # on each function. The class scope will invoke the fixture once per test class.
