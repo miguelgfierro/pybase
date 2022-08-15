@@ -119,7 +119,7 @@ To see more details on the result, the following command will generate a web whe
 
     coverage html
 
-To handle variable outputs in doctest you need to add at the end of the execution line `#doctest: +ELLIPSIS` and substitude the variable output with `...`
+To handle variable outputs in doctest you need to add at the end of the execution line `#doctest: +ELLIPSIS` and substitute the variable output with `...`
 An example can be found in the file [timer.py](log_base/timer.py).
 
 Original:
