@@ -5,12 +5,17 @@ on:
     branches:
     - main
 
-  # enable manual trigger
+  # Enable manual trigger
   workflow_dispatch:
     input:
       tags:
         description: 'Tags to label this manual run (optional)'
         default: 'Manual run'
+
+# Automatically cancel previous workflows if a new one is executed
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
