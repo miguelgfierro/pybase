@@ -4,12 +4,23 @@ on:
   pull_request:
     branches:
     - main
-    paths-ignore:
-    - 'README.md'
-    - 'LICENSE'
-    - 'database/**'
-    - '.github/**'
-    - '.gitignore'
+
+    # Only trigger the workflow when there is a change in these files
+    paths:
+    - api/**
+    - data_structures/**
+    - image_base/**
+    - io_base/**
+    - log_base/**
+    - machine_learning/**
+    - numpy_base/**
+    - optimization/**
+    - pandas_basse/**
+    - system/**
+    - test/**
+    - url_base/**
+    - conftest.py
+    - requirements.txt
 
   # Enable manual trigger
   workflow_dispatch:
