@@ -5,7 +5,7 @@ on:
     branches:
     - main
 
-  # enable manual trigger
+  # Enable manual trigger
   workflow_dispatch:
     input:
       tags:
