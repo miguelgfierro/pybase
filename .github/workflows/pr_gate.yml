@@ -20,7 +20,7 @@ on:
     - machine_learning/**
     - numpy_base/**
     - optimization/**
-    - pandas_basse/**
+    - pandas_base/**
     - system/**
     - test/**
     - url_base/**
