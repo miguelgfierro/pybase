@@ -82,4 +82,4 @@ jobs:
 
     - name: Run doctests
       run: |
-        pytest --doctest-modules --continue-on-collection-errors --durations 0    
+        pytest --doctest-modules --continue-on-collection-errors --durations 0 --disable-warnings   
