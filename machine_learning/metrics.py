@@ -122,13 +122,12 @@ def classification_metrics_binary_prob(y_true, y_prob):
         >>> y_true = [0,1,0,0,1]
         >>> y_prob = [0.2,0.7,0.4,0.3,0.2]
         >>> result = classification_metrics_binary_prob(y_true, y_prob)
-        >>> OrderedDict(sorted(result.items()))
-        OrderedDict([('AUC', 0.5833333333333333), ('Log loss', 0.6113513950783531)])
+        >>> result["AUC"], result["Log loss"]
+        (0.5833333333333333, 0.6113513950783531)
         >>> y_prob = [0.2,0.7,0.4,0.3,0.3]
         >>> result = classification_metrics_binary_prob(y_true, y_prob)
-        >>> OrderedDict(sorted(result.items()))
-        OrderedDict([('AUC', 0.75), ('Log loss', 0.5302583734567203)])
-
+        >>> result["AUC"], round(result["Log loss"], 15)
+        (0.75, 0.53025837345672)
     """
     m_auc = roc_auc_score(y_true, y_prob)
     m_logloss = log_loss(y_true, y_prob)
