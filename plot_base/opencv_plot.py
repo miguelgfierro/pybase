@@ -33,13 +33,14 @@ def plot_image_matplotlib(img, figsize=None, title=None):
         figsize (tuple): Size of the figure in inches (w,h).
         title (str): Title of the image.
     
-    **Examples**::
+    Examples:
 
-        >> img = cv2.imread('share/Lenna.png')
-        >> plot_image_matplotlib(img)
-        >> img_gray = cv2.imread('share/Lenna_gray.png')
-        >> img_comb = cv2.hconcat([img, img_gray]) 
-        >> plot_image_matplotlib(img_comb, figsize=(8, 4))
+        >>> matplotlib.use("Template") # Avoids opening a window in plt.show()
+        >>> img = cv2.imread('share/Lenna.png')
+        >>> plot_image_matplotlib(img)
+        >>> img_gray = cv2.imread('share/Lenna_gray.png')
+        >>> img_comb = cv2.hconcat([img, img_gray]) 
+        >>> plot_image_matplotlib(img_comb, figsize=(8, 4))
     """
     shape_len = len(img.shape)
     if shape_len == 3:  # color image

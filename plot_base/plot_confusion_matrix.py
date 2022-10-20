@@ -15,12 +15,13 @@ def plot_confusion_matrix(
         title (str): Title of the plot.
         cmap (matplotlib.cm): `Matplotlib colormap <https://matplotlib.org/api/cm_api.html>`_
     
-    **Examples**::
+    Examples:
 
-        >> a = np.array([[10, 3, 0],[1, 2, 3],[1, 5, 9]])
-        >> classes = ['cl1', 'cl2', 'cl3']
-        >> plot_confusion_matrix(a, classes, normalize=False)
-        >> plot_confusion_matrix(a, classes, normalize=True)
+        >>> matplotlib.use("Template") # Avoids opening a window in plt.show()
+        >>> a = np.array([[10, 3, 0],[1, 2, 3],[1, 5, 9]])
+        >>> classes = ['cl1', 'cl2', 'cl3']
+        >>> plot_confusion_matrix(a, classes, normalize=False)
+        >>> plot_confusion_matrix(a, classes, normalize=True)
     """
     cm_max = cm.max()
     cm_min = cm.min()
