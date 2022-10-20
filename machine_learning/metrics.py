@@ -128,7 +128,6 @@ def classification_metrics_binary_prob(y_true, y_prob):
         >>> result = classification_metrics_binary_prob(y_true, y_prob)
         >>> result["AUC"], round(result["Log loss"], 15)
         (0.75, 0.53025837345672)
-
     """
     m_auc = roc_auc_score(y_true, y_prob)
     m_logloss = log_loss(y_true, y_prob)
