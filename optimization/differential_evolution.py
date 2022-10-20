@@ -27,8 +27,8 @@ def optimize_function(func, bounds, **kargs):
         >>> from .functions import ackley
         >>> bounds = [(-5, 5), (-5, 5)]
         >>> result = optimize_function(ackley, bounds, strategy='best2exp', workers=-1, updating="deferred")
-        >>> print(np.around(result.x, decimals=2)) # Solution
-        [0. 0.]
+        >>> np.around(result.x, decimals=2).astype(int) # Solution
+        array([0, 0])
         >>> round(result.fun) # Final value of the objective function (around 4e-16)
         0
         >>> result.success
