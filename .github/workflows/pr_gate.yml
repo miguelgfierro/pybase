@@ -32,7 +32,7 @@ on:
 
 # Automatically cancel previous workflows if a new one is executed
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
