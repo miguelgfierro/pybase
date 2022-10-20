@@ -3,6 +3,7 @@ import sys
 import pytest
 import numpy
 import pandas
+import matplotlib
 import subprocess
 import glob
 import json
@@ -37,6 +38,7 @@ def add_libraries(doctest_namespace):
     doctest_namespace["OrderedDict"] = OrderedDict
     doctest_namespace["io"] = io
     doctest_namespace["TemporaryDirectory"] = TemporaryDirectory
+    doctest_namespace["matplotlib"] = matplotlib
     try:
         spark = (
             SparkSession.builder.appName("test pybase")

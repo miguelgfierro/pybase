@@ -7,11 +7,11 @@ def plot_image(img):
     Args:
         img (np.array): An image.
     
-    **Examples**::
+    Examples:
     
-        >> img = io.imread('share/Lenna.png')
-        >> plot_image(img)
+        >>> matplotlib.use("Template") # Avoids opening a window in plt.show()
+        >>> img = io.imread('share/Lenna.png')
+        >>> plot_image(img)
     """
     io.imshow(img)
     io.show()
-
