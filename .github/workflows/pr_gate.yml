@@ -1,11 +1,16 @@
 name: PR gate
 
 on:
+  push:
+    branches:
+    - main
+
   pull_request:
     types:
     - opened
     - reopened
     - synchronize
+    
     # Only trigger the workflow with the is a PR to main
     branches:
     - main
