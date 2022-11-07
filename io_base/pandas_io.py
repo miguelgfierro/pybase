@@ -11,7 +11,7 @@ def save_csv(dataframe, filename, **kwargs):
     
     Examples:
         >>> df = pd.DataFrame({"col1":[1,2,3], "col2":[0.1,0.2,0.3]})
-        >>> save_csv(df, filename="file.csv", index=False, header=False)
+        >>> save_csv(df, filename="file.csv", columns=["col1","col2"], index=False, header=False)
         >>> os.path.isfile('file.csv')
         True
         >>> os.remove('file.csv')
