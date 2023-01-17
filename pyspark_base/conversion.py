@@ -19,6 +19,12 @@ def replace_column_values(df, to_replace, value, col_name, new_col_name=None):
         0       1        1
         1       1        2
         2       c        3
+        >>> df_return = replace_column_values(df, "a", 1, "letters", "new_column")
+        >>> df_return.toPandas()
+          letters  numbers new_column
+        0       a        1          1
+        1       a        2          1
+        2       c        3          c
     """
     if new_col_name is None:
         output_col = col_name
