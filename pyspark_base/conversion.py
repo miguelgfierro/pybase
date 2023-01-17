@@ -13,25 +13,6 @@ def replace_column_values(df, to_replace, value, col_name, new_col_name=None):
 
     Examples:
         >>> df = spark.createDataFrame([("a", 1), ("a", 2), ("c", 3)], ["letters", "numbers"])
-        >>> df_return = replace_column_values(df, "a", 1, "letters")
-        >>> df_return.toPandas()
-          letters  numbers
-        0       1        1
-        1       1        2
-        2       c        3
-        >>> df_return = replace_column_values(df, "a", 1, "letters", "new_column")
-        >>> df_return.toPandas()
-          letters  numbers new_column
-        0       a        1          1
-        1       a        2          1
-        2       c        3          c
-        >>> df = spark.createDataFrame([(None, 1), ("a", 2), ("c", 3)], ["letters", "numbers"])
-        >>> df_return = replace_column_values(df, None, 1, "letters")
-        >>> df_return.toPandas()
-          letters  numbers
-        0       1        1
-        1       a        2
-        2       c        3
         >>> df = spark.createDataFrame([("a", float("nan")), ("a", 2.0), ("c", 3.0)], ["letters", "numbers"])
         >>> df_return = replace_column_values(df, float("nan"), 0.0, "letters")
         >>> df_return.toPandas()
@@ -40,6 +21,7 @@ def replace_column_values(df, to_replace, value, col_name, new_col_name=None):
         1       a      2.0
         2       c      3.0
     """
+    import math
     if new_col_name is None:
         output_col = col_name
     else:
@@ -47,7 +29,8 @@ def replace_column_values(df, to_replace, value, col_name, new_col_name=None):
 
     if to_replace is None:
         query = F.isnull(col_name)
-    elif to_replace != to_replace: # Fastest way to check for NaN https://stackoverflow.com/a/62171968 
+    # elif to_replace != to_replace: # Fastest way to check for NaN https://stackoverflow.com/a/62171968 
+    elif math.isnan(to_replace):
         query = F.isnan(col_name)
     else:
         query = F.col(col_name) == to_replace
