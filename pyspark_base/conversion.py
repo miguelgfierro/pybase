@@ -25,6 +25,20 @@ def replace_column_values(df, to_replace, value, col_name, new_col_name=None):
         0       a        1          1
         1       a        2          1
         2       c        3          c
+        >>> df = spark.createDataFrame([(None, 1), ("a", 2), ("c", 3)], ["letters", "numbers"])
+        >>> df_return = replace_column_values(df, None, 1, "letters")
+        >>> df_return.toPandas()
+          letters  numbers
+        0       1        1
+        1       a        2
+        2       c        3
+        >>> df = spark.createDataFrame([("a", float("nan")), ("a", 2.0), ("c", 3.0)], ["letters", "numbers"])
+        >>> df_return = replace_column_values(df, float("nan"), 0.0, "letters")
+        >>> df_return.toPandas()
+          letters  numbers
+        0       a      0.0
+        1       a      2.0
+        2       c      3.0
     """
     if new_col_name is None:
         output_col = col_name
@@ -38,5 +52,5 @@ def replace_column_values(df, to_replace, value, col_name, new_col_name=None):
     else:
         query = F.col(col_name) == to_replace
 
-    return df.withColumn(output_col, F.when(query, value).otherwise(F.col(output_col)))
+    return df.withColumn(output_col, F.when(query, value).otherwise(F.col(col_name)))
 
