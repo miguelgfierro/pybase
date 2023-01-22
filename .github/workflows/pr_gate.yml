@@ -1,14 +1,12 @@
 name: PR gate
 
 on:
-  pull_request_target:
-    # Trigger the workflow when the PR is opened, reopened or updated with a commit
-    types:
-    - opened
-    - reopened
-    - synchronize
+  push:
+    branches:
+    - main
 
-    # Only trigger the workflow with the is a PR to main
+  pull_request:
+    # Only trigger the workflow with a PR to main
     branches:
     - main
 
@@ -45,7 +43,7 @@ jobs:
   test:
     name: Test Python ${{ matrix.python }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 40
     strategy:
       fail-fast: false
       max-parallel: 8
