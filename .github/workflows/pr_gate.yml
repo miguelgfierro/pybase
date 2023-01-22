@@ -46,19 +46,19 @@ jobs:
     timeout-minutes: 40
     strategy:
       fail-fast: false
-      max-parallel: 8
+      max-parallel: 20 # Usage limits: https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration
       matrix:
-        os: [macos-latest, ubuntu-18.04, ubuntu-20.04]
-        python: ['3.6', '3.7', '3.8', '3.9', '3.10']
-        exclude: 
-          - os: macos-latest
-            python: '3.6' # error with fastparquet (everything else works)
+        os: [macos-latest, ubuntu-18.04, ubuntu-20.04, ubuntu-22.04] # Available images: https://github.com/actions/runner-images/#available-images
+        python: ['3.7', '3.8', '3.9', '3.10']
+        include: 
+          - os: ubuntu-18.04
+            python: '3.6' # It takes long to install the dependencies
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3 # Info: https://github.com/actions/checkout
     
     - name: Use Python ${{ matrix.python }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4 # Info: https://github.com/actions/setup-python
       with:
         python-version: ${{ matrix.python }}
     
@@ -75,9 +75,9 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest test/pytest* -m "not system"
+        pytest test/pytest* -m "not system" --disable-warnings
         python test/unittest_fixtures.py
 
     - name: Run doctests
       run: |
-        pytest --doctest-modules --continue-on-collection-errors --durations 0    
+        pytest --doctest-modules --continue-on-collection-errors --durations 0 --disable-warnings   

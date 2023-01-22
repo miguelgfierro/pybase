@@ -1,5 +1,4 @@
-from flask import request, jsonify, abort, make_response, Flask
-import werkzeug.exceptions as ex
+from flask import request, jsonify, Flask
 
 
 # HTML code
@@ -16,14 +15,19 @@ app = Flask(__name__)
 @app.route("/hello")
 def hello_world():
     """Basic endpoint with arguments.
+
     Examples (not executable):
     In bash, equivalent to:
     $ curl http://127.0.0.1:5000/hello
     $ curl http://127.0.0.1:5000/hello?name=Miguel
+
     In Python, equivalent to:
     $ import requests
     $ res = requests.get('http://127.0.0.1:5000/hello')
     $ res = requests.get('http://127.0.0.1:5000/hello?name=Miguel')
+
+    Returns:
+        str: Hello World! or Hello <name>
     
     Examples:
         >>> with app.test_client() as c:
@@ -53,15 +57,20 @@ def hello_world():
 @app.route("/hello/<user_id>")
 def hello_user(user_id):
     """Basic endpoint with url parameters.
-    
-    Args:
-        user_id (str): String parameter.
+
     Examples (not executable):
     In bash, equivalent to:
     $ curl http://127.0.0.1:5000/hello/5
+
     In Python, equivalent to:
     $ import requests
     $ res = requests.get('http://127.0.0.1:5000/hello/5')
+
+    Args:
+        user_id (str): String parameter.
+
+    Returns:
+        str: Hello user <user_id>
     
     Examples:
         >>> with app.test_client() as c:
@@ -106,6 +115,7 @@ class InvalidUsage(Exception):
 @app.errorhandler(InvalidUsage)
 def user_not_found(error):
     """Custom error handler.
+    
     More info: http://flask.pocoo.org/docs/1.0/patterns/apierrors/#registering-an-error-handler
     """
     response = jsonify(error.to_dict())
