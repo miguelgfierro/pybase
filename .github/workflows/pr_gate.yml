@@ -49,12 +49,10 @@ jobs:
       max-parallel: 20 # Usage limits: https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration
       matrix:
         os: [macos-latest, ubuntu-18.04, ubuntu-20.04, ubuntu-22.04] # Available images: https://github.com/actions/runner-images/#available-images
-        python: ['3.6', '3.7', '3.8', '3.9', '3.10']
-        exclude: 
-          - os: macos-latest
-            python: '3.6' # error with fastparquet (everything else works)
-          - os: ubuntu-22.04
-            python: '3.6' # The version '3.6' with architecture 'x64' was not found for Ubuntu 22.04
+        python: ['3.7', '3.8', '3.9', '3.10']
+        include: 
+          - os: ubuntu-18.04
+            python: '3.6' # It takes long to install the dependencies
     steps:
     - name: Checkout
       uses: actions/checkout@v3 # Info: https://github.com/actions/checkout
