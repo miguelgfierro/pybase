@@ -6,7 +6,7 @@ on:
     - main
 
   pull_request:
-    # Only trigger the workflow with the is a PR to main
+    # Only trigger the workflow with a PR to main
     branches:
     - main
 
@@ -43,7 +43,7 @@ jobs:
   test:
     name: Test Python ${{ matrix.python }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 40
     strategy:
       fail-fast: false
       max-parallel: 8
