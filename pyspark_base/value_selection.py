@@ -68,7 +68,7 @@ def get_maximum_value_of_column(df, col_name):
             get_maximum_value_of_column(df, "dates")
             # 2023-01-01
     """
-    return df.agg(F.max(df.dates)).collect()[0][0]
+    return df.agg(F.max(df[col_name])).collect()[0][0]
 
 
 def get_random_fraction_of_rows(df, row_fraction=0.5, reindex=True):
