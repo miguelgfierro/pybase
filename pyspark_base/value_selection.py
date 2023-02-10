@@ -50,6 +50,48 @@ def count_unique_values_in_column(df, col_name):
     return df.select(F.countDistinct(col_name)).collect()
 
 
+def get_maximum_value_of_column(df, col_name):
+    """Get the maximum value of a colum.
+    
+    Args:
+        df (spark.DataFrame): Dataframe.
+        col_name (str): Column name.
+
+    Return:
+        int, float, date: Maximum value.
+        
+    **Examples**
+
+        .. code-block:: python
+            from datetime import date
+            df = spark.createDataFrame([(1, date(2022,1,6)), (2, date(2023,1,1))], ["numbers", "dates"])
+            get_maximum_value_of_column(df, "dates")
+            # 2023-01-01
+    """
+    return df.agg(F.max(df[col_name])).collect()[0][0]
+
+
+def get_minimum_value_of_column(df, col_name):
+    """Get the minimum value of a colum.
+    
+    Args:
+        df (spark.DataFrame): Dataframe.
+        col_name (str): Column name.
+
+    Return:
+        int, float, date: Maximum value.
+        
+    **Examples**
+
+        .. code-block:: python
+            from datetime import date
+            df = spark.createDataFrame([(1, date(2022,1,6)), (2, date(2023,1,1))], ["numbers", "dates"])
+            get_maximum_value_of_column(df, "dates")
+            # 2023-01-01
+    """
+    return df.agg(F.min(df[col_name])).collect()[0][0]
+
+
 def get_random_fraction_of_rows(df, row_fraction=0.5, reindex=True):
     pass
 
