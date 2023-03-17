@@ -12,10 +12,8 @@ flask>=1.0.2
 beautifulsoup4>=4.6.0
 cherrypy>=12.0.1
 paste>=2.0.3
-fastparquet>=0.1.4,<0.7;python_version=='3.6'
-fastparquet>=0.1.4;python_version>='3.7'
-dask[dataframe]>=0.17.1;python_version=='3.6'
-dask>=0.17.1;python_version>='3.7'
+fastparquet>=0.1.4
+dask>=0.17.1
 pillow>=4.3.0
 sqlalchemy>=1.2.4,<2
 gitpython>=2.1.8
