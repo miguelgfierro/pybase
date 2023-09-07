@@ -47,8 +47,6 @@ def execute_notebook(
             # Update the cell's source within notebook_content
             cell.source = modified_cell_source
 
-    # Step 3: Execute the Modified Notebook with nbconvert
-
     # Create an execution preprocessor
     execute_preprocessor = ExecutePreprocessor(timeout=timeout, kernel_name=kernel_name)
 
