@@ -61,8 +61,9 @@ def execute_notebook(
         nbformat.write(executed_notebook, executed_notebook_file)
 
 
-def store_data(name, value):
+def store_metadata(name, value):
     """Store data in the notebook's output source code.
+    This function is similar to snapbook.glue().
 
     Args:
         name (str): Name of the data.
@@ -82,3 +83,29 @@ def store_data(name, value):
         }
     }
     display(data_json, metadata=metadata, raw=True)
+
+
+def read_notebook(path):
+    """Read the metadata stored in the notebook's output source code.
+    This function is similar to snapbook.read_notebook().
+
+    Args:
+        path (str): Path to the notebook.
+
+    Returns:
+        dict: Dictionary of data stored in the notebook.
+    """
+    # Load the Jupyter Notebook
+    with open(path, "r") as notebook_file:
+        notebook_content = nbformat.read(notebook_file, as_version=4)
+
+    # Search for and replace parameter values in code cells
+    results = {}
+    for cell in notebook_content.cells:
+        if cell.cell_type == "code" and cell.outputs is True:
+            for outputs in cell.outputs:
+                if "notebook_utils" in outputs.metadata:
+                    name = outputs.data["application/notebook_utils.json+json"]["name"]
+                    data = outputs.data["application/notebook_utils.json+json"]["data"]
+                    results[name] = data
+    return results
