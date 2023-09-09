@@ -1,6 +1,7 @@
 import re
 import nbformat
 from nbconvert.preprocessors import ExecutePreprocessor
+from IPython.display import display
 
 
 def execute_notebook(
@@ -58,3 +59,26 @@ def execute_notebook(
     # Save the executed notebook
     with open(output_notebook, "w", encoding="utf-8") as executed_notebook_file:
         nbformat.write(executed_notebook, executed_notebook_file)
+
+
+def store_data(name, value):
+    """Store data in the notebook's output source code.
+
+    Args:
+        name (str): Name of the data.
+        value (int,float,str): Value of the data.
+
+
+    Example:
+        >>> store_data("result", 15)
+    """
+
+    metadata = {"notebook_utils": {"name": name, "data": True, "display": False}}
+    data_json = {
+        "application/notebook_utils.json+json": {
+            "name": name,
+            "data": value,
+            "encoder": "json",
+        }
+    }
+    display(data_json, metadata=metadata, raw=True)
