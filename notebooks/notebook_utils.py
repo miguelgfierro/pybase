@@ -9,7 +9,9 @@ def execute_notebook(
 ):
     """Execute a notebook while passing parameters to it.
 
-    .. note:: Ensure your Jupyter Notebook is set up with parameters that can be
+    .. note::
+
+    Ensure your Jupyter Notebook is set up with parameters that can be
     modified and read. Use Markdown cells to specify parameters that need
     modification and code cells to set parameters that need to be read.
 
