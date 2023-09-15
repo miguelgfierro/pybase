@@ -70,10 +70,6 @@ def store_metadata(name, value):
     Args:
         name (str): Name of the data.
         value (int,float,str): Value of the data.
-
-
-    Example:
-        >>> store_data("result", 15)
     """
 
     metadata = {"notebook_utils": {"name": name, "data": True, "display": False}}
