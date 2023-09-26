@@ -16,10 +16,10 @@ def execute_notebook(
     modification and code cells to set parameters that need to be read.
 
     Args:
-        input_notebook (string): Path to the input notebook.
-        output_notebook (string): Path to the output notebook
+        input_notebook (str): Path to the input notebook.
+        output_notebook (str): Path to the output notebook
         parameters (dict): Dictionary of parameters to pass to the notebook.
-        kernel_name (string): Kernel name.
+        kernel_name (str): Kernel name.
         timeout (int): Timeout (in seconds) for each cell to execute.
     """
 
