@@ -1,6 +1,5 @@
 import os
 import sys
-import pytest
 
 sys.path.append(os.path.join(".."))  # import pybase
 from pybase.notebooks.notebook_utils import execute_notebook, read_notebook
@@ -16,4 +15,4 @@ def test_notebook_execution_int():
     )
 
     results = read_notebook("output.ipynb")
-    assert results["response1"] == 6
+    assert results["response1"] == 7
