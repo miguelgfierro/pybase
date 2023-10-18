@@ -58,3 +58,23 @@ def test_notebook_execution_other_letter(input_notebook):
 
     results = read_notebook("output.ipynb")
     assert results["response2"] == "A"
+
+
+def test_notebook_execution_value_error(input_notebook):
+    with pytest.raises(ValueError):
+        execute_notebook(
+            input_notebook,
+            "output.ipynb",
+            kernel_name="python3",
+            parameters=dict(b=1),
+        )
+
+
+def test_notebook_execution_type_error(input_notebook):
+    with pytest.raises(TypeError):
+        execute_notebook(
+            input_notebook,
+            "output.ipynb",
+            kernel_name="python3",
+            parameters=dict(a="A"),
+        )
