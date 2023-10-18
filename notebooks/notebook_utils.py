@@ -100,9 +100,9 @@ def read_notebook(path):
     # Search for and replace parameter values in code cells
     results = {}
     for cell in notebook_content.cells:
-        if cell.cell_type == "code" and cell.outputs is True:
+        if cell.cell_type == "code" and "outputs" in cell:
             for outputs in cell.outputs:
-                if "notebook_utils" in outputs.metadata:
+                if "metadata" in outputs and "notebook_utils" in outputs.metadata:
                     name = outputs.data["application/notebook_utils.json+json"]["name"]
                     data = outputs.data["application/notebook_utils.json+json"]["data"]
                     results[name] = data
