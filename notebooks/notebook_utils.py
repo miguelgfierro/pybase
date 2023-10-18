@@ -39,6 +39,9 @@ def execute_notebook(
                 cell_source  # Initialize a variable to hold the modified source
             )
             for param, new_value in parameters.items():
+                # Check if the new value is a string and surround it with quotes if necessary
+                if isinstance(new_value, str):
+                    new_value = f'"{new_value}"'
                 # Define a regular expression pattern to match parameter assignments
                 pattern = re.compile(rf"\b{param}\s*=\s*([^#\n]+)(?:\n|$)")
                 matches = re.findall(pattern, cell_source)
