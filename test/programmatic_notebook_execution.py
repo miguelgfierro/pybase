@@ -18,11 +18,11 @@ def test_notebook_execution_int(input_notebook):
         input_notebook,
         "output.ipynb",
         kernel_name="python3",
-        parameters=dict(a=5),
+        parameters=dict(a=6),
     )
 
     results = read_notebook("output.ipynb")
-    assert results["response1"] == 7
+    assert results["response1"] == 8
 
 
 def test_notebook_execution_float(input_notebook):
@@ -69,3 +69,15 @@ def test_notebook_execution_value_error_fails(input_notebook):
             kernel_name="python3",
             parameters=dict(b=1),
         )
+
+
+def test_notebook_execution_int_with_comment(input_notebook):
+    execute_notebook(
+        input_notebook,
+        "output.ipynb",
+        kernel_name="python3",
+        parameters=dict(c=10),
+    )
+
+    results = read_notebook("output.ipynb")
+    assert results["response3"] == 12
