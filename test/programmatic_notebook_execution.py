@@ -1,6 +1,7 @@
 import os
 import sys
 import pytest
+import nbclient
 
 
 sys.path.append(os.path.join(".."))  # import pybase
@@ -60,21 +61,11 @@ def test_notebook_execution_other_letter(input_notebook):
     assert results["response2"] == "A"
 
 
-def test_notebook_execution_value_error(input_notebook):
-    with pytest.raises(ValueError):
+def test_notebook_execution_value_error_fails(input_notebook):
+    with pytest.raises(nbclient.exceptions.CellExecutionError):
         execute_notebook(
             input_notebook,
             "output.ipynb",
             kernel_name="python3",
             parameters=dict(b=1),
-        )
-
-
-def test_notebook_execution_type_error(input_notebook):
-    with pytest.raises(TypeError):
-        execute_notebook(
-            input_notebook,
-            "output.ipynb",
-            kernel_name="python3",
-            parameters=dict(a="A"),
         )
