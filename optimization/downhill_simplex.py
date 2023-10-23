@@ -7,20 +7,21 @@ def optimize_function(func, initial_guess, **kargs):
     It will usually be slower than an algorithm that uses first or second derivative information.
     In practice it can have poor performance in high-dimensional problems and is not robust to minimizing
     complicated functions. It might not successfully converge to the minimum.
-    
+
     `See more info <https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin.html#scipy-optimize-fmin>`_.
-    
+
     Args:
         func (callable): The objective function to be minimized. In the form ``f(x, *args)``, where x is the argument in
                          the form of a 1-D array and args is a tuple of any additional parameters.
         initial_guess (np.array): Initial guess.
-    
+
     Returns:
         np.array: Result of the optimization.
         float: Value of function at minimum.
-    
+
     Examples:
         >>> from .functions import rosenbrock
+        >>> np.random.seed(42)
         >>> x0 = np.array([0, 0, 0, 0, 0])
         >>> xopt, fopt = optimize_function(rosenbrock, x0)
         >>> xopt # Real solution [1,1,1,1,1]
