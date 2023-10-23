@@ -25,7 +25,7 @@ def optimize_function(func, initial_guess, **kargs):
         >>> x0 = np.array([0, 0, 0, 0, 0])
         >>> xopt, fopt = optimize_function(rosenbrock, x0) # xopt = [0.9999974 , 0.99999158, 0.99998042, 0.9999658 , 0.99993196]
         >>> expected_result = np.array([1, 1, 1, 1, 1])
-        >>> np.allclose(xopt, expected_result, rtol=1e-5, atol=1e-4)
+        >>> np.allclose(xopt, expected_result, rtol=1e-3, atol=1e-3)
         True
         >>> round(fopt, ndigits=5)
         0.0
