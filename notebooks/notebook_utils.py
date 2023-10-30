@@ -42,8 +42,10 @@ def execute_notebook(
                 # Check if the new value is a string and surround it with quotes if necessary
                 if isinstance(new_value, str):
                     new_value = f'"{new_value}"'
-                # Define a regular expression pattern to match parameter assignments
-                pattern = re.compile(rf"\b{param}\s*=\s*([^#\n]+)(?:\n|$)")
+                # Define a regular expression pattern to match parameter assignments and ignore comments
+                pattern = re.compile(
+                    rf"\b{param}\s*=\s*([^#\n]+)(?:#.*$)?", re.MULTILINE
+                )
                 matches = re.findall(pattern, cell_source)
                 for match in matches:
                     old_assignment = match.strip()
