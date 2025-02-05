@@ -1,4 +1,4 @@
-numpy>=1.19
+numpy>=1.19,<2
 memory_profiler>=0.47
 pandas>=1.3.0,<2;python_version<='3.7'
 pandas>=2,<3;python_version>'3.7'
@@ -40,7 +40,8 @@ wsaccel>=0.6.2
 ujson>=1.35
 backoff>=1.8.0
 pytube3>=9.5.3
-moviepy>=1.0.1
+moviepy>=1.0.1,<2.0.0;python_version<='3.7'
+moviepy>=2.0.0;python_version>'3.7'
 numba>=0.38.1,<1
 pyodbc>=4.0.21
 mlflow>=1.14.0
