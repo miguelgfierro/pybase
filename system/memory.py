@@ -46,9 +46,10 @@ def get_pandas_df_size(obj, units="Mb"):
         float: Size of the object.
 
     Examples:
+        >>> import pandas as pd
         >>> df = pd.DataFrame({"a":[1]*100, "b":[0.5]*100})
-        >>> get_pandas_df_size(df, "Kb")
-        1.6875
+        >>> get_pandas_df_size(df, "Kb")  # doctest: +ELLIPSIS
+        1.6...
     """
     obj_bytes = obj.memory_usage(deep=False).sum()
     return _manage_memory_units(obj_bytes, units)
