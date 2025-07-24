@@ -68,8 +68,8 @@ def get_library_version(library_name):
         str: Version of the library.
 
     Examples:
-        >>> get_library_version("pandas") #doctest: +ELLIPSIS
-        '2...'
+        >>> get_library_version("fastapi") #doctest: +ELLIPSIS
+        '0...'
 
     """
     try:
