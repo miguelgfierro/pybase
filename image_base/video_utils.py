@@ -1,9 +1,7 @@
 import os
 import cv2
-from moviepy.video.io.ffmpeg_tools import (
-    ffmpeg_extract_subclip,
-    ffmpeg_movie_from_frames,
-)
+from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
+from moviepy.editor import ImageSequenceClip
 
 
 def cut_video(input_file, start_time, end_time, output_file):
@@ -87,4 +85,9 @@ def video_from_frames_ffmpeg(filename, folder, fps=25, **kwargs):
             raise TypeError(
                 "Unexpected keyword argument passed to optimizer: " + str(k)
             )
-    ffmpeg_movie_from_frames(filename, folder, fps, kwargs)
+    # Use ImageSequenceClip to assemble frames into a video
+    images = sorted(os.listdir(folder))
+    paths = [os.path.join(folder, img) for img in images]
+    clip = ImageSequenceClip(paths, fps=fps)
+    output_path = os.path.join(folder, filename)
+    clip.write_videofile(output_path, bitrate=kwargs.get("bitrate", None))
