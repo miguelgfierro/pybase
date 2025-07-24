@@ -69,7 +69,7 @@ def get_library_version(library_name):
 
     Examples:
         >>> get_library_version("pandas") #doctest: +ELLIPSIS
-        '1...'
+        '2...'
 
     """
     try:
@@ -170,8 +170,9 @@ def get_gpu_name():
     """
     try:
         import numba
+
         return [gpu.name.decode("utf-8") for gpu in numba.cuda.gpus]
-    except Exception: # numba.cuda.cudadrv.error.CudaSupportError:
+    except Exception:  # numba.cuda.cudadrv.error.CudaSupportError:
         return []
 
 
@@ -188,13 +189,15 @@ def get_number_gpus():
     """
     try:
         import torch
+
         return torch.cuda.device_count()
     except (ImportError, ModuleNotFoundError):
         pass
     try:
         import numba
+
         return len(numba.cuda.gpus)
-    except Exception: # numba.cuda.cudadrv.error.CudaSupportError:
+    except Exception:  # numba.cuda.cudadrv.error.CudaSupportError:
         return 0
 
 
@@ -211,8 +214,9 @@ def get_gpu_compute_capability():
     """
     try:
         import numba
+
         return [gpu.compute_capability for gpu in numba.cuda.gpus]
-    except Exception: # numba.cuda.cudadrv.error.CudaSupportError:
+    except Exception:  # numba.cuda.cudadrv.error.CudaSupportError:
         return []
 
 
@@ -225,6 +229,7 @@ def get_cuda_version():
     """
     try:
         import torch
+
         return torch.version.cuda
     except (ImportError, ModuleNotFoundError):
         path = ""
@@ -277,9 +282,10 @@ def get_cudnn_version():
                 return "Cannot find CUDNN version"
         else:
             return "Cannot find CUDNN version"
-            
+
     try:
         import torch
+
         return torch.backends.cudnn.version()
     except (ImportError, ModuleNotFoundError):
         if sys.platform == "win32":
@@ -316,13 +322,15 @@ def is_cuda_available():
     """
     try:
         import torch
+
         return torch.cuda.is_available()
     except (ImportError, ModuleNotFoundError):
         pass
     try:
         import numba
+
         return len(numba.cuda.gpus)
-    except Exception: # numba.cuda.cudadrv.error.CudaSupportError:
+    except Exception:  # numba.cuda.cudadrv.error.CudaSupportError:
         return False
 
 
