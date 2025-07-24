@@ -39,3 +39,6 @@ numba>=0.38.1,<1
 pyodbc>=4.0.21
 mlflow>=1.14.0
 notebook>=6.4.12,<7.1.0
+fastapi>=0.100.0,<1
+pydantic>=2.5.0,<3
+email-validator>=1.2.0
