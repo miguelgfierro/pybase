@@ -1,7 +1,7 @@
 import os
 import cv2
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
-from moviepy.editor import ImageSequenceClip
+from moviepy.video.io.ImageSequenceClip import ImageSequenceClip
 
 
 def cut_video(input_file, start_time, end_time, output_file):
