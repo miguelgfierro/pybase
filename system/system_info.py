@@ -350,3 +350,53 @@ def get_conda_environment():
     except KeyError:
         env = "No conda env found"
     return env
+
+
+def get_virtual_environment():
+    """Get the virtual environment (venv/uv) from which the script is being executed
+
+    Returns:
+        str: Environment path or name
+
+    Examples:
+        >>> get_virtual_environment() # doctest: +ELLIPSIS
+        '...'
+
+    """
+    # Check for VIRTUAL_ENV (set by venv/uv activation)
+    venv = os.environ.get("VIRTUAL_ENV")
+    if venv:
+        return venv
+
+    # Check for conda as fallback
+    conda_env = os.environ.get("CONDA_DEFAULT_ENV")
+    if conda_env:
+        return f"conda:{conda_env}"
+
+    return "No virtual env found"
+
+
+def get_environment():
+    """Get the current Python environment (uv/venv or conda)
+
+    Returns:
+        str: Environment info
+
+    Examples:
+        >>> get_environment() # doctest: +ELLIPSIS
+        '...'
+
+    """
+    # Check for VIRTUAL_ENV first (uv/venv)
+    venv = os.environ.get("VIRTUAL_ENV")
+    if venv:
+        # Extract just the env name from the path
+        env_name = os.path.basename(venv)
+        return f"venv: {env_name} ({venv})"
+
+    # Check for conda
+    conda_env = os.environ.get("CONDA_DEFAULT_ENV")
+    if conda_env:
+        return f"conda: {conda_env}"
+
+    return "No virtual environment active"
