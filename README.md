@@ -13,69 +13,51 @@ This is a codebase for basic Python utilities.
 
 ## Dependencies
 
-To install the dependencies:
+We recommend using [uv](https://docs.astral.sh/uv/) for environment management (10-100x faster than pip/conda).
 
-    pip install -r requirements.txt
+To install uv and set up the environment:
 
-For setting up PySpark, make sure Java and Spark are available in the machine. Then, we need to set the environment variables `PYSPARK_PYTHON` and `PYSPARK_DRIVER_PYTHON` to point to the python executable.
+    # Install uv
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+
+    # Create and activate environment
+    uv venv ~/.venvs/pybase --python 3.11
+    source ~/.venvs/pybase/bin/activate
+
+    # Install dependencies
+    uv pip install -r requirements.txt
 
 <details>
-<summary><strong><em>Press to get the instructions for PySpark on Linux or MacOS in a Conda environment</em></strong></summary>
+<summary><strong><em>Press to get the instructions for PySpark on Linux or MacOS</em></strong></summary>
 
-To set these variables every time the environment is activated, we can follow the steps of this [guide](https://conda.io/docs/user-guide/tasks/manage-environments.html#macos-and-linux). First, get the path of the Conda environment `pybase` is installed:
+For PySpark, make sure Java is installed. We recommend Temurin JDK 21:
 
-    CONDA_ENV=$(conda env list | grep pybase | awk '{print $NF}')
+    # Install Java (Ubuntu/Debian)
+    sudo apt install -y wget apt-transport-https gpg
+    wget -qO - https://packages.adoptium.net/artifactory/api/gpg/key/public | sudo gpg --dearmor -o /usr/share/keyrings/adoptium.gpg
+    echo "deb [signed-by=/usr/share/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/adoptium.list
+    sudo apt update && sudo apt install -y temurin-21-jdk
 
-Then, create the file `$CONDA_ENV/etc/conda/activate.d/env_vars.sh` and add:
+Set the environment variables. Add to `~/.bashrc`:
 
-    #!/bin/sh
-    CONDA_ENV=$(conda env list | grep pybase | awk '{print $NF}')
-    export PYSPARK_PYTHON=$CONDA_ENV/bin/python
-    export PYSPARK_DRIVER_PYTHON=$CONDA_ENV/bin/python
-    export SPARK_HOME_BACKUP=$SPARK_HOME
-    export SPARK_HOME=/home/root/installer/spark
+    export JAVA_HOME=/usr/lib/jvm/temurin-21-jdk-amd64
+    export PYSPARK_PYTHON=~/.venvs/pybase/bin/python
+    export PYSPARK_DRIVER_PYTHON=~/.venvs/pybase/bin/python
 
-This will export the variables every time we do `conda activate pybase`.
-To unset these variables when we deactivate the environment,
-create the file `$CONDA_ENV/etc/conda/deactivate.d/env_vars.sh` and add:
+Then reload:
 
-    #!/bin/sh
-    unset PYSPARK_PYTHON
-    unset PYSPARK_DRIVER_PYTHON
-    export SPARK_HOME=$SPARK_HOME_BACKUP
-    unset SPARK_HOME_BACKUP
+    source ~/.bashrc
 
 </details>
 
 <details>
-<summary><strong><em>Press to get the instructions for PySpark on Windows in a Conda environment</em></strong></summary>
+<summary><strong><em>Press to get the instructions for PySpark on Windows</em></strong></summary>
 
-To set these variables every time the environment is activated, we can follow the steps of this [guide](https://conda.io/docs/user-guide/tasks/manage-environments.html#windows). First, get the path of the environment `pybase` is installed:
-
-    for /f "delims=" %A in ('conda env list ^| grep pybase ^| awk "{print $NF}"') do set "CONDA_ENV=%A"
-
-Then, create the file `%CONDA_ENV%\etc\conda\activate.d\env_vars.bat` and add:
- 
-    @echo off
-    for /f "delims=" %%A in ('conda env list ^| grep pybase ^| awk "{print $NF}"') do set "CONDA_ENV=%%A"
-    set PYSPARK_PYTHON=%CONDA_ENV%\python.exe
-    set PYSPARK_DRIVER_PYTHON=%CONDA_ENV%\python.exe
-    set SPARK_HOME_BACKUP=%SPARK_HOME%
-    set SPARK_HOME=
-    set PYTHONPATH_BACKUP=%PYTHONPATH%
-    set PYTHONPATH=
-
-This will export the variables every time we do `conda activate pybase`.
-To unset these variables when we deactivate the environment,
-create the file `%CONDA_ENV%\etc\conda\deactivate.d\env_vars.bat` and add:
-
-    @echo off
-    set PYSPARK_PYTHON=
-    set PYSPARK_DRIVER_PYTHON=
-    set SPARK_HOME=%SPARK_HOME_BACKUP%
-    set SPARK_HOME_BACKUP=
-    set PYTHONPATH=%PYTHONPATH_BACKUP%
-    set PYTHONPATH_BACKUP=
+1. Install Java (download Temurin JDK from https://adoptium.net/)
+2. Set environment variables in System Properties > Environment Variables:
+   - `JAVA_HOME` = `C:\Program Files\Eclipse Adoptium\jdk-21...`
+   - `PYSPARK_PYTHON` = `%USERPROFILE%\.venvs\pybase\Scripts\python.exe`
+   - `PYSPARK_DRIVER_PYTHON` = `%USERPROFILE%\.venvs\pybase\Scripts\python.exe`
 
 See more details on how to install PySpark on Windows [here](https://towardsdatascience.com/installing-apache-pyspark-on-windows-10-f5f0c506bea1).
 
